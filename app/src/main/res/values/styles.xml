@@ -6,24 +6,6 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-<!--        <item name="android:windowIsTranslucent">true</item>-->
     </style>
-
-<!--    <style name="MyDialogStyle" parent="Base.Theme.AppCompat.Light.Dialog">-->
-<!--        <item name="android:windowAnimationStyle">@style/Base.Animation.AppCompat.Dialog</item>-->
-<!--        &lt;!&ndash;<item name="android:windowFrame">@null</item>&ndash;&gt;-->
-<!--        &lt;!&ndash;是否浮在窗口之上&ndash;&gt;-->
-<!--        <item name="android:windowIsFloating">true</item>-->
-<!--        &lt;!&ndash;半透明&ndash;&gt;-->
-<!--        <item name="android:windowIsTranslucent">true</item>-->
-<!--        &lt;!&ndash;是否显示title&ndash;&gt;-->
-<!--        <item name="android:windowNoTitle">true</item>-->
-<!--        &lt;!&ndash;dialog之外没有焦点的区域是否罩上黑色半透明&ndash;&gt;-->
-<!--        <item name="android:backgroundDimEnabled">true</item>-->
-<!--        <item name="android:background">@color/colorGrey</item>-->
-<!--        <item name="android:textColor">@color/lineWhite</item>-->
-<!--        <item name="android:textColorPrimary">@color/lineWhite</item>-->
-<!--    </style>-->
-
 
 </resources>
