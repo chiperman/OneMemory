@@ -8,5 +8,5 @@
         android:layout_height="fill_parent"
         android:layout_gravity="center"
         android:id="@+id/logo_splash"
-        android:src="@drawable/weibo"/>
+            android:src="@drawable/weibo" />
 </LinearLayout>
