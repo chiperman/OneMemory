@@ -11,6 +11,6 @@
             android:layout_height="wrap_content"
             android:calendarViewShown="false" 
             android:endYear="2027"
-            android:startYear="2006"
+            android:startYear="2005"
             />
 </LinearLayout>
