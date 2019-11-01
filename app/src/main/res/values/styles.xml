@@ -6,24 +6,21 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-<!--        <item name="android:windowIsTranslucent">true</item>-->
     </style>
 
-<!--    <style name="MyDialogStyle" parent="Base.Theme.AppCompat.Light.Dialog">-->
-<!--        <item name="android:windowAnimationStyle">@style/Base.Animation.AppCompat.Dialog</item>-->
-<!--        &lt;!&ndash;<item name="android:windowFrame">@null</item>&ndash;&gt;-->
-<!--        &lt;!&ndash;是否浮在窗口之上&ndash;&gt;-->
-<!--        <item name="android:windowIsFloating">true</item>-->
-<!--        &lt;!&ndash;半透明&ndash;&gt;-->
-<!--        <item name="android:windowIsTranslucent">true</item>-->
-<!--        &lt;!&ndash;是否显示title&ndash;&gt;-->
-<!--        <item name="android:windowNoTitle">true</item>-->
-<!--        &lt;!&ndash;dialog之外没有焦点的区域是否罩上黑色半透明&ndash;&gt;-->
-<!--        <item name="android:backgroundDimEnabled">true</item>-->
-<!--        <item name="android:background">@color/colorGrey</item>-->
-<!--        <item name="android:textColor">@color/lineWhite</item>-->
-<!--        <item name="android:textColorPrimary">@color/lineWhite</item>-->
-<!--    </style>-->
-
+    <style name="dialog_date" parent="Theme.AppCompat.NoActionBar">
+        <!--设置头部颜色-->
+        <!--<item name="colorPrimary">@color/tip_text_color</item>-->
+        <!--<item name="colorPrimaryDark">@color/tip_text_color</item>-->
+        <!--<item name="colorAccent">@color/tip_text_color</item>-->
+        <!--设置dialog不全屏 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <!--除去title，如果在代码里面有其他设置会没效果的不过完全没效果-->
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <!--<!–除去背景色–>-->
+        <!--<item name="android:windowBackground">@null</item>-->
+    </style>
 
 </resources>

@@ -76,7 +76,7 @@ public class add_Subscribe extends Activity implements DatePicker.OnDateChangedL
                 View dialogView = View.inflate(context, R.layout.dialog_date, null);
                 final DatePicker datePicker = (DatePicker) dialogView.findViewById(R.id.datePicker);
 
-//                dialog.setTitle("设置日期");
+//              dialog.setTitle("设置日期");
                 dialog.setView(dialogView);
                 dialog.show();
                 //初始化日期监听事件

@@ -12,6 +12,5 @@
             android:calendarViewShown="false"
             android:endYear="2027"
             android:startYear="2007"
-
             />
 </LinearLayout>

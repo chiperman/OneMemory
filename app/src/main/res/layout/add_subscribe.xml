@@ -6,7 +6,10 @@
         android:layout_height="match_parent"
         android:background="@color/colorGrey"
         android:columnCount="2"
+        android:fitsSystemWindows="true"
         android:rowCount="5">
+    <!--android:fitsSystemWindows="true" 状态栏不和下方的页面挤在一起-->
+
 
     <ImageView
             android:layout_width="25dp"
@@ -215,20 +218,19 @@
 
 
     <TextView
+            android:id="@+id/select"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginTop="18dp"
             android:layout_marginRight="20dp"
-            android:id="@+id/select"
             android:gravity="right"
             android:hint="请选择订阅方式"
             android:imeOptions="actionDone"
             android:inputType="number"
             android:textColor="@color/colorMainFont"
             android:textColorHint="@color/colorSecondFont"
-            android:textSize="18sp">
-    </TextView>
+            android:textSize="18sp"></TextView>
 
     <View
             android:layout_width="match_parent"
