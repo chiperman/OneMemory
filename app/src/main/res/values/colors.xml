@@ -3,9 +3,10 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="colorGrey">#F5F6F9</color>
+    <color name="backgroundWhite">#F5F6F9</color>
     <color name="colorMainFont">#000000</color>
     <color name="colorSecondFont">#A6A6A6</color>
     <color name="lineBlack">#000000</color>
     <color name="lineWhite">#FFFFFF</color>
+    <color name="cardBackground">#FFD43F</color>
 </resources>

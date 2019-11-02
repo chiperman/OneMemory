@@ -20,6 +20,7 @@ public class add_Subscribe extends Activity implements DatePicker.OnDateChangedL
 
     private TextView tv_date;
     private TextView show_select;
+    private TextView method_select;
     private DatePicker.OnDateChangedListener listener = this;
     private int year, month, day;
     //在TextView上显示的字符
@@ -43,6 +44,9 @@ public class add_Subscribe extends Activity implements DatePicker.OnDateChangedL
 
         show_select = findViewById(R.id.select);
         selectSubMethod();
+
+        method_select = findViewById(R.id.method);
+        methodSubMethod();
 
 
         Calendar calendar = Calendar.getInstance();
@@ -107,6 +111,26 @@ public class add_Subscribe extends Activity implements DatePicker.OnDateChangedL
         });
     }
 
+    public void methodSubMethod() {
+        method_select.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String[] method = new String[]{"支付宝", "微信", "信用卡", "他人赠送"};
+                AlertDialog.Builder builder = new AlertDialog.Builder(add_Subscribe.this);
+
+                builder.setTitle("请选择你的支付方式");
+                builder.setItems(method, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        Toast.makeText(getApplicationContext(), "你选择了" + method[i], Toast.LENGTH_SHORT).show();
+                        method_select.setText(method[i]);
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
+    }
 
     @Override
     public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
