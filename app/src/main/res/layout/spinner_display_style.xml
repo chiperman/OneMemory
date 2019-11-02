@@ -4,7 +4,7 @@
         android:id="@+id/textView32"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorGrey"
+        android:background="@color/backgroundWhite"
         android:gravity="center|center_vertical"
         android:text="New Text"
         android:textColor="@color/lineWhite"
