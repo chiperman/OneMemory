@@ -13,12 +13,13 @@
 
     <ImageView
             android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_height="21dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/back">
+            android:src="@drawable/back_s_arrow">
 
     </ImageView>
+
 
     <ImageView
             android:layout_width="25dp"
@@ -26,8 +27,7 @@
             android:layout_gravity="right"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
-            android:src="@drawable/add">
-
+            android:src="@drawable/add_plus">
     </ImageView>
 
 
@@ -60,7 +60,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="5dp"
-            android:background="@color/lineWhite">
+            android:background="@color/lineBlack">
 
     </View>
 
@@ -99,7 +99,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="5dp"
-            android:background="@color/lineWhite">
+            android:background="@color/lineBlack">
 
     </View>
 
@@ -138,7 +138,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="5dp"
-            android:background="@color/lineWhite">
+            android:background="@color/lineBlack">
 
     </View>
 
@@ -173,7 +173,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="5dp"
-            android:background="@color/lineWhite">
+            android:background="@color/lineBlack">
 
     </View>
 
@@ -239,7 +239,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="5dp"
-            android:background="@color/lineWhite">
+            android:background="@color/lineBlack">
 
     </View>
 
