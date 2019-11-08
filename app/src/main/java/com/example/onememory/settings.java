@@ -7,9 +7,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 public class settings extends Activity {
@@ -18,6 +20,20 @@ public class settings extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
+
+        // 1.顶部沉浸式状态栏
+        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        // 2.沉浸式下方的三大金刚
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+
+        // 3.顶部状态栏透明
+        // 注意！！！1 和 3 不能同时使用
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
+
+        // 4.设置状态栏文字为暗色
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
+                        View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
     }
 
     //意见反馈x
@@ -90,5 +106,10 @@ public class settings extends Activity {
             e.printStackTrace();
         }
         Toast.makeText(settings.this, "已经是最新版本：" + version, Toast.LENGTH_SHORT).show();
+    }
+
+    public void toMain(View view) {
+        Intent intent = new Intent(this, viewCard.class);
+        startActivity(intent);
     }
 }

@@ -28,7 +28,7 @@ public class Splash extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 Intent intent = new Intent();
-                intent.setClass(Splash.this, add_Subscribe.class);  //从启动动画ui跳转到主界面
+                intent.setClass(Splash.this, viewCard.class);  //从启动动画ui跳转到主界面
                 Splash.this.startActivity(intent);
                 Splash.this.finish(); // 结束启动界面
             }
