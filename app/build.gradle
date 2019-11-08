@@ -27,8 +27,9 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.brucetoo.pickview:library:1.2.3'
-    //圆角imageview
+    // 圆角图标 imageview
     implementation 'com.makeramen:roundedimageview:2.3.0'
+    // 圆角卡片 cardview
     //noinspection GradleCompatible
     implementation 'com.android.support:cardview-v7:26.1.0'
 }

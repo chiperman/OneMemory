@@ -42,6 +42,12 @@ public class add_Subscribe extends Activity implements DatePicker.OnDateChangedL
         // 注意！！！1 和 3 不能同时使用
         getWindow().setStatusBarColor(Color.TRANSPARENT);
 
+        // 4.设置状态栏文字为暗色
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
+                        View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+
         show_select = findViewById(R.id.select);
         selectSubMethod();
 
