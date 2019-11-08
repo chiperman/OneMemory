@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -41,6 +42,12 @@ public class add_Subscribe extends Activity implements DatePicker.OnDateChangedL
         // 3.顶部状态栏透明
         // 注意！！！1 和 3 不能同时使用
         getWindow().setStatusBarColor(Color.TRANSPARENT);
+
+        // 4.设置状态栏文字为暗色
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
+                        View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
 
         show_select = findViewById(R.id.select);
         selectSubMethod();
@@ -137,5 +144,10 @@ public class add_Subscribe extends Activity implements DatePicker.OnDateChangedL
         this.year = year;
         this.month = monthOfYear;
         this.day = dayOfMonth;
+    }
+
+    public void change_layout(View view) {
+        Intent intent = new Intent(this, settings.class);
+        startActivity(intent);
     }
 }
