@@ -4,16 +4,19 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@color/backgroundWhite"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
         tools:context=".settings">
 
     <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_margin="20dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/back_arrow">
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/back_s_arrow"
+            android:onClick="toMain">
 
     </ImageView>
 
@@ -32,45 +35,45 @@
             android:id="@+id/feedback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:icon_reference="@drawable/feedback"
             android:onClick="feedback"
+            app:icon_reference="@drawable/feedback"
             app:title_text="意见反馈" />
 
     <com.example.onememory.userUI
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:icon_reference="@drawable/star"
             android:onClick="encouragement"
+            app:icon_reference="@drawable/star"
             app:title_text="好评鼓励" />
 
     <com.example.onememory.userUI
             android:id="@+id/recommend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:icon_reference="@drawable/share"
             android:onClick="Recommend"
+            app:icon_reference="@drawable/share"
             app:title_text="推荐给好友" />
 
     <com.example.onememory.userUI
             android:id="@+id/aboutAuthor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:icon_reference="@drawable/about_us"
             android:onClick="AboutAuthor"
+            app:icon_reference="@drawable/about_us"
             app:title_text="关于作者" />
 
     <com.example.onememory.userUI
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:icon_reference="@drawable/privacy"
             android:onClick="Agreement"
+            app:icon_reference="@drawable/privacy"
             app:title_text="隐私协议" />
 
     <com.example.onememory.userUI
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:icon_reference="@drawable/refresh"
             android:onClick="update"
+            app:icon_reference="@drawable/refresh"
             app:title_text="检查新版本" />
 
 </LinearLayout>

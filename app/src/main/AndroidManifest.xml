@@ -12,6 +12,7 @@
         <activity android:name=".add_Subscribe"></activity>
         <activity android:name=".feedback"></activity>
         <activity android:name=".settings"></activity>
+        <activity android:name=".viewCard"></activity>
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

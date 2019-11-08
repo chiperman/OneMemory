@@ -146,8 +146,8 @@ public class add_Subscribe extends Activity implements DatePicker.OnDateChangedL
         this.day = dayOfMonth;
     }
 
-    public void change_layout(View view) {
-        Intent intent = new Intent(this, settings.class);
+    public void toMain(View view) {
+        Intent intent = new Intent(this, viewCard.class);
         startActivity(intent);
     }
 }
