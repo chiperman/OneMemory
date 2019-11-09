@@ -14,6 +14,7 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.onememory.MainActivity;
 import com.example.onememory.R;
 import com.example.onememory.viewCard.viewCard;
 
@@ -150,7 +151,6 @@ public class add_Subscribe extends Activity implements DatePicker.OnDateChangedL
     }
 
     public void toMain(View view) {
-        Intent intent = new Intent(this, viewCard.class);
-        startActivity(intent);
+        onBackPressed();
     }
 }

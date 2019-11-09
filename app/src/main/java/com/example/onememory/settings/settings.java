@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.onememory.MainActivity;
 import com.example.onememory.R;
 import com.example.onememory.viewCard.viewCard;
 
@@ -112,7 +113,6 @@ public class settings extends Activity {
     }
 
     public void toMain(View view) {
-        Intent intent = new Intent(this, viewCard.class);
-        startActivity(intent);
+        onBackPressed();
     }
 }

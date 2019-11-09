@@ -9,7 +9,7 @@
     <color name="divider">#000000</color>
     <color name="lineWhite">#FFFFFF</color>
     <color name="cardBackground">#FFD43F</color>
-
+    <color name="infoBackground">#22262d</color>
     <!--钟利-->
     <color name="darker_gray">#787878</color>
     <color name="white">#ffffff</color>
