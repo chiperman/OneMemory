@@ -1,4 +1,4 @@
-package com.example.onememory;
+package com.example.onememory.viewCard;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+
+import com.example.onememory.R;
+import com.example.onememory.addSubscribe.add_Subscribe;
+import com.example.onememory.settings.settings;
 
 public class viewCard extends Activity {
     @Override

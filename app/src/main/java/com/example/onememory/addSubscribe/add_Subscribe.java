@@ -1,4 +1,4 @@
-package com.example.onememory;
+package com.example.onememory.addSubscribe;
 
 
 import android.app.Activity;
@@ -13,6 +13,9 @@ import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.onememory.R;
+import com.example.onememory.viewCard.viewCard;
 
 import java.util.Calendar;
 

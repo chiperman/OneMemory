@@ -1,10 +1,13 @@
-package com.example.onememory;
+package com.example.onememory.Splash;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.onememory.R;
+import com.example.onememory.viewCard.viewCard;
 
 public class Splash extends AppCompatActivity {
 

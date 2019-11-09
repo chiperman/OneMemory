@@ -7,7 +7,7 @@
         android:background="@color/backgroundWhite"
         android:fitsSystemWindows="true"
         android:orientation="vertical"
-        tools:context=".settings">
+        tools:context=".settings.settings">
 
     <ImageView
             android:layout_width="25dp"
@@ -31,7 +31,7 @@
             android:visibility="visible"
             tools:visibility="visible" />
 
-    <com.example.onememory.userUI
+    <com.example.onememory.settings.userUI
             android:id="@+id/feedback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,14 +39,14 @@
             app:icon_reference="@drawable/feedback"
             app:title_text="意见反馈" />
 
-    <com.example.onememory.userUI
+    <com.example.onememory.settings.userUI
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="encouragement"
             app:icon_reference="@drawable/star"
             app:title_text="好评鼓励" />
 
-    <com.example.onememory.userUI
+    <com.example.onememory.settings.userUI
             android:id="@+id/recommend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
             app:icon_reference="@drawable/share"
             app:title_text="推荐给好友" />
 
-    <com.example.onememory.userUI
+    <com.example.onememory.settings.userUI
             android:id="@+id/aboutAuthor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,14 +62,14 @@
             app:icon_reference="@drawable/about_us"
             app:title_text="关于作者" />
 
-    <com.example.onememory.userUI
+    <com.example.onememory.settings.userUI
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="Agreement"
             app:icon_reference="@drawable/privacy"
             app:title_text="隐私协议" />
 
-    <com.example.onememory.userUI
+    <com.example.onememory.settings.userUI
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="update"

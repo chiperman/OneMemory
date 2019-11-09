@@ -1,4 +1,4 @@
-package com.example.onememory;
+package com.example.onememory.settings;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+
+import com.example.onememory.R;
 
 public class userUI extends FrameLayout {
     private Context mContext;
