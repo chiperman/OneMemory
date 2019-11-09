@@ -17,4 +17,11 @@
     <color name="main_bg">#22262d</color>
     <color name="mc_txt_gray_bg">#a6a6a6</color>
     <color name="ripple_color">#193333</color>
+
+    <!--王继绩-->
+    <color name="colorGrey">#22262d</color>
+    <color name="colorItemGrey">#2a2c32</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorMoney">#ed519c</color>
+    <color name="colorBlack">#000000</color>
 </resources>

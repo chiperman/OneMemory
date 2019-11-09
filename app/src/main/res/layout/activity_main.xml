@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:background="@color/colorWhite"
+        android:padding="10dp">
+
+    <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/ib_setting"
+            android:background="@drawable/settings3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_title"
+            android:gravity="center_horizontal"
+            android:text="OneMemory"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/titlesize"
+            app:layout_constraintStart_toEndOf="@id/ib_setting"
+            app:layout_constraintEnd_toStartOf="@id/ib_add"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/ib_add"
+            android:background="@drawable/add_black"
+            android:backgroundTint="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+            android:layout_width="@dimen/width"
+            android:layout_height="@dimen/height"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/radius_item"
+            android:id="@+id/total"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:lines="2"
+                android:text="0\n个项目"
+                android:textColor="@color/colorBlack" />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:lines="2"
+                android:padding="0dp"
+                android:text="0\n每月花费（元）"
+                android:textColor="@color/colorBlack" />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:lines="2"
+                android:text="0\n总花费（元）"
+                android:textColor="@color/colorBlack" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/rv_sub_app"
+            app:layout_constraintTop_toBottomOf="@id/total"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="30dp">
+        <!--            <TextView-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="sdaf"/>-->
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

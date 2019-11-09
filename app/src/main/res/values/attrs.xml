@@ -4,6 +4,8 @@
         <attr name="cost" format="float" />
         <attr name="app_name" format="string" />
         <attr name="icon" format="reference" />
+        <attr name="bg_tint" format="color" />
+        <attr name="font_color" format="color" />
     </declare-styleable>
 
     <declare-styleable name="MenuItemLayout">
