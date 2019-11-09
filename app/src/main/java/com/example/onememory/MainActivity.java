@@ -38,37 +38,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         recyclerView.setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
-
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
-//        getSupportActionBar().setDisplayShowCustomEnabled(true);
-//        View view = getLayoutInflater().inflate(R.layout.actionbar_main,null,false);
-//        ActionBar.LayoutParams layout = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
-//        getSupportActionBar().setCustomView(view,layout);
-
-//        recyclerView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-//            @Override
-//            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-//                LinearLayoutManager manager = (LinearLayoutManager)((RecyclerView)v).getLayoutManager();
-//                int last_visible = manager.findLastCompletelyVisibleItemPosition();
-//                int first_visible = manager.findFirstCompletelyVisibleItemPosition();
-//                Log.e("first", first_visible+"");
-//                Log.e("last", last_visible+"");
-//                Log.e("xy", scrollX+""+scrollY+oldScrollX+oldScrollY);
-//                if (manager.getItemCount() == 0) return;
-//                boolean first = manager.isViewPartiallyVisible(manager.getChildAt(0), true, false);
-//                int count = manager.getItemCount();
-//                if(last_visible == count-1){
-//                    recyclerView.setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
-//                }
-//                else if(first){
-//                    recyclerView.setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
-//                }
-//                else {
-//                    recyclerView.setOverScrollMode(RecyclerView.OVER_SCROLL_ALWAYS);
-//                }
-//            }
-//        });
-
     }
 
     private void initAppInfo() {
