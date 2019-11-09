@@ -11,4 +11,8 @@
         您在同意本应用服务使用协议之时，即视为您已经同意本隐私权政策全部内容。
         本隐私权政策属于本应用服务使用协议不可分割的一部分。
     </string>
+
+    <dimen name="width">330dp</dimen>
+    <dimen name="height">80dp</dimen>
+    <dimen name="titlesize">20sp</dimen>
 </resources>

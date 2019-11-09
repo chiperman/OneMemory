@@ -13,6 +13,7 @@
         <activity android:name=".settings.feedback"></activity>
         <activity android:name=".settings.settings"></activity>
         <activity android:name=".viewCard.viewCard"></activity>
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".Splash.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
