@@ -35,7 +35,7 @@ public class add_Subscribe extends Activity implements DatePicker.OnDateChangedL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_addSubscribe);
+        setContentView(R.layout.add_subscribe);
 
         // 1.顶部沉浸式状态栏
         //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
