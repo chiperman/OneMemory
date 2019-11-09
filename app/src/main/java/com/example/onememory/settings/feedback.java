@@ -1,10 +1,12 @@
-package com.example.onememory;
+package com.example.onememory.settings;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.onememory.R;
 
 public class feedback extends Activity {
 

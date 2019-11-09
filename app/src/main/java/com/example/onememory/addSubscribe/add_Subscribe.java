@@ -1,4 +1,4 @@
-package com.example.onememory;
+package com.example.onememory.addSubscribe;
 
 
 import android.app.Activity;
@@ -13,6 +13,9 @@ import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.onememory.R;
+import com.example.onememory.viewCard.viewCard;
 
 import java.util.Calendar;
 
@@ -32,7 +35,7 @@ public class add_Subscribe extends Activity implements DatePicker.OnDateChangedL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_subscribe);
+        setContentView(R.layout.activity_addSubscribe);
 
         // 1.顶部沉浸式状态栏
         //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);

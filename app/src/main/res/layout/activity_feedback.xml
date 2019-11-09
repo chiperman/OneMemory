@@ -5,7 +5,7 @@
         android:background="#22262d"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".feedback"
+        tools:context=".settings.feedback"
         android:orientation="vertical">
 
     <ImageView
