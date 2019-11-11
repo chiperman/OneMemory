@@ -5,6 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
+        android:background="@color/background"
         android:orientation="vertical">
     <!--android:fitsSystemWindows="true" 状态栏不和下方的页面挤在一起-->
 
@@ -14,6 +15,7 @@
             android:orientation="horizontal">
 
         <ImageView
+                android:id="@+id/sub_back"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginLeft="10dp"
@@ -31,12 +33,13 @@
                 android:layout_weight="10"
                 android:gravity="center"
                 android:text="添加订阅"
-                android:textColor="@color/mainFontColor"
+                android:textColor="@color/mainTextColor"
                 android:textSize="20sp">
 
         </TextView>
 
         <ImageView
+                android:id="@+id/sub_add"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="20dp"
@@ -80,7 +83,7 @@
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="微博"
-                    android:textColor="@color/mainFontColor"
+                    android:textColor="@color/mainTextColor"
                     android:textSize="20sp">
 
             </TextView>
@@ -102,7 +105,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="18dp"
                     android:text="订阅描述"
-                    android:textColor="@color/mainFontColor"
+                    android:textColor="@color/mainTextColor"
                     android:textSize="18sp">
 
             </TextView>
@@ -118,8 +121,8 @@
                     android:gravity="right"
                     android:hint="请输入订阅服务描述"
                     android:imeOptions="actionNext"
-                    android:textColor="@color/mainFontColor"
-                    android:textColorHint="@color/hintFontColor"
+                    android:textColor="@color/mainTextColor"
+                    android:textColorHint="@color/hintTextColor"
                     android:textSize="15sp">
 
             </EditText>
@@ -141,7 +144,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="18dp"
                     android:text="价格"
-                    android:textColor="@color/mainFontColor"
+                    android:textColor="@color/mainTextColor"
                     android:textSize="18sp">
 
             </TextView>
@@ -157,8 +160,8 @@
                     android:hint="¥ 0.00"
                     android:imeOptions="actionDone"
                     android:inputType="number"
-                    android:textColor="@color/mainFontColor"
-                    android:textColorHint="@color/hintFontColor"
+                    android:textColor="@color/mainTextColor"
+                    android:textColorHint="@color/hintTextColor"
                     android:textSize="15sp">
 
             </EditText>
@@ -180,7 +183,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="18dp"
                     android:text="订阅时间"
-                    android:textColor="@color/mainFontColor"
+                    android:textColor="@color/mainTextColor"
                     android:textSize="18sp">
 
             </TextView>
@@ -193,8 +196,8 @@
                     android:layout_marginTop="18dp"
                     android:layout_marginRight="20dp"
                     android:hint="请选择订阅时间"
-                    android:textColor="@color/mainFontColor"
-                    android:textColorHint="@color/hintFontColor"
+                    android:textColor="@color/mainTextColor"
+                    android:textColorHint="@color/hintTextColor"
                     android:textSize="15sp">
 
             </TextView>
@@ -217,7 +220,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="18dp"
                     android:text="订阅类型"
-                    android:textColor="@color/mainFontColor"
+                    android:textColor="@color/mainTextColor"
                     android:textSize="18sp">
 
             </TextView>
@@ -233,8 +236,8 @@
                     android:hint="请选择订阅方式"
                     android:imeOptions="actionDone"
                     android:inputType="number"
-                    android:textColor="@color/mainFontColor"
-                    android:textColorHint="@color/hintFontColor"
+                    android:textColor="@color/mainTextColor"
+                    android:textColorHint="@color/hintTextColor"
                     android:textSize="15sp">
 
             </TextView>
@@ -256,7 +259,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="18dp"
                     android:text="支付方式"
-                    android:textColor="@color/mainFontColor"
+                    android:textColor="@color/mainTextColor"
                     android:textSize="18sp">
 
             </TextView>
@@ -272,8 +275,8 @@
                     android:hint="请选择支付方式"
                     android:imeOptions="actionDone"
                     android:inputType="number"
-                    android:textColor="@color/mainFontColor"
-                    android:textColorHint="@color/hintFontColor"
+                    android:textColor="@color/mainTextColor"
+                    android:textColorHint="@color/hintTextColor"
                     android:textSize="15sp">
 
             </TextView>

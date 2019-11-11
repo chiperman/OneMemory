@@ -2,46 +2,48 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:background="#22262d"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".settings.feedback"
-        android:orientation="vertical">
+        android:background="@color/background"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        tools:context=".settings.Feedback">
 
     <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_margin="20dp"
+            android:id="@+id/fd_back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_marginLeft="10dp"
-            android:onClick="back"
-            android:src="@drawable/back_arrow">
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/back_s_arrow">
 
     </ImageView>
 
     <EditText
-            android:text=""
             android:id="@+id/help_feedback"
-            android:lines="8"
-            android:gravity="top"
-            android:textColor="#000000"
-            android:background="#ffffff"
-            android:layout_margin="20dp"
-            android:hint="请输入您的反馈意见(字数500以内)！"
-
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@color/backgroundWhite"
+            android:gravity="top"
+            android:hint="请输入您的反馈意见(字数500以内)！"
+            android:lines="8"
+
+            android:text=""
+            android:textColor="#000000">
 
     </EditText>
 
     <Button
-            android:text="提交反馈"
             android:id="@+id/but_help_feedback"
-            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="18dp"
+            android:background="#ffffff"
             android:onClick="submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:text="提交反馈">
 
     </Button>
 

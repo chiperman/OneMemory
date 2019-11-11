@@ -9,7 +9,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#247424"
+            android:background="@color/background"
             android:fitsSystemWindows="true"
             android:orientation="vertical"
             tools:context=".MainActivity">
@@ -18,7 +18,7 @@
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/backgroundWhite"
+                android:background="@color/background"
                 android:orientation="horizontal">
 
             <ImageView
@@ -27,8 +27,8 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
-                    android:src="@drawable/settings3"
-                    android:onClick="toSettings" />
+                    android:onClick="toSettings"
+                    android:src="@drawable/settings3" />
 
             <ImageView
                     android:layout_width="25dp"
@@ -43,7 +43,8 @@
 
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#247424"
                 android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
