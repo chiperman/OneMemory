@@ -6,14 +6,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onememory.mainActivity.SubscribeAdapter;
-import com.example.onememory.settings.settings;
-import com.example.onememory.addSubscribe.add_Subscribe;
+import com.example.onememory.settings.Settings;
+import com.example.onememory.addSubscribe.Add_Subscribe;
 
 import java.util.ArrayList;
 
@@ -23,17 +23,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private ArrayList<Float> cost;
     private int[] imageID = {R.drawable.iqiyi, R.drawable.bilibili, R.drawable.sina, R.drawable.sspai};
     private String[] name = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
-    private ImageButton ib_setting;
-    private ImageButton ib_add;
+    private ImageView iv_setting;
+    private ImageView iv_add;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ib_setting = findViewById(R.id.ib_setting);
-        ib_add = findViewById(R.id.ib_add);
-        ib_add.setOnClickListener(this);
-        ib_setting.setOnClickListener(this);
+
+        iv_setting = findViewById(R.id.iv_setting);
+        iv_setting.setOnClickListener(this);
+        iv_add = findViewById(R.id.iv_add);
+        iv_add.setOnClickListener(this);
 
 
         // 1.顶部沉浸式状态栏
@@ -78,12 +79,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
         // 填写
         Intent intent;
         switch (v.getId()) {
-            case R.id.ib_add:
-                intent = new Intent(MainActivity.this, add_Subscribe.class);
+            case R.id.iv_setting:
+                intent = new Intent(MainActivity.this, Settings.class);
                 startActivity(intent);
                 break;
-            case R.id.ib_setting:
-                intent = new Intent(MainActivity.this, settings.class);
+            case R.id.iv_add:
+                intent = new Intent(MainActivity.this, Add_Subscribe.class);
                 startActivity(intent);
                 break;
             default:

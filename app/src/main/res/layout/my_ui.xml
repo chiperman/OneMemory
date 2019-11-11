@@ -3,7 +3,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/backgroundWhite">
+        android:background="@color/background">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -15,7 +15,7 @@
                 android:id="@+id/img"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="11dp"
                 android:layout_marginTop="15dp">
 
         </ImageView>
@@ -25,25 +25,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginBottom="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_weight="1"
                 android:text="标题文字"
-                android:textColor="@color/mainFontColor"
+                android:textColor="@color/mainTextColor"
                 android:textSize="15sp" />
 
-        <TextView
+        <ImageView
                 android:id="@+id/button1"
-                android:layout_width="38dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/enter_arrow"
+                android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginRight="0dp"
-                android:background="@color/backgroundWhite"
-                android:text=">"
-                android:textColor="@color/darker_gray"
+                android:layout_marginRight="10dp"
+                android:background="@color/background"
+                android:textColor="@color/darker_gray" />
 
-                android:textSize="20sp" />
     </LinearLayout>
 
     <TextView

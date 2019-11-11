@@ -11,17 +11,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.onememory.MainActivity;
 import com.example.onememory.R;
-import com.example.onememory.viewCard.viewCard;
 
 import java.util.Calendar;
 
 
-public class add_Subscribe extends Activity implements DatePicker.OnDateChangedListener {
+public class Add_Subscribe extends Activity implements DatePicker.OnDateChangedListener, View.OnClickListener {
 
     private TextView tv_date;
     private TextView show_select;
@@ -31,12 +31,13 @@ public class add_Subscribe extends Activity implements DatePicker.OnDateChangedL
     //在TextView上显示的字符
     private StringBuffer date;
     private Context context;
-
+    private ImageView iv_back;
+    private ImageView iv_add;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_subscribe);
+        setContentView(R.layout.activity_subscribe);
 
         // 1.顶部沉浸式状态栏
         //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -59,6 +60,11 @@ public class add_Subscribe extends Activity implements DatePicker.OnDateChangedL
         method_select = findViewById(R.id.method);
         methodSubMethod();
 
+        iv_back = findViewById(R.id.sub_back);
+        iv_back.setOnClickListener(this);
+
+        iv_add = findViewById(R.id.sub_add);
+        iv_add.setOnClickListener(this);
 
         Calendar calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
@@ -106,7 +112,7 @@ public class add_Subscribe extends Activity implements DatePicker.OnDateChangedL
             @Override
             public void onClick(View v) {
                 final String[] method = new String[]{"按月订阅", "按季订阅", "按年订阅", "一次性买断"};
-                AlertDialog.Builder builder = new AlertDialog.Builder(add_Subscribe.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(Add_Subscribe.this);
 
                 builder.setTitle("选择你的订阅方式");
                 builder.setItems(method, new DialogInterface.OnClickListener() {
@@ -127,7 +133,7 @@ public class add_Subscribe extends Activity implements DatePicker.OnDateChangedL
             @Override
             public void onClick(View v) {
                 final String[] method = new String[]{"支付宝", "微信", "信用卡", "他人赠送"};
-                AlertDialog.Builder builder = new AlertDialog.Builder(add_Subscribe.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(Add_Subscribe.this);
 
                 builder.setTitle("请选择你的支付方式");
                 builder.setItems(method, new DialogInterface.OnClickListener() {
@@ -152,5 +158,19 @@ public class add_Subscribe extends Activity implements DatePicker.OnDateChangedL
 
     public void toMain(View view) {
         onBackPressed();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.sub_back:
+                onBackPressed();
+                break;
+            case R.id.sub_add:
+                onBackPressed();
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -4,24 +4,13 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="backgroundWhite">#F5F6F9</color>
-    <color name="mainFontColor">#000000</color>
-    <color name="hintFontColor">#A6A6A6</color>
+    <color name="mainTextColor">#000000</color>
+    <color name="hintTextColor">#A6A6A6</color>
     <color name="divider">#000000</color>
-    <color name="lineWhite">#FFFFFF</color>
+    <color name="white">#FFFFFF</color>
     <color name="cardBackground">#FFD43F</color>
     <color name="infoBackground">#22262d</color>
-    <!--钟利-->
-    <color name="darker_gray">#787878</color>
-    <color name="white">#ffffff</color>
-    <color name="divide">#e6ebf0</color>
-    <color name="main_bg">#22262d</color>
-    <color name="mc_txt_gray_bg">#a6a6a6</color>
-    <color name="ripple_color">#193333</color>
-
-    <!--王继绩-->
-    <color name="colorGrey">#22262d</color>
-    <color name="colorItemGrey">#2a2c32</color>
-    <color name="colorWhite">#ffffff</color>
+    <color name="background">#EEEEf3</color>
     <color name="colorMoney">#ed519c</color>
-
+    <color name="darker_gray">#787878</color>
 </resources>

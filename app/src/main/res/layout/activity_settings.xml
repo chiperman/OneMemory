@@ -10,13 +10,13 @@
         tools:context=".settings.Settings">
 
     <ImageView
+            android:id="@+id/st_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/back_s_arrow"
-            android:onClick="toMain">
+            android:src="@drawable/back_s_arrow">
 
     </ImageView>
 

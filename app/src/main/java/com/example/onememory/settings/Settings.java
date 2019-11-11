@@ -12,18 +12,20 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.onememory.MainActivity;
 import com.example.onememory.R;
-import com.example.onememory.viewCard.viewCard;
 
-public class settings extends Activity {
+public class Settings extends Activity implements View.OnClickListener {
+
+    private ImageView iv_back;
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.settings);
+        setContentView(R.layout.activity_settings);
 
         // 1.顶部沉浸式状态栏
         //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -38,11 +40,14 @@ public class settings extends Activity {
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
                         View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+        iv_back = findViewById(R.id.st_back);
+        iv_back.setOnClickListener(this);
     }
 
-    //意见反馈x
+    //意见反馈
     public void feedback(View view) {
-        Intent intent = new Intent(this, feedback.class);
+        Intent intent = new Intent(this, Feedback.class);
         startActivity(intent);
     }
 
@@ -54,7 +59,7 @@ public class settings extends Activity {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(settings.this, "设备可能未安装应用商店类应用", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Settings.this, "设备可能未安装应用商店类应用", Toast.LENGTH_SHORT).show();
             //Utils.showToast(this, “设备可能未安装应用商店类应用”);
         }
     }
@@ -72,13 +77,13 @@ public class settings extends Activity {
 
     //关于作者
     public void AboutAuthor(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(settings.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(Settings.this);
         builder.setTitle("关于作者");
         builder.setMessage("本产品由549小组独家制作，本小组人员非常帅气");
         builder.setPositiveButton("了解", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(settings.this, "点击了确定", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Settings.this, "点击了确定", Toast.LENGTH_SHORT).show();
             }
         });
         builder.show();
@@ -86,13 +91,13 @@ public class settings extends Activity {
 
     //隐私协议
     public void Agreement(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(settings.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(Settings.this);
         builder.setTitle("隐私协议");
         builder.setMessage(R.string.agreement);
         builder.setPositiveButton("了解", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(settings.this, "已了解协议", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Settings.this, "已了解协议", Toast.LENGTH_SHORT).show();
             }
         });
         builder.show();
@@ -102,17 +107,19 @@ public class settings extends Activity {
     public void update(View view) {
         int version = 0;
         try {
-            PackageManager packageManager = settings.this.getPackageManager();
+            PackageManager packageManager = Settings.this.getPackageManager();
             //getPackageName()是你当前程序的包名
-            PackageInfo packInfo = packageManager.getPackageInfo(settings.this.getPackageName(), 0);
+            PackageInfo packInfo = packageManager.getPackageInfo(Settings.this.getPackageName(), 0);
             version = packInfo.versionCode;
+            name = packInfo.versionName;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Toast.makeText(settings.this, "已经是最新版本：" + version, Toast.LENGTH_SHORT).show();
+        Toast.makeText(Settings.this, "已经是最新版本：" + name, Toast.LENGTH_SHORT).show();
     }
 
-    public void toMain(View view) {
+    @Override
+    public void onClick(View v) {
         onBackPressed();
     }
 }

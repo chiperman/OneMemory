@@ -4,19 +4,18 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorWhite"
+        android:background="@color/background"
         android:fitsSystemWindows="true"
-
         tools:context=".MainActivity">
 
-    <ImageButton
-            android:id="@+id/ib_setting"
+    <ImageView
+            android:id="@+id/iv_setting"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/settings3"
+            android:src="@drawable/settings3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
 
@@ -24,27 +23,26 @@
 
     <TextView
             android:id="@+id/tv_title"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
             android:gravity="center_horizontal"
             android:text="OneMemory"
-            android:textColor="@color/mainFontColor"
+            android:textColor="@color/mainTextColor"
             android:textSize="@dimen/titlesize"
-            app:layout_constraintEnd_toStartOf="@id/ib_add"
-            app:layout_constraintStart_toEndOf="@id/ib_setting"
+            app:layout_constraintEnd_toStartOf="@id/iv_add"
+            app:layout_constraintStart_toEndOf="@id/iv_setting"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-            android:id="@+id/ib_add"
+    <ImageView
+            android:id="@+id/iv_add"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/add_black"
-            android:backgroundTint="#000000"
+            android:src="@drawable/add_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
