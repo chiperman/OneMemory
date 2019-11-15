@@ -4,8 +4,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
         android:background="@color/background"
+        android:fitsSystemWindows="true"
         android:orientation="vertical">
     <!--android:fitsSystemWindows="true" 状态栏不和下方的页面挤在一起-->
 
@@ -21,7 +21,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
-                android:onClick="toMain"
+
                 android:src="@drawable/back_s_arrow">
 
         </ImageView>
@@ -45,7 +45,6 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
-                android:onClick="toMain"
                 android:src="@drawable/add_black">
 
         </ImageView>
