@@ -12,7 +12,6 @@ import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
@@ -58,10 +57,10 @@ public class Add_Subscribe extends Activity implements DatePicker.OnDateChangedL
 
 
         show_select = findViewById(R.id.select);
-        selectSubMethod();
+        show_select.setOnClickListener(this);
 
         method_select = findViewById(R.id.method);
-        methodSubMethod();
+        method_select.setOnClickListener(this);
 
         iv_back = findViewById(R.id.sub_back);
         iv_back.setOnClickListener(this);
@@ -130,6 +129,7 @@ public class Add_Subscribe extends Activity implements DatePicker.OnDateChangedL
 //            }
 //        });
 //    }
+//    *****************中间弹框式截止*****************
 
 
     //    *****************底部式*****************
@@ -137,12 +137,12 @@ public class Add_Subscribe extends Activity implements DatePicker.OnDateChangedL
         show_select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPickerView();
+                showSelectPickerView();
             }
         });
     }
 
-    private void showPickerView() {
+    private void showSelectPickerView() {
         // 要展示的数据
         final List<String> listData = getData();
         // 监听选中
@@ -172,28 +172,73 @@ public class Add_Subscribe extends Activity implements DatePicker.OnDateChangedL
         list.add("一次性买断");
         return list;
     }
+    //    *****************底部式弹窗截止*****************
 
+//    *****************中间弹框式*****************
+//    public void methodSubMethod() {
+//        method_select.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final String[] method = new String[]{"支付宝", "微信", "信用卡", "他人赠送"};
+//                AlertDialog.Builder builder = new AlertDialog.Builder(Add_Subscribe.this);
+//
+//                builder.setTitle("请选择你的支付方式");
+//                builder.setItems(method, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int i) {
+//                        Toast.makeText(getApplicationContext(), "你选择了" + method[i], Toast.LENGTH_SHORT).show();
+//                        method_select.setText(method[i]);
+//                    }
+//                });
+//                AlertDialog alert = builder.create();
+//                alert.show();
+//            }
+//        });
+//    }
+//    *****************中间弹框式截止*****************
 
+    //    *****************底部式*****************
     public void methodSubMethod() {
         method_select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String[] method = new String[]{"支付宝", "微信", "信用卡", "他人赠送"};
-                AlertDialog.Builder builder = new AlertDialog.Builder(Add_Subscribe.this);
-
-                builder.setTitle("请选择你的支付方式");
-                builder.setItems(method, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                        Toast.makeText(getApplicationContext(), "你选择了" + method[i], Toast.LENGTH_SHORT).show();
-                        method_select.setText(method[i]);
-                    }
-                });
-                AlertDialog alert = builder.create();
-                alert.show();
+                showMethodPickerView();
             }
         });
     }
+
+    public void showMethodPickerView() {
+        // 要展示的数据
+        final List<String> listData = getMethod();
+        // 监听选中
+        OptionsPickerView pvOptions = new OptionsPickerBuilder(Add_Subscribe.this, new OnOptionsSelectListener() {
+
+            public void onOptionsSelect(int options1, int option2, int options3, View v) {
+                // 返回的分别是三个级别的选中位置
+                // 展示选中数据
+                method_select.setText(listData.get(options1));
+            }
+        })
+                .setSelectOptions(0)//设置选择第一个
+                .setOutSideCancelable(false)//点击背的地方不消失
+                .build();//创建
+        // 把数据绑定到控件上面
+        pvOptions.setPicker(listData);
+        // 展示
+        pvOptions.show();
+    }
+
+    // 添加选项
+    private List<String> getMethod() {
+        List<String> list = new ArrayList<>();
+        list.add("支付宝");
+        list.add("微  信");
+        list.add("Apple Pay");
+        list.add("信用卡");
+        list.add("他人赠送");
+        return list;
+    }
+    //    *****************底部式弹窗截止*****************
 
     @Override
     public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -202,9 +247,6 @@ public class Add_Subscribe extends Activity implements DatePicker.OnDateChangedL
         this.day = dayOfMonth;
     }
 
-    public void toMain(View view) {
-        onBackPressed();
-    }
 
     @Override
     public void onClick(View v) {
@@ -215,6 +257,10 @@ public class Add_Subscribe extends Activity implements DatePicker.OnDateChangedL
             case R.id.sub_add:
                 onBackPressed();
                 break;
+            case R.id.select:
+                selectSubMethod();
+            case R.id.method:
+                methodSubMethod();
             default:
                 break;
         }
