@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -15,17 +14,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.onememory.MainActivity;
+import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
+import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
+import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.example.onememory.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 
 public class Add_Subscribe extends Activity implements DatePicker.OnDateChangedListener, View.OnClickListener {
 
-    private TextView tv_date;
-    private TextView show_select;
-    private TextView method_select;
+    private TextView tv_date;       // 订阅时间
+    private TextView show_select;   // 订阅类型
+    private TextView method_select; // 订阅方式
     private DatePicker.OnDateChangedListener listener = this;
     private int year, month, day;
     //在TextView上显示的字符
@@ -106,27 +109,70 @@ public class Add_Subscribe extends Activity implements DatePicker.OnDateChangedL
         });
     }
 
+//    *****************中间弹框式*****************
+//    public void selectSubMethod() {
+//        show_select.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final String[] method = new String[]{"按月订阅", "按季订阅", "按年订阅", "一次性买断"};
+//                AlertDialog.Builder builder = new AlertDialog.Builder(Add_Subscribe.this);
+//
+//                builder.setTitle("选择你的订阅方式");
+//                builder.setItems(method, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int i) {
+//                        Toast.makeText(getApplicationContext(), "你选择了" + method[i], Toast.LENGTH_SHORT).show();
+//                        show_select.setText(method[i]);
+//                    }
+//                });
+//                AlertDialog alert = builder.create();
+//                alert.show();
+//            }
+//        });
+//    }
 
+
+    //    *****************底部式*****************
     public void selectSubMethod() {
         show_select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String[] method = new String[]{"按月订阅", "按季订阅", "按年订阅", "一次性买断"};
-                AlertDialog.Builder builder = new AlertDialog.Builder(Add_Subscribe.this);
-
-                builder.setTitle("选择你的订阅方式");
-                builder.setItems(method, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                        Toast.makeText(getApplicationContext(), "你选择了" + method[i], Toast.LENGTH_SHORT).show();
-                        show_select.setText(method[i]);
-                    }
-                });
-                AlertDialog alert = builder.create();
-                alert.show();
+                showPickerView();
             }
         });
     }
+
+    private void showPickerView() {
+        // 要展示的数据
+        final List<String> listData = getData();
+        // 监听选中
+        OptionsPickerView pvOptions = new OptionsPickerBuilder(Add_Subscribe.this, new OnOptionsSelectListener() {
+
+            public void onOptionsSelect(int options1, int option2, int options3, View v) {
+                // 返回的分别是三个级别的选中位置
+                // 展示选中数据
+                show_select.setText(listData.get(options1));
+            }
+        })
+                .setSelectOptions(0)//设置选择第一个
+                .setOutSideCancelable(false)//点击背的地方不消失
+                .build();//创建
+        // 把数据绑定到控件上面
+        pvOptions.setPicker(listData);
+        // 展示
+        pvOptions.show();
+    }
+
+    // 添加选项
+    private List<String> getData() {
+        List<String> list = new ArrayList<>();
+        list.add("按月订阅");
+        list.add("按季订阅");
+        list.add("按年订阅");
+        list.add("一次性买断");
+        return list;
+    }
+
 
     public void methodSubMethod() {
         method_select.setOnClickListener(new View.OnClickListener() {
