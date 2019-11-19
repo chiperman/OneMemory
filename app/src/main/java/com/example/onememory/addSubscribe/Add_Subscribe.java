@@ -149,15 +149,6 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
 
 
     //    *****************底部式*****************
-//    public void selectSubMethod() {
-//        show_select.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                showSelectPickerView();
-//            }
-//        });
-//    }
-
     private void showSelectPickerView() {
         // 要展示的数据
         final List<String> listData = getData();
@@ -215,15 +206,6 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
 //    *****************中间弹框式截止*****************
 
     //    *****************底部式*****************
-//    public void methodSubMethod() {
-//        method_select.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                showMethodPickerView();
-//            }
-//        });
-//    }
-
     public void showMethodPickerView() {
         // 要展示的数据
         final List<String> listData = getMethod();
@@ -291,14 +273,10 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
                         Log.i("pvTime", "onCancelClickListener");
                     }
                 })
-//                .setSubmitColor(Color.parseColor("#ea4c89"))
-//                .setTitleBgColor(0xFF666666)
-//                .setBgColor(0xFF333333)
                 .setItemVisibleCount(5) // 选项可见数目，若设置偶数，实际值会加1（比如设置6，则最大可见条目为7）
                 .setLineSpacingMultiplier(2.0f) // 每个选项行间距
                 .setDate(selectedDate)
                 .setRangDate(startDate, selectedDate)
-//                .isAlphaGradient(true)
                 .build();
 
         Dialog mDialog = pvTime.getDialog();
