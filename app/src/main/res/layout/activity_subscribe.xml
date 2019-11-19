@@ -7,7 +7,7 @@
         android:background="@color/background"
         android:fitsSystemWindows="true"
         android:orientation="vertical">
-    <!--android:fitsSystemWindows="true" 状态栏不和下方的页面挤在一起-->
+    <!--android:fitsSystemWindows="true" 状态栏不和下方的页面挤在一起，空出一定的距离-->
 
     <LinearLayout
             android:layout_width="match_parent"
