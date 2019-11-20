@@ -3,7 +3,7 @@ package com.example.onememory.addSubscribe;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,11 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.DatePicker;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.cardview.widget.CardView;
 
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
 import com.bigkoo.pickerview.builder.TimePickerBuilder;
@@ -41,12 +41,20 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
     private TextView show_select;   // 订阅类型
     private TextView method_select; // 订阅方式
     //    private DatePicker.OnDateChangedListener listener = this;
-    private int year, month, day;
+//    private int year, month, day;
     //在TextView上显示的字符
-    private StringBuffer date;
-    private Context context;
+//    private StringBuffer date;
+//    private Context context;
     private ImageView iv_back;
     private ImageView iv_add;
+    private ImageView app_icon;
+    private TextView app_describe;
+    private TextView app_price;
+    private TextView sub_time;
+    private TextView sub_method;
+    private TextView sub_pay;
+    private TextView app_name;
+    private CardView cv_AppCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,12 +92,36 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         iv_add = findViewById(R.id.sub_add);
         iv_add.setOnClickListener(this);
 
-        Calendar calendar = Calendar.getInstance();
-        year = calendar.get(Calendar.YEAR);
-        month = calendar.get(Calendar.MONTH) + 1;
-        day = calendar.get(Calendar.DAY_OF_MONTH);
-        context = this;
-        date = new StringBuffer();
+
+        Intent getIntent = getIntent();
+        int AppIcon = getIntent.getIntExtra("AppIcon", 0);
+        String AppName = getIntent.getStringExtra("AppName");
+        String bg_color = getIntent.getStringExtra("bgColor");
+        String text_color = getIntent.getStringExtra("textColor");
+        app_icon = findViewById(R.id.AppIconImg);
+        app_icon.setImageResource(AppIcon);
+        app_name = findViewById(R.id.AppName);
+        app_name.setText(AppName);
+        app_name.setTextColor(Color.parseColor(text_color));
+        cv_AppCard = findViewById(R.id.cv_AppCard);
+        cv_AppCard.setBackgroundColor(Color.parseColor(bg_color));
+        app_describe = findViewById(R.id.describe);
+        app_describe.setTextColor(Color.parseColor(text_color));
+        app_price = findViewById(R.id.price);
+        app_price.setTextColor(Color.parseColor(text_color));
+        sub_time = findViewById(R.id.sub_time);
+        sub_time.setTextColor(Color.parseColor(text_color));
+        sub_method = findViewById(R.id.sub_method);
+        sub_method.setTextColor(Color.parseColor(text_color));
+        sub_pay = findViewById(R.id.sub_pay);
+        sub_pay.setTextColor(Color.parseColor(text_color));
+
+//        Calendar calendar = Calendar.getInstance();
+//        year = calendar.get(Calendar.YEAR);
+//        month = calendar.get(Calendar.MONTH) + 1;
+//        day = calendar.get(Calendar.DAY_OF_MONTH);
+//        context = this;
+//        date = new StringBuffer();
 //        tv_date = findViewById(R.id.tv_date);
 //        tv_date.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -239,12 +271,6 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
     }
     //    *****************底部式弹窗截止*****************
 
-//    @Override
-//    public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-//        this.year = year;
-//        this.month = monthOfYear;
-//        this.day = dayOfMonth;
-//    }
 
     private void initTimePicker() {//Dialog 模式下，在底部弹出
         Calendar selectedDate = Calendar.getInstance();
