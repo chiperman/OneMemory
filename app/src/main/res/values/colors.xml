@@ -10,7 +10,7 @@
     <color name="white">#FFFFFF</color>
     <color name="cardBackground">#FFD43F</color>
     <color name="infoBackground">#22262d</color>
-    <color name="background">#EEEEf3</color>
+    <color name="background">#EEEEF3</color>
     <color name="colorMoney">#ed519c</color>
     <color name="darker_gray">#787878</color>
 </resources>

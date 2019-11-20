@@ -1,6 +1,7 @@
 package com.example.onememory;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,7 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onememory.mainActivity.SubscribeAdapter;
 import com.example.onememory.settings.Settings;
-import com.example.onememory.addSubscribe.Add_Subscribe;
+import com.example.onememory.Rylist.AddListActivity;
+
 
 import java.util.ArrayList;
 
@@ -84,7 +86,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.iv_add:
-                intent = new Intent(MainActivity.this, Add_Subscribe.class);
+                intent = new Intent(MainActivity.this, AddListActivity.class);
                 startActivity(intent);
                 break;
             default:
