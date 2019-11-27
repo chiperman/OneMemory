@@ -45,12 +45,6 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         ArrayList<String> text_color = new ArrayList<>();
 
 
-        name.add("Apple Music");
-        picName.add(R.drawable.apple_music);
-        white.add(R.drawable.apple_music_w);
-        background_color.add("#ff2f56");
-        text_color.add("#FFFFFF");
-
         name.add("App Store");
         picName.add(R.drawable.app_store_ios);
         white.add(R.drawable.app_store_ios_w);
@@ -212,6 +206,150 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         picName.add(R.drawable.yinxiang);
         white.add(R.drawable.yinxiang_w);
         background_color.add("#35bd64");
+        text_color.add("#FFFFFF");
+
+        name.add("亚马逊");
+        picName.add(R.drawable.amazon);
+        white.add(R.drawable.amazon_w);
+        background_color.add("#146cb1");
+        text_color.add("#FFFFFF");
+
+        name.add("Apple Music");
+        picName.add(R.drawable.applemusic);
+        white.add(R.drawable.applemusic_w);
+        background_color.add("#EF6182");
+        text_color.add("#FFFFFF");
+
+        name.add("袋鼠");
+        picName.add(R.drawable.daishu);
+        white.add(R.drawable.daishu_w);
+        background_color.add("#FECE00");
+        text_color.add("#000000");
+
+        name.add("当当网");
+        picName.add(R.drawable.dangdang);
+        white.add(R.drawable.dangdang_w);
+        background_color.add("#E83227");
+        text_color.add("#FFFFFF");
+
+        name.add("滴答清单");
+        picName.add(R.drawable.didaqingdan);
+        white.add(R.drawable.didaqingdan_w);
+        background_color.add("#617FDE");
+        text_color.add("#FFFFFF");
+
+        name.add("京东");
+        picName.add(R.drawable.jd);
+        white.add(R.drawable.jd_w);
+        background_color.add("#FD3C13");
+        text_color.add("#FFFFFF");
+
+        name.add("Keep");
+        picName.add(R.drawable.keep);
+        white.add(R.drawable.keep_w);
+        background_color.add("#584F60");
+        text_color.add("#FFFFFF");
+
+        name.add("芒果TV");
+        picName.add(R.drawable.mangguotv);
+        white.add(R.drawable.mangguotv_w);
+        background_color.add("#FA6503");
+        text_color.add("#FFFFFF");
+
+        name.add("猫头鹰");
+        picName.add(R.drawable.maotouying);
+        white.add(R.drawable.maotouying_w);
+        background_color.add("#FF6B00");
+        text_color.add("#FFFFFF");
+
+        name.add("墨刀");
+        picName.add(R.drawable.modao);
+        white.add(R.drawable.modao_w);
+        background_color.add("#FF473E");
+        text_color.add("#FFFFFF");
+
+        name.add("moo");
+        picName.add(R.drawable.moo);
+        white.add(R.drawable.moo_w);
+        background_color.add("#FFE131");
+        text_color.add("#000000");
+
+        name.add("幕布");
+        picName.add(R.drawable.mubu);
+        white.add(R.drawable.mubu_w);
+        background_color.add("#393A3F");
+        text_color.add("#FFFFFF");
+
+        name.add("Notion");
+        picName.add(R.drawable.notion);
+        white.add(R.drawable.notion_w);
+        background_color.add("#000000");
+        text_color.add("#FFFFFF");
+
+        name.add("拼多多");
+        picName.add(R.drawable.pdd);
+        white.add(R.drawable.pdd_w);
+        background_color.add("#F40009");
+        text_color.add("#FFFFFF");
+
+        name.add("少数派");
+        picName.add(R.drawable.shaoshupai);
+        white.add(R.drawable.shaoshupai_w);
+        background_color.add("#D51719");
+        text_color.add("#FFFFFF");
+
+        name.add("石墨");
+        picName.add(R.drawable.shimo);
+        white.add(R.drawable.shimo_w);
+        background_color.add("#383D41");
+        text_color.add("#FFFFFF");
+
+        name.add("小睡眠");
+        picName.add(R.drawable.sleep);
+        white.add(R.drawable.sleep_w);
+        background_color.add("#0f709E");
+        text_color.add("#FFFFFF");
+
+        name.add("淘票票");
+        picName.add(R.drawable.taopp);
+        white.add(R.drawable.taopp_w);
+        background_color.add("#FF0000");
+        text_color.add("#FFFFFF");
+
+        name.add("网易考拉");
+        picName.add(R.drawable.wangyikaola);
+        white.add(R.drawable.wangyikaola_w);
+        background_color.add("#FF0509");
+        text_color.add("#FFFFFF");
+
+        name.add("微博");
+        picName.add(R.drawable.sinaweibo);
+        white.add(R.drawable.sinaweibo_w);
+        background_color.add("#F0131C");
+        text_color.add("#FFFFFF");
+
+        name.add("微信读书");
+        picName.add(R.drawable.weixinread);
+        white.add(R.drawable.weixinread_w);
+        background_color.add("#30A5FF");
+        text_color.add("#FFFFFF");
+
+        name.add("Xmind");
+        picName.add(R.drawable.xmind);
+        white.add(R.drawable.xmind_w);
+        background_color.add("#FE6404");
+        text_color.add("#FFFFFF");
+
+        name.add("每日瑜伽");
+        picName.add(R.drawable.yujia);
+        white.add(R.drawable.yujia_w);
+        background_color.add("#8CA5FF");
+        text_color.add("#FFFFFF");
+
+        name.add("知乎");
+        picName.add(R.drawable.zhihu);
+        white.add(R.drawable.zhihu_w);
+        background_color.add("#0e88EB");
         text_color.add("#FFFFFF");
 
         for (int i = 0; i < name.size(); i++) {
