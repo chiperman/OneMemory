@@ -23,7 +23,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private ArrayList<String> app_name;
     private ArrayList<Integer> icon_res_ID;
     private ArrayList<Float> cost;
-    private int[] imageID = {R.drawable.iqiyi, R.drawable.bilibili, R.drawable.sina, R.drawable.sspai};
+    private int[] imageID = {R.drawable.iqiyi, R.drawable.bilibili, R.drawable.notion, R.drawable.sspai};
     private String[] name = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
     private ImageView iv_setting;
     private ImageView iv_add;
