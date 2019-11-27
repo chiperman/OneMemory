@@ -58,12 +58,11 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent;
-                intent = new Intent(v.getContext(), Add_Subscribe.class);
+                Intent intent = new Intent(v.getContext(), Add_Subscribe.class);
                 intent.putExtra("AppIcon", fruit.getWhite_imageId());
                 intent.putExtra("AppName", fruit.getName());
-                intent.putExtra("bgColor", fruit.getBackground_color());
-                intent.putExtra("textColor", fruit.getText_color());
+                intent.putExtra("bg_Color", fruit.getBackground_color());
+                intent.putExtra("text_Color", fruit.getText_color());
                 v.getContext().startActivity(intent);
             }
         });

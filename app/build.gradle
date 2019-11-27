@@ -40,4 +40,6 @@ dependencies {
     implementation 'com.contrarywind:Android-PickerView:4.1.9'
     //noinspection GradleCompatible
     implementation 'com.android.support:recyclerview-v7:27.1.1'
+    // wheelview
+    implementation 'com.contrarywind:wheelview:4.1.0'
 }

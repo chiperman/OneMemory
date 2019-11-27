@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -40,11 +41,6 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
     private TextView tv_date;       // 订阅时间
     private TextView show_select;   // 订阅类型
     private TextView method_select; // 订阅方式
-    //    private DatePicker.OnDateChangedListener listener = this;
-//    private int year, month, day;
-    //在TextView上显示的字符
-//    private StringBuffer date;
-//    private Context context;
     private ImageView iv_back;
     private ImageView iv_add;
     private ImageView app_icon;
@@ -55,27 +51,33 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
     private TextView sub_pay;
     private TextView app_name;
     private CardView cv_AppCard;
+    private EditText app_money;
+    private Intent getIntent;
+    private int AppIcon;
+    private String AppName;
+    private String bg_color;
+    private String text_color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subscribe);
 
-        // 1.顶部沉浸式状态栏
-        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        // 2.沉浸式下方的三大金刚
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        // 设置顶部距离
+        setPlaceUp();
 
-        // 3.顶部状态栏透明
-        // 注意！！！1 和 3 不能同时使用
-        getWindow().setStatusBarColor(Color.TRANSPARENT);
+        // 初始化
+        init();
 
-        // 4.设置状态栏文字为暗色
-        getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
-                        View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        // 获取上个页面传递的值
+        getMyIntent();
 
+        // 传递下个页面的值
+        sendMyIntent();
 
+    }
+
+    public void init() {
         initTimePicker();
         tv_date = findViewById(R.id.tv_date);
         tv_date.setOnClickListener(this);
@@ -92,12 +94,34 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         iv_add = findViewById(R.id.sub_add);
         iv_add.setOnClickListener(this);
 
+        app_money = findViewById(R.id.app_money);
 
-        Intent getIntent = getIntent();
-        int AppIcon = getIntent.getIntExtra("AppIcon", 0);
-        String AppName = getIntent.getStringExtra("AppName");
-        String bg_color = getIntent.getStringExtra("bgColor");
-        String text_color = getIntent.getStringExtra("textColor");
+
+    }
+
+    public void setPlaceUp() {
+        // 1.顶部沉浸式状态栏
+        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        // 2.沉浸式下方的三大金刚
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+
+        // 3.顶部状态栏透明
+        // 注意！！！1 和 3 不能同时使用
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
+
+        // 4.设置状态栏文字为暗色
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
+                        View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+    }
+
+    public void getMyIntent() {
+        getIntent = getIntent();
+        AppIcon = getIntent.getIntExtra("AppIcon", 0);
+        AppName = getIntent.getStringExtra("AppName");
+        bg_color = getIntent.getStringExtra("bg_Color");
+        text_color = getIntent.getStringExtra("text_Color");
+
         app_icon = findViewById(R.id.AppIconImg);
         app_icon.setImageResource(AppIcon);
         app_name = findViewById(R.id.AppName);
@@ -115,45 +139,20 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         sub_method.setTextColor(Color.parseColor(text_color));
         sub_pay = findViewById(R.id.sub_pay);
         sub_pay.setTextColor(Color.parseColor(text_color));
+    }
 
-//        Calendar calendar = Calendar.getInstance();
-//        year = calendar.get(Calendar.YEAR);
-//        month = calendar.get(Calendar.MONTH) + 1;
-//        day = calendar.get(Calendar.DAY_OF_MONTH);
-//        context = this;
-//        date = new StringBuffer();
-//        tv_date = findViewById(R.id.tv_date);
-//        tv_date.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-//                builder.setPositiveButton("设置", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        if (date.length() > 0) { //清除上次记录的日期
-//                            date.delete(0, date.length());
-//                        }
-//                        tv_date.setText(date.append(String.valueOf(year)).append("年").append(String.valueOf(month)).append("月").append(day).append("日"));
-//                        dialog.dismiss();
-//                    }
-//                });
-//                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        dialog.dismiss();
-//                    }
-//                });
-//                final AlertDialog dialog = builder.create();
-//                View dialogView = View.inflate(context, R.layout.dialog_date, null);
-//                final DatePicker datePicker = (DatePicker) dialogView.findViewById(R.id.datePicker);
-//
-////              dialog.setTitle("设置日期");
-//                dialog.setView(dialogView);
-//                dialog.show();
-//                //初始化日期监听事件
-//                datePicker.init(year, month - 1, day, listener);
-//            }
-//        });
+    public void sendMyIntent() {
+        // 传递给下个页面
+        Intent intent = new Intent();
+        intent.putExtra("AppIcon", AppIcon);
+        intent.putExtra("AppName", AppName);
+        intent.putExtra("bg_color", bg_color);
+        intent.putExtra("text_color", text_color);
+        intent.putExtra("add_describe", app_name.getText().toString());
+        intent.putExtra("app_money", app_money.getText().toString());
+        intent.putExtra("tv_date", tv_date.getText().toString());
+        intent.putExtra("show_select", show_select.getText().toString());
+        intent.putExtra("method_select", method_select.getText().toString());
     }
 
 //    *****************中间弹框式*****************
