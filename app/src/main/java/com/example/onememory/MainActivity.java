@@ -20,13 +20,24 @@ import com.example.onememory.Rylist.AddListActivity;
 import java.util.ArrayList;
 
 public class MainActivity extends Activity implements View.OnClickListener {
-    private ArrayList<String> app_name;
-    private ArrayList<Integer> icon_res_ID;
-    private ArrayList<Float> cost;
-    private int[] imageID = {R.drawable.iqiyi, R.drawable.bilibili, R.drawable.notion, R.drawable.sspai};
-    private String[] name = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    private static ArrayList<String> app_names = new ArrayList<>();
+    private static ArrayList<Integer> iconIDs = new ArrayList<>();
+    private static ArrayList<Float> costs = new ArrayList<>();
+    private static ArrayList<String> bgColors = new ArrayList<>();
+    private static ArrayList<String> textColors = new ArrayList<>();
+    private static ArrayList<String> describe = new ArrayList<>();
+    private static ArrayList<String> date = new ArrayList<>();
+    private static ArrayList<String> shows = new ArrayList<>();
+    private static ArrayList<String> methods = new ArrayList<>();
+
     private ImageView iv_setting;
     private ImageView iv_add;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initAppList();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +65,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
         initAppInfo();
-        SubscribeAdapter adapter = new SubscribeAdapter(this, app_name, cost, icon_res_ID);
+
+        initAppList();
+
+    }
+
+    private void initAppList() {
+        SubscribeAdapter adapter = new SubscribeAdapter(this, app_names, costs, iconIDs, bgColors, textColors);
         final RecyclerView recyclerView = findViewById(R.id.rv_sub_app);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
@@ -62,17 +79,34 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void initAppInfo() {
-        app_name = new ArrayList<>();
-        cost = new ArrayList<>();
-        icon_res_ID = new ArrayList<>();
-        for (int i = 0; i < name.length; i++) {
-            app_name.add(name[i]);
-            cost.add((float) i);
-            if (i < imageID.length) {
-                icon_res_ID.add(imageID[i]);
-            }
-
+        Intent intent = getIntent();
+        int AppIcon;
+        String AppName, bg_color, text_color, add_describe, tv_date, show_select, method_select;
+        float app_money;
+        AppIcon = intent.getIntExtra("AppIcon", 0);
+        AppName = intent.getStringExtra("AppName");
+        bg_color = intent.getStringExtra("bg_color");
+        text_color = intent.getStringExtra("text_color");
+        add_describe = intent.getStringExtra("add_describe");
+        tv_date = intent.getStringExtra("tv_date");
+        show_select = intent.getStringExtra("show_select");
+        method_select = intent.getStringExtra("method_select");
+        String money = intent.getStringExtra("app_money") != null ? intent.getStringExtra("app_money") : "0";
+        app_money = Float.parseFloat(money);
+        if (AppName != null) {
+            iconIDs.add(AppIcon);
+            app_names.add(AppName);
+            costs.add(app_money);
+            bgColors.add(bg_color);
+            textColors.add(text_color);
+            describe.add(add_describe);
+            date.add(tv_date);
+            shows.add(show_select);
+            methods.add(method_select);
         }
+
+
+
 
     }
 

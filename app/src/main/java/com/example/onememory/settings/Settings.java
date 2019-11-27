@@ -77,16 +77,8 @@ public class Settings extends Activity implements View.OnClickListener {
 
     //关于作者
     public void AboutAuthor(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(Settings.this);
-        builder.setTitle("关于作者");
-        builder.setMessage("本产品由549小组独家制作，本小组人员非常帅气");
-        builder.setPositiveButton("了解", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(Settings.this, "点击了确定", Toast.LENGTH_SHORT).show();
-            }
-        });
-        builder.show();
+        Intent intent = new Intent(this, Aboutus.class);
+        startActivity(intent);
     }
 
     //隐私协议
