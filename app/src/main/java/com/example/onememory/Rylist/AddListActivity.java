@@ -1,8 +1,10 @@
 package com.example.onememory.Rylist;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,6 +25,21 @@ public class AddListActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+        // 1.顶部沉浸式状态栏
+        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        // 2.沉浸式下方的三大金刚
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+
+        // 3.顶部状态栏透明
+        // 注意！！！1 和 3 不能同时使用
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
+
+        // 4.设置状态栏文字为暗色
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
+                        View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
         initFruits();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -256,9 +273,9 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#FA6503");
         text_color.add("#FFFFFF");
 
-        name.add("猫头鹰");
-        picName.add(R.drawable.maotouying);
-        white.add(R.drawable.maotouying_w);
+        name.add("得到");
+        picName.add(R.drawable.dedao);
+        white.add(R.drawable.dedao_w);
         background_color.add("#FF6B00");
         text_color.add("#FFFFFF");
 
@@ -268,7 +285,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#FF473E");
         text_color.add("#FFFFFF");
 
-        name.add("moo");
+        name.add("Moo 音乐");
         picName.add(R.drawable.moo);
         white.add(R.drawable.moo_w);
         background_color.add("#FFE131");

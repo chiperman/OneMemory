@@ -13,9 +13,8 @@
             android:backgroundTint="@color/colorAccent"
             android:background="@drawable/radius_item">
 
-        <com.makeramen.roundedimageview.RoundedImageView
+        <ImageView
                 android:id="@+id/riv_app_icon"
-                app:riv_corner_radius="20dip"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="10dp"
@@ -35,7 +34,7 @@
                 android:id="@+id/tv_cost"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:textColor="@color/colorMoney"
                 app:layout_constraintEnd_toEndOf="parent" />

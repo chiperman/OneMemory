@@ -29,8 +29,8 @@
             android:gravity="top"
             android:hint="请输入您的反馈意见(字数500以内)！"
             android:lines="8"
-
             android:text=""
+            android:textSize="15sp"
             android:textColor="#000000">
 
     </EditText>

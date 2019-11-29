@@ -3,6 +3,8 @@ package com.example.onememory;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.ImageView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.onememory.database.OneDatabaseHelper;
 import com.example.onememory.mainActivity.SubscribeAdapter;
 import com.example.onememory.settings.Settings;
 import com.example.onememory.Rylist.AddListActivity;
@@ -20,18 +23,40 @@ import com.example.onememory.Rylist.AddListActivity;
 import java.util.ArrayList;
 
 public class MainActivity extends Activity implements View.OnClickListener {
-    private ArrayList<String> app_name;
-    private ArrayList<Integer> icon_res_ID;
-    private ArrayList<Float> cost;
-    private int[] imageID = {R.drawable.iqiyi, R.drawable.bilibili, R.drawable.notion, R.drawable.sspai};
-    private String[] name = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    public static ArrayList<String> app_names = new ArrayList<>();
+    public static ArrayList<Integer> iconIDs = new ArrayList<>();
+    public static ArrayList<Float> costs = new ArrayList<>();
+    public static ArrayList<String> bgColors = new ArrayList<>();
+    public static ArrayList<String> textColors = new ArrayList<>();
+    public static ArrayList<String> describe = new ArrayList<>();
+    public static ArrayList<String> date = new ArrayList<>();
+    public static ArrayList<String> shows = new ArrayList<>();
+    public static ArrayList<String> methods = new ArrayList<>();
+    public static SQLiteDatabase database;
+
+
     private ImageView iv_setting;
     private ImageView iv_add;
+
+    public static SQLiteDatabase getDatabase() {
+        return database;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initAppList();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        OneDatabaseHelper oneDatabaseHelper = new OneDatabaseHelper(this, "One", null, 3);
+        database = oneDatabaseHelper.getWritableDatabase();
+
 
         iv_setting = findViewById(R.id.iv_setting);
         iv_setting.setOnClickListener(this);
@@ -54,7 +79,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
         initAppInfo();
-        SubscribeAdapter adapter = new SubscribeAdapter(this, app_name, cost, icon_res_ID);
+
+        initAppList();
+
+    }
+
+    private void initAppList() {
+        SubscribeAdapter adapter = new SubscribeAdapter(this, app_names, costs, iconIDs, bgColors, textColors);
         final RecyclerView recyclerView = findViewById(R.id.rv_sub_app);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
@@ -62,17 +93,52 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void initAppInfo() {
-        app_name = new ArrayList<>();
-        cost = new ArrayList<>();
-        icon_res_ID = new ArrayList<>();
-        for (int i = 0; i < name.length; i++) {
-            app_name.add(name[i]);
-            cost.add((float) i);
-            if (i < imageID.length) {
-                icon_res_ID.add(imageID[i]);
-            }
-
+        Intent intent = getIntent();
+        int AppIcon;
+        String AppName, bg_color, text_color, add_describe, tv_date, show_select, method_select;
+        float app_money;
+        AppIcon = intent.getIntExtra("AppIcon", 0);
+        AppName = intent.getStringExtra("AppName");
+        bg_color = intent.getStringExtra("bg_color");
+        text_color = intent.getStringExtra("text_color");
+        add_describe = intent.getStringExtra("add_describe");
+        tv_date = intent.getStringExtra("tv_date");
+        show_select = intent.getStringExtra("show_select");
+        method_select = intent.getStringExtra("method_select");
+        String money = intent.getStringExtra("app_money") != null ? intent.getStringExtra("app_money") : "0";
+        app_money = Float.parseFloat(money);
+        if (AppName != null) {
+            iconIDs.add(AppIcon);
+            app_names.add(AppName);
+            costs.add(app_money);
+            bgColors.add(bg_color);
+            textColors.add(text_color);
+            describe.add(add_describe);
+            date.add(tv_date);
+            shows.add(show_select);
+            methods.add(method_select);
         }
+
+        // 从数据库读取
+        if (!app_names.isEmpty()) {
+            return;
+        }
+        String[] columns = new String[]{"id", "name", "iconId", "description", "money", "sub_time", "sub_period", "pay_method", "bg_color", "text_color"};
+        Cursor cursor = database.query("apps", columns, null, null, null, null, null);
+        while (cursor.moveToNext()) {
+            app_names.add(cursor.getString(cursor.getColumnIndex("name")));
+            iconIDs.add(cursor.getInt(cursor.getColumnIndex("iconId")));
+            costs.add(cursor.getFloat(cursor.getColumnIndex("money")));
+            bgColors.add(cursor.getString(cursor.getColumnIndex("bg_color")));
+            textColors.add(cursor.getString(cursor.getColumnIndex("text_color")));
+            describe.add(cursor.getString(cursor.getColumnIndex("description")));
+            date.add(cursor.getString(cursor.getColumnIndex("sub_time")));
+            shows.add(cursor.getString(cursor.getColumnIndex("sub_period")));
+            methods.add(cursor.getString(cursor.getColumnIndex("pay_method")));
+        }
+
+
+
 
     }
 
@@ -88,6 +154,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.iv_add:
                 intent = new Intent(MainActivity.this, AddListActivity.class);
                 startActivity(intent);
+//                finish();
                 break;
             default:
                 break;

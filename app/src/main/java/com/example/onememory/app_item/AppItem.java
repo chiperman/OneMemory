@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -19,23 +20,24 @@ public class AppItem extends LinearLayout {
     private Context mContext;
     private View mView;
     private ConstraintLayout cl_main;
-    private RoundedImageView riv_app_icon;
+    private ImageView iv_app_icon;
     private TextView tv_app_name;
     private TextView tv_cost;
     private int iconResID;
     private float cost;
     private String app_name;
-    private int gb_tint;
+    private int bg_tint;
     private int font_color;
 
-    public int getGb_tint() {
-        return gb_tint;
+
+    public int getBg_tint() {
+        return bg_tint;
     }
 
-    public void setGb_tint(int gb_tint) {
-        this.gb_tint = gb_tint;
+    public void setBg_tint(int bg_tint) {
+        this.bg_tint = bg_tint;
         if (cl_main != null) {
-            cl_main.setBackgroundTintList(ColorStateList.valueOf(gb_tint));
+            cl_main.setBackgroundTintList(ColorStateList.valueOf(bg_tint));
         }
     }
 
@@ -89,8 +91,8 @@ public class AppItem extends LinearLayout {
 
     public void setIconResID(int iconResID) {
         this.iconResID = iconResID;
-        if (riv_app_icon != null) {
-            riv_app_icon.setImageResource(this.iconResID);
+        if (iv_app_icon != null) {
+            iv_app_icon.setImageResource(this.iconResID);
         }
     }
 
@@ -122,7 +124,7 @@ public class AppItem extends LinearLayout {
         cl_main = mView.findViewById(R.id.cl_main);
         tv_app_name = mView.findViewById(R.id.tv_app_name);
         tv_cost = mView.findViewById(R.id.tv_cost);
-        riv_app_icon = mView.findViewById(R.id.riv_app_icon);
+        iv_app_icon = mView.findViewById(R.id.riv_app_icon);
 
         TypedArray ta = mContext.obtainStyledAttributes(attrs, R.styleable.AppItem);
 
@@ -130,6 +132,8 @@ public class AppItem extends LinearLayout {
         setCost(ta.getFloat(R.styleable.AppItem_cost, 0));
         setIconResID(ta.getResourceId(R.styleable.AppItem_icon, 0));
         setFont_color(ta.getResourceId(R.styleable.AppItem_font_color, Color.parseColor("#000000")));
-        setGb_tint(ta.getResourceId(R.styleable.AppItem_bg_tint, Color.parseColor("#ffffff")));
+        setBg_tint(ta.getResourceId(R.styleable.AppItem_bg_tint, Color.parseColor("#ffffff")));
     }
+
+
 }

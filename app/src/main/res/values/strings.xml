@@ -3,13 +3,50 @@
     <string name="subscribe_title">请选择订阅方式</string>
 
     <string name="agreement">
-            本应用尊重并保护所有使用服务用户的个人隐私权。
+        \u3000\u3000本应用尊重并保护所有使用服务用户的个人隐私权。
         为了给您提供更准确、更有个性化的服务，本应用会按照本隐私权政策的规定使用和披露您的个人信息。
         但本应用将以高度的勤勉、审慎义务对待这些信息。
         除本隐私权政策另有规定外，在未征得您事先许可的情况下，本应用不会将这些信息对外披露或向第三方提供。
         本应用会不时更新本隐私权政策。
         您在同意本应用服务使用协议之时，即视为您已经同意本隐私权政策全部内容。
         本隐私权政策属于本应用服务使用协议不可分割的一部分。
+    </string>
+
+    <string name="about_us">
+        OneMemory 是一款管理订阅服务的工具类 App \n
+        你可以利用这它查看并记录已订阅的各类服务 \n
+        记录详情、订阅时间、金额以及订阅周期等 \n
+        \n
+        这一款是由「5+4=9」小组完成的第一个安卓项目 \n
+        感谢项目各个成员的辛勤付出 \n
+        感谢 Github 提供的帮助 \n
+        \n
+        由于是第一次开发手机 App \n
+        我们的技术水平有限 \n
+        很多设计的功能和酷炫的交互需求都没有实现 \n
+        \n
+        但是...\n
+        希望你能喜欢\
+        Time waits for no one.
+    </string>
+
+    <string name="privacy_cn">
+        \u3000\u3000 OneMemory 是一个本地应用，
+        我们不需要任何注册也不会收集你的个人信息。
+        如果你有反馈意见，欢迎你在设置页面进行反馈. \n
+        \u3000\u3000 这是一个开源的项目，这个项目只是一群学生拿来练手的产品。
+        你可以去 Github 查看整个项目的源码，
+        如果遇到问题可以提 Issue，
+        也非常欢迎你提交 PullRequest。
+    </string>
+    <string name="privacy_en">
+        \u3000\u3000OneMemory is a native application,
+        We do not need any registration and will not collect your personal information.
+        If you have feedback, you are welcome to provide feedback on the settings page.\n
+        \u3000\u3000 This is an open source project. This project is just a product used by a group of students to practice their hands.
+        You can go to Github to view the source code of the entire project.
+        If you encounter problems, you can ask
+        You are also very welcome to submit a PullRequest.
     </string>
 
     <dimen name="width">330dp</dimen>
