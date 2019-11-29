@@ -1,9 +1,7 @@
 package com.example.onememory.settings;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -83,16 +81,8 @@ public class Settings extends Activity implements View.OnClickListener {
 
     //隐私协议
     public void Agreement(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(Settings.this);
-        builder.setTitle("隐私协议");
-        builder.setMessage(R.string.agreement);
-        builder.setPositiveButton("了解", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(Settings.this, "已了解协议", Toast.LENGTH_SHORT).show();
-            }
-        });
-        builder.show();
+        Intent intent = new Intent(this, Privacy.class);
+        startActivity(intent);
     }
 
     //检查更新:(我们升级版本的原理就是，请求后台，拿到当前程序的版本号，也就是VersionCode,去和请求到的数据作比对，如果自己的服务器返回的版本号大于当前的就可以提示更新了。)
