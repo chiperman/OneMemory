@@ -1,7 +1,6 @@
 package com.example.onememory;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,11 +13,10 @@ import android.widget.ImageView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.onememory.Rylist.AddListActivity;
 import com.example.onememory.database.OneDatabaseHelper;
 import com.example.onememory.mainActivity.SubscribeAdapter;
 import com.example.onememory.settings.Settings;
-import com.example.onememory.Rylist.AddListActivity;
-
 
 import java.util.ArrayList;
 
@@ -84,6 +82,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     }
 
+    // 在主页面按下 Back 按钮后，重新打开 App 直接打开 Mainactivity，不经过 Splash 页面
+    public void onBackPressed() {
+        // Do NOT call super.onBackPressed()
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        startActivity(intent);
+    }
+
     private void initAppList() {
         SubscribeAdapter adapter = new SubscribeAdapter(this, app_names, costs, iconIDs, bgColors, textColors);
         final RecyclerView recyclerView = findViewById(R.id.rv_sub_app);
@@ -136,8 +144,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
             shows.add(cursor.getString(cursor.getColumnIndex("sub_period")));
             methods.add(cursor.getString(cursor.getColumnIndex("pay_method")));
         }
-
-
 
 
     }
