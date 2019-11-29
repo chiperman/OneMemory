@@ -273,9 +273,9 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#FA6503");
         text_color.add("#FFFFFF");
 
-        name.add("猫头鹰");
-        picName.add(R.drawable.maotouying);
-        white.add(R.drawable.maotouying_w);
+        name.add("得到");
+        picName.add(R.drawable.dedao);
+        white.add(R.drawable.dedao_w);
         background_color.add("#FF6B00");
         text_color.add("#FFFFFF");
 
@@ -285,7 +285,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#FF473E");
         text_color.add("#FFFFFF");
 
-        name.add("moo");
+        name.add("Moo 音乐");
         picName.add(R.drawable.moo);
         white.add(R.drawable.moo_w);
         background_color.add("#FFE131");

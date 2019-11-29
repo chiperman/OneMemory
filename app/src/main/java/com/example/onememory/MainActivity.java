@@ -3,6 +3,8 @@ package com.example.onememory;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.ImageView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.onememory.database.OneDatabaseHelper;
 import com.example.onememory.mainActivity.SubscribeAdapter;
 import com.example.onememory.settings.Settings;
 import com.example.onememory.Rylist.AddListActivity;
@@ -20,18 +23,24 @@ import com.example.onememory.Rylist.AddListActivity;
 import java.util.ArrayList;
 
 public class MainActivity extends Activity implements View.OnClickListener {
-    private static ArrayList<String> app_names = new ArrayList<>();
-    private static ArrayList<Integer> iconIDs = new ArrayList<>();
-    private static ArrayList<Float> costs = new ArrayList<>();
-    private static ArrayList<String> bgColors = new ArrayList<>();
-    private static ArrayList<String> textColors = new ArrayList<>();
-    private static ArrayList<String> describe = new ArrayList<>();
-    private static ArrayList<String> date = new ArrayList<>();
-    private static ArrayList<String> shows = new ArrayList<>();
-    private static ArrayList<String> methods = new ArrayList<>();
+    public static ArrayList<String> app_names = new ArrayList<>();
+    public static ArrayList<Integer> iconIDs = new ArrayList<>();
+    public static ArrayList<Float> costs = new ArrayList<>();
+    public static ArrayList<String> bgColors = new ArrayList<>();
+    public static ArrayList<String> textColors = new ArrayList<>();
+    public static ArrayList<String> describe = new ArrayList<>();
+    public static ArrayList<String> date = new ArrayList<>();
+    public static ArrayList<String> shows = new ArrayList<>();
+    public static ArrayList<String> methods = new ArrayList<>();
+    public static SQLiteDatabase database;
+
 
     private ImageView iv_setting;
     private ImageView iv_add;
+
+    public static SQLiteDatabase getDatabase() {
+        return database;
+    }
 
     @Override
     protected void onResume() {
@@ -43,6 +52,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        OneDatabaseHelper oneDatabaseHelper = new OneDatabaseHelper(this, "One", null, 3);
+        database = oneDatabaseHelper.getWritableDatabase();
+
 
         iv_setting = findViewById(R.id.iv_setting);
         iv_setting.setOnClickListener(this);
@@ -105,6 +119,24 @@ public class MainActivity extends Activity implements View.OnClickListener {
             methods.add(method_select);
         }
 
+        // 从数据库读取
+        if (!app_names.isEmpty()) {
+            return;
+        }
+        String[] columns = new String[]{"id", "name", "iconId", "description", "money", "sub_time", "sub_period", "pay_method", "bg_color", "text_color"};
+        Cursor cursor = database.query("apps", columns, null, null, null, null, null);
+        while (cursor.moveToNext()) {
+            app_names.add(cursor.getString(cursor.getColumnIndex("name")));
+            iconIDs.add(cursor.getInt(cursor.getColumnIndex("iconId")));
+            costs.add(cursor.getFloat(cursor.getColumnIndex("money")));
+            bgColors.add(cursor.getString(cursor.getColumnIndex("bg_color")));
+            textColors.add(cursor.getString(cursor.getColumnIndex("text_color")));
+            describe.add(cursor.getString(cursor.getColumnIndex("description")));
+            date.add(cursor.getString(cursor.getColumnIndex("sub_time")));
+            shows.add(cursor.getString(cursor.getColumnIndex("sub_period")));
+            methods.add(cursor.getString(cursor.getColumnIndex("pay_method")));
+        }
+
 
 
 
@@ -122,6 +154,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.iv_add:
                 intent = new Intent(MainActivity.this, AddListActivity.class);
                 startActivity(intent);
+//                finish();
                 break;
             default:
                 break;

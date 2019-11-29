@@ -34,7 +34,7 @@
                 android:id="@+id/tv_cost"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:textColor="@color/colorMoney"
                 app:layout_constraintEnd_toEndOf="parent" />

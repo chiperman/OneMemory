@@ -3,6 +3,7 @@ package com.example.onememory.addSubscribe;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import com.bigkoo.pickerview.listener.OnTimeSelectChangeListener;
 import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.bigkoo.pickerview.view.TimePickerView;
+import com.example.onememory.MainActivity;
 import com.example.onememory.R;
 
 import java.text.SimpleDateFormat;
@@ -58,6 +60,8 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
     private String bg_color;
     private String text_color;
 
+    private Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,8 +76,6 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         // 获取上个页面传递的值
         getMyIntent();
 
-        // 传递下个页面的值
-        sendMyIntent();
 
     }
 
@@ -142,17 +144,30 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
     }
 
     public void sendMyIntent() {
-        // 传递给下个页面
-        Intent intent = new Intent();
+        // 传递给下个页面并且保存到数据库
+        intent = new Intent(this, MainActivity.class);
         intent.putExtra("AppIcon", AppIcon);
         intent.putExtra("AppName", AppName);
         intent.putExtra("bg_color", bg_color);
         intent.putExtra("text_color", text_color);
         intent.putExtra("add_describe", app_name.getText().toString());
-        intent.putExtra("app_money", app_money.getText().toString());
+        intent.putExtra("app_money", app_money.getText().toString().equals("") ? "0" : app_money.getText().toString());
         intent.putExtra("tv_date", tv_date.getText().toString());
         intent.putExtra("show_select", show_select.getText().toString());
         intent.putExtra("method_select", method_select.getText().toString());
+
+        ContentValues appsInfo = new ContentValues();
+        appsInfo.put("name", AppName);
+        appsInfo.put("iconId", AppIcon);
+        appsInfo.put("bg_color", bg_color);
+        appsInfo.put("text_color", text_color);
+        appsInfo.put("description", app_name.getText().toString());
+        appsInfo.put("money", app_money.getText().toString().equals("") ? "0" : app_money.getText().toString());
+        appsInfo.put("sub_time", tv_date.getText().toString());
+        appsInfo.put("sub_period", show_select.getText().toString());
+        appsInfo.put("pay_method", method_select.getText().toString());
+        Log.e("Add", "正在插入数据库");
+        MainActivity.getDatabase().insert("apps", null, appsInfo);
     }
 
 //    *****************中间弹框式*****************
@@ -192,8 +207,9 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
                 show_select.setText(listData.get(options1));
             }
         })
-                .setSelectOptions(0)//设置选择第一个
-                .setOutSideCancelable(true)//点击背的地方不消失
+                .setSelectOptions(0)// 设置选择第一个
+                .setOutSideCancelable(true)// 点击控件以外为取消
+                .setLineSpacingMultiplier(2.0f) // 间距
                 .build();//创建
         // 把数据绑定到控件上面
         pvOptions.setPicker(listData);
@@ -204,6 +220,7 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
     // 添加选项
     private List<String> getData() {
         List<String> list = new ArrayList<>();
+        list.add("按周订阅");
         list.add("按月订阅");
         list.add("按季订阅");
         list.add("按年订阅");
@@ -249,9 +266,11 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
                 method_select.setText(listData.get(options1));
             }
         })
-                .setSelectOptions(0)//设置选择第一个
-                .setOutSideCancelable(true)//点击背的地方不消失
+                .setSelectOptions(0)// 设置选择第一个
+                .setOutSideCancelable(true)// 点击控件以外为取消
+//                .setLineSpacingMultiplier(2) // 间距
                 .build();//创建
+
         // 把数据绑定到控件上面
         pvOptions.setPicker(listData);
         // 展示
@@ -299,7 +318,8 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
                     }
                 })
                 .setItemVisibleCount(5) // 选项可见数目，若设置偶数，实际值会加1（比如设置6，则最大可见条目为7）
-                .setLineSpacingMultiplier(2.0f) // 每个选项行间距
+                .setLineSpacingMultiplier(3.0f) // 每个选项行间距
+                .isCyclic(true) //是否循环滚动
                 .setDate(selectedDate)
                 .setRangDate(startDate, selectedDate)
                 .build();
@@ -338,7 +358,11 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
                 onBackPressed();
                 break;
             case R.id.sub_add:
-                onBackPressed();
+                // 传递下个页面的值
+                sendMyIntent();
+                intent.setFlags(Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.tv_date:
                 pvTime.show(v);
