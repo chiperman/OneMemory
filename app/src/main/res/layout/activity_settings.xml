@@ -15,7 +15,9 @@
             android:layout_height="25dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
+
             android:layout_marginBottom="10dp"
+            android:background="?android:attr/selectableItemBackground"
             android:src="@drawable/back_s_arrow">
 
     </ImageView>
@@ -35,13 +37,16 @@
             android:id="@+id/feedback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
             android:onClick="feedback"
             app:icon_reference="@drawable/feedback"
+
             app:title_text="意见反馈" />
 
     <com.example.onememory.settings.userUI
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
             android:onClick="encouragement"
             app:icon_reference="@drawable/star"
             app:title_text="好评鼓励" />
@@ -50,6 +55,7 @@
             android:id="@+id/recommend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
             android:onClick="Recommend"
             app:icon_reference="@drawable/share"
             app:title_text="推荐给好友" />
@@ -58,13 +64,16 @@
             android:id="@+id/aboutAuthor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
             android:onClick="AboutAuthor"
             app:icon_reference="@drawable/about_us"
+
             app:title_text="关于作者" />
 
     <com.example.onememory.settings.userUI
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
             android:onClick="Agreement"
             app:icon_reference="@drawable/privacy"
             app:title_text="隐私协议" />
@@ -72,6 +81,7 @@
     <com.example.onememory.settings.userUI
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
             android:onClick="update"
             app:icon_reference="@drawable/refresh"
             app:title_text="检查新版本" />

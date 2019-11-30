@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,6 +15,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
+            android:background="?android:attr/selectableItemBackground"
             android:src="@drawable/back_s_arrow">
 
     </ImageView>
@@ -30,8 +30,8 @@
             android:hint="请输入您的反馈意见(字数500以内)！"
             android:lines="8"
             android:text=""
-            android:textSize="15sp"
-            android:textColor="#000000">
+            android:textColor="#000000"
+            android:textSize="15sp">
 
     </EditText>
 

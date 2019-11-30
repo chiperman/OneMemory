@@ -1,24 +1,24 @@
 package com.example.onememory;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.onememory.Rylist.AddListActivity;
 import com.example.onememory.database.OneDatabaseHelper;
 import com.example.onememory.mainActivity.SubscribeAdapter;
 import com.example.onememory.settings.Settings;
-import com.example.onememory.Rylist.AddListActivity;
-
 
 import java.util.ArrayList;
 
@@ -51,6 +51,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        smoothSwitchScreen(); 解决页面下移
         setContentView(R.layout.activity_main);
 
 
@@ -83,6 +84,29 @@ public class MainActivity extends Activity implements View.OnClickListener {
         initAppList();
 
     }
+
+    // 在主页面按下 Back 按钮后，重新打开 App 直接打开 Mainactivity，不经过 Splash 页面
+    public void onBackPressed() {
+        // Do NOT call super.onBackPressed() 不要调用父类的方法
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        startActivity(intent);
+    }
+
+    // 解决页面下移
+//    private void smoothSwitchScreen() {
+//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+//            ViewGroup rootView = ((ViewGroup) this.findViewById(android.R.id.content));
+//            int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+//            int statusBarHeight = getResources().getDimensionPixelSize(resourceId);
+//            rootView.setPadding(0, statusBarHeight, 0, 0);
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+//        }
+//
+//    }
 
     private void initAppList() {
         SubscribeAdapter adapter = new SubscribeAdapter(this, app_names, costs, iconIDs, bgColors, textColors);
@@ -136,8 +160,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
             shows.add(cursor.getString(cursor.getColumnIndex("sub_period")));
             methods.add(cursor.getString(cursor.getColumnIndex("pay_method")));
         }
-
-
 
 
     }
