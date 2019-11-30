@@ -40,8 +40,7 @@
             android:background="?android:attr/selectableItemBackground"
             android:onClick="feedback"
             app:icon_reference="@drawable/feedback"
-
-            app:title_text="意见反馈" />
+            app:title_text="联系我们" />
 
     <com.example.onememory.settings.userUI
             android:layout_width="match_parent"
