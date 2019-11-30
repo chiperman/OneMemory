@@ -268,7 +268,7 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         })
                 .setSelectOptions(0)// 设置选择第一个
                 .setOutSideCancelable(true)// 点击控件以外为取消
-//                .setLineSpacingMultiplier(2) // 间距
+                .setLineSpacingMultiplier(2.0f) // 间距
                 .build();//创建
 
         // 把数据绑定到控件上面
