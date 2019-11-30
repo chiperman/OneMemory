@@ -45,8 +45,13 @@ public class Settings extends Activity implements View.OnClickListener {
 
     //意见反馈
     public void feedback(View view) {
-        Intent intent = new Intent(this, Feedback.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, Feedback.class);
+//        startActivity(intent);
+        Intent data = new Intent(Intent.ACTION_SENDTO);
+        data.setData(Uri.parse("mailto:chipermanju@gmail.com"));
+        data.putExtra(Intent.EXTRA_SUBJECT, "[OneMemory - 意见反馈]");
+        data.putExtra(Intent.EXTRA_TEXT, "Hello OneMemory，");
+        startActivity(data);
     }
 
     //好评鼓励
