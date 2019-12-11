@@ -48,8 +48,8 @@ public class SubscribeAdapter extends RecyclerView.Adapter<SubscribeAdapter.Subs
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(holder.appItem.getContext(), ViewCard.class);
-                intent.putExtra("app", apps.get(holder.getAdapterPosition()));
-                intent.putExtra("apps", apps);
+                intent.putExtra("app",apps.get(holder.getAdapterPosition()));
+                intent.putExtra("apps",apps);
                 holder.appItem.getContext().startActivity(intent);
             }
         });
@@ -61,9 +61,23 @@ public class SubscribeAdapter extends RecyclerView.Adapter<SubscribeAdapter.Subs
             holder.appItem.setBg_tint(Color.parseColor(apps.get(position).getBgColor()));
         } else {
             holder.appItem.setCost(-1);
+        }
+
+        if (position < icon_res_ID.size()) {
+            Log.e(TAG, "iconID:" + icon_res_ID.get(position) + "");
+            holder.appItem.setIconResID(icon_res_ID.get(position));
+        } else {
             holder.appItem.setIconResID(0);
         }
 
+        if (position < textColors.size()) {
+            Log.e(TAG, "textColors:" + textColors.get(position) + "");
+            holder.appItem.setFont_color(textColors.get(position));
+        }
+
+        if (position < bgColors.size()) {
+            holder.appItem.setBg_tint(Color.parseColor(bgColors.get(position)));
+        }
 
 
     }
@@ -78,9 +92,9 @@ public class SubscribeAdapter extends RecyclerView.Adapter<SubscribeAdapter.Subs
         notifyItemInserted(apps.size() - 1);
     }
 
-    public void deleteApp(int position) {
+    public void deleteApp(int position){
 
-        MainActivity.getDatabase().delete("apps", "id=?", new String[]{apps.get(position).getId() + ""});
+        MainActivity.getDatabase().delete("apps","id=?",new String[]{apps.get(position).getId()+""});
         apps.remove(position);
         notifyItemRemoved(position);
     }
