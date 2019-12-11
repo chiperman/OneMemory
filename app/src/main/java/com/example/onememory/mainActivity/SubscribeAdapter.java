@@ -61,23 +61,9 @@ public class SubscribeAdapter extends RecyclerView.Adapter<SubscribeAdapter.Subs
             holder.appItem.setBg_tint(Color.parseColor(apps.get(position).getBgColor()));
         } else {
             holder.appItem.setCost(-1);
-        }
-
-        if (position < icon_res_ID.size()) {
-            Log.e(TAG, "iconID:" + icon_res_ID.get(position) + "");
-            holder.appItem.setIconResID(icon_res_ID.get(position));
-        } else {
             holder.appItem.setIconResID(0);
         }
 
-        if (position < textColors.size()) {
-            Log.e(TAG, "textColors:" + textColors.get(position) + "");
-            holder.appItem.setFont_color(textColors.get(position));
-        }
-
-        if (position < bgColors.size()) {
-            holder.appItem.setBg_tint(Color.parseColor(bgColors.get(position)));
-        }
 
 
     }
