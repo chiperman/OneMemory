@@ -31,7 +31,8 @@ public class OneDatabaseHelper extends SQLiteOpenHelper {
                 "text_color varchar(50)," +
                 "sub_time varchar(50) ," +
                 "sub_period varchar(50) ," +
-                "pay_method varchar(50) )";
+                "pay_method varchar(50), " +
+                "expired int default 0)";
         db.execSQL(sql);
 
     }

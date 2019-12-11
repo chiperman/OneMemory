@@ -30,7 +30,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
             android:gravity="center_horizontal"
-            android:text="添加订阅"
+            android:text="@string/add_sub"
             android:textColor="@color/mainTextColor"
             android:textSize="@dimen/titlesize"
             app:layout_constraintEnd_toStartOf="@id/list_search"

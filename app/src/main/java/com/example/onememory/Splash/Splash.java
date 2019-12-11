@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.onememory.MainActivity;
 import com.example.onememory.R;
-import com.example.onememory.viewCard.viewCard;
 
 public class Splash extends AppCompatActivity {
 

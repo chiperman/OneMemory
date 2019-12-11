@@ -1,7 +1,9 @@
 package com.example.onememory.mainActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,29 +12,26 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.onememory.MainActivity;
 import com.example.onememory.R;
 import com.example.onememory.app_item.AppItem;
+import com.example.onememory.apps.App;
+import com.example.onememory.viewCard.ViewCard;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class SubscribeAdapter extends RecyclerView.Adapter<SubscribeAdapter.SubscribeViewHolder> {
+public class SubscribeAdapter extends RecyclerView.Adapter<SubscribeAdapter.SubscribeViewHolder> implements Serializable {
 
     private Context mContext;
-    private ArrayList<String> app_name;
-    private ArrayList<Integer> icon_res_ID;
-    private ArrayList<Float> cost;
-    private ArrayList<String> bgColors;
-    private ArrayList<String> textColors;
+    private ArrayList<App> apps;
+    private SubscribeAdapter adapter;
     private static final String TAG = "SubscribeAdapter";
 
-    public SubscribeAdapter(Context context, ArrayList<String> app_name, ArrayList<Float> cost, ArrayList<Integer> icon_res_ID,
-                            ArrayList<String> bgColors, ArrayList<String> textColors) {
+    public SubscribeAdapter(Context context, ArrayList<App> apps) {
         mContext = context;
-        this.app_name = app_name;
-        this.icon_res_ID = icon_res_ID;
-        this.cost = cost;
-        this.bgColors = bgColors;
-        this.textColors = textColors;
+        adapter = this;
+        this.apps = apps;
     }
 
     @NonNull
@@ -44,48 +43,46 @@ public class SubscribeAdapter extends RecyclerView.Adapter<SubscribeAdapter.Subs
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SubscribeViewHolder holder, int position) {
-
-        if (position < app_name.size()) {
-            holder.appItem.setApp_name(app_name.get(position));
-        }
-
-        if (position < cost.size()) {
-            holder.appItem.setCost(cost.get(position));
+    public void onBindViewHolder(@NonNull final SubscribeViewHolder holder, int position) {
+        holder.appItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(holder.appItem.getContext(), ViewCard.class);
+                intent.putExtra("app", apps.get(holder.getAdapterPosition()));
+                intent.putExtra("apps", apps);
+                holder.appItem.getContext().startActivity(intent);
+            }
+        });
+        if (position < apps.size()) {
+            holder.appItem.setApp_name(apps.get(position).getName());
+            holder.appItem.setCost(apps.get(position).getMoney());
+            holder.appItem.setIconResID(apps.get(position).getIconId());
+            holder.appItem.setFont_color(apps.get(position).getTextColor());
+            holder.appItem.setBg_tint(Color.parseColor(apps.get(position).getBgColor()));
         } else {
             holder.appItem.setCost(-1);
-        }
-
-        if (position < icon_res_ID.size()) {
-            Log.e(TAG, "iconID:" + icon_res_ID.get(position) + "");
-            holder.appItem.setIconResID(icon_res_ID.get(position));
-        } else {
             holder.appItem.setIconResID(0);
         }
 
-        if (position < textColors.size()) {
-            Log.e(TAG, "textColors:" + textColors.get(position) + "");
-            holder.appItem.setFont_color(textColors.get(position));
-        }
-
-        if (position < bgColors.size()) {
-            holder.appItem.setBg_tint(Color.parseColor(bgColors.get(position)));
-        }
 
 
     }
 
     @Override
     public int getItemCount() {
-        return app_name.size();
+        return apps.size();
     }
 
-    public void addApp(int imageResID, String appName, float cost) {
-        app_name.add(appName);
-        this.cost.add(cost);
-        this.icon_res_ID.add(imageResID);
-        notifyItemInserted(app_name.size() - 1);
+    public void addApp(App app) {
+        apps.add(app);
+        notifyItemInserted(apps.size() - 1);
+    }
 
+    public void deleteApp(int position) {
+
+        MainActivity.getDatabase().delete("apps", "id=?", new String[]{apps.get(position).getId() + ""});
+        apps.remove(position);
+        notifyItemRemoved(position);
     }
 
 

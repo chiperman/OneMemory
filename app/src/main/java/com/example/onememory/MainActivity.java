@@ -1,40 +1,47 @@
 package com.example.onememory;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onememory.Rylist.AddListActivity;
+import com.example.onememory.apps.App;
 import com.example.onememory.database.OneDatabaseHelper;
 import com.example.onememory.mainActivity.SubscribeAdapter;
 import com.example.onememory.settings.Settings;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 
-public class MainActivity extends Activity implements View.OnClickListener {
-    public static ArrayList<String> app_names = new ArrayList<>();
-    public static ArrayList<Integer> iconIDs = new ArrayList<>();
-    public static ArrayList<Float> costs = new ArrayList<>();
-    public static ArrayList<String> bgColors = new ArrayList<>();
-    public static ArrayList<String> textColors = new ArrayList<>();
-    public static ArrayList<String> describe = new ArrayList<>();
-    public static ArrayList<String> date = new ArrayList<>();
-    public static ArrayList<String> shows = new ArrayList<>();
-    public static ArrayList<String> methods = new ArrayList<>();
-    public static SQLiteDatabase database;
+public class MainActivity extends Activity implements View.OnClickListener, Serializable {
+    public static ArrayList<App> apps = new ArrayList<>();
+    public static int itemNum = 0;
+    public static float totalCost = 0;
+    public static float monthCost = 0;
+    private static SQLiteDatabase database;
+    private TextView tv_itemNum, tv_totalCost, tv_monthCost;
+    private static final String TAG = "MainActivity";
 
-
+    private RecyclerView recyclerView;
     private ImageView iv_setting;
     private ImageView iv_add;
 
@@ -44,16 +51,21 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onResume() {
+        Log.e(TAG, "onResume");
         super.onResume();
-        initAppList();
+//        initAppList();
+//        initAppInfo();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.e(TAG, "onCreate");
         super.onCreate(savedInstanceState);
 //        smoothSwitchScreen(); 解决页面下移
         setContentView(R.layout.activity_main);
-
+        tv_itemNum = findViewById(R.id.itemNumber);
+        tv_monthCost = findViewById(R.id.monthCost);
+        tv_totalCost = findViewById(R.id.totalCost);
 
         OneDatabaseHelper oneDatabaseHelper = new OneDatabaseHelper(this, "One", null, 3);
         database = oneDatabaseHelper.getWritableDatabase();
@@ -82,6 +94,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         initAppInfo();
 
         initAppList();
+        tv_itemNum.setText(itemNum + "\n个项目");
+        tv_totalCost.setText(totalCost + "\n总花费（元）");
 
     }
 
@@ -109,10 +123,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
 //    }
 
     private void initAppList() {
-        SubscribeAdapter adapter = new SubscribeAdapter(this, app_names, costs, iconIDs, bgColors, textColors);
-        final RecyclerView recyclerView = findViewById(R.id.rv_sub_app);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        SubscribeAdapter adapter = new SubscribeAdapter(this, apps);
+        recyclerView = findViewById(R.id.rv_sub_app);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setSmoothScrollbarEnabled(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
+
+        recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setHasFixedSize(true);
+
         recyclerView.setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
     }
 
@@ -132,35 +152,187 @@ public class MainActivity extends Activity implements View.OnClickListener {
         String money = intent.getStringExtra("app_money") != null ? intent.getStringExtra("app_money") : "0";
         app_money = Float.parseFloat(money);
         if (AppName != null) {
-            iconIDs.add(AppIcon);
-            app_names.add(AppName);
-            costs.add(app_money);
-            bgColors.add(bg_color);
-            textColors.add(text_color);
-            describe.add(add_describe);
-            date.add(tv_date);
-            shows.add(show_select);
-            methods.add(method_select);
+            App app = new App();
+            app.setId(intent.getIntExtra("id", -1));
+            app.setIconId(AppIcon);
+            app.setName(AppName);
+            app.setMoney(app_money);
+            app.setBgColor(bg_color);
+            app.setTextColor(text_color);
+            app.setDescription(add_describe);
+            app.setSubTime(tv_date);
+            app.setSubPeriod(show_select);
+            app.setPayMethod(method_select);
+            totalCost += app_money;
+            ++itemNum;
+            apps.add(app);
         }
 
         // 从数据库读取
-        if (!app_names.isEmpty()) {
+        if (!apps.isEmpty()) {
             return;
         }
         String[] columns = new String[]{"id", "name", "iconId", "description", "money", "sub_time", "sub_period", "pay_method", "bg_color", "text_color"};
         Cursor cursor = database.query("apps", columns, null, null, null, null, null);
+        int i = 0;
         while (cursor.moveToNext()) {
-            app_names.add(cursor.getString(cursor.getColumnIndex("name")));
-            iconIDs.add(cursor.getInt(cursor.getColumnIndex("iconId")));
-            costs.add(cursor.getFloat(cursor.getColumnIndex("money")));
-            bgColors.add(cursor.getString(cursor.getColumnIndex("bg_color")));
-            textColors.add(cursor.getString(cursor.getColumnIndex("text_color")));
-            describe.add(cursor.getString(cursor.getColumnIndex("description")));
-            date.add(cursor.getString(cursor.getColumnIndex("sub_time")));
-            shows.add(cursor.getString(cursor.getColumnIndex("sub_period")));
-            methods.add(cursor.getString(cursor.getColumnIndex("pay_method")));
+            Log.e(TAG, "从数据库读取");
+            App app = new App();
+            app.setName(cursor.getString(cursor.getColumnIndex("name")));
+            app.setIconId(cursor.getInt(cursor.getColumnIndex("iconId")));
+            app.setMoney(cursor.getFloat(cursor.getColumnIndex("money")));
+            app.setBgColor(cursor.getString(cursor.getColumnIndex("bg_color")));
+            app.setTextColor(cursor.getString(cursor.getColumnIndex("text_color")));
+            app.setDescription(cursor.getString(cursor.getColumnIndex("description")));
+            app.setSubTime(cursor.getString(cursor.getColumnIndex("sub_time")));
+            app.setSubPeriod(cursor.getString(cursor.getColumnIndex("sub_period")));
+            app.setPayMethod(cursor.getString(cursor.getColumnIndex("pay_method")));
+            switch (app.getSubPeriod()) {
+                case "按周订阅":
+                case "按月订阅":
+                    monthCost += app.getMoney();
+                    break;
+                case "按季订阅":
+                    monthCost += app.getMoney() / 3;
+                    break;
+                case "按年订阅":
+                    monthCost += app.getMoney() / 12;
+                    break;
+                case "一次性买断":
+                    break;
+                case "":
+                    break;
+            }
+            totalCost += app.getMoney();
+            ++itemNum;
+            apps.add(app);
+            //获取系统的日期
+            Calendar calendar = Calendar.getInstance();
+
+            //年
+            int year = calendar.get(Calendar.YEAR);
+            //月
+            int month = calendar.get(Calendar.MONTH) + 1;
+            //日
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+
+            String[] time0 = app.getSubTime().split("-");
+            Log.e("长度", String.valueOf(time0.length));
+            Integer[] time = new Integer[time0.length];
+            //字符型数组转换为整形数组
+            for (int j = 0; j < time0.length; j++) {
+                if (time0[j] != "")
+                    time[j] = Integer.parseInt(time0[j]);
+                else time[j] = 0;
+            }
+            switch (app.getSubPeriod()) {
+                case "按周订阅":
+                    time[2] = time[2] + 7;
+                    //判断该时间是否为下一个月，暂时按照一个月30天算
+                    if (time[2] > 30) {
+                        time[1]++;
+                        if (time[1] == 13) {
+                            time[1] = 1;
+                            time[0]++;
+                        }
+                    }
+                    break;
+                case "按月订阅":
+                    time[1]++;
+                    //判断该月是否为最后一个月
+                    if (time[1] == 13) {
+                        time[1] = 1;
+                        time[0]++;
+                    }
+                    break;
+                case "按季订阅":
+                    time[1] = time[1] + 3;
+                    //判断该月是否为最后一个月
+                    if (time[1] > 12) {
+                        time[1] = time[1] % 12;
+                        time[0]++;
+                    }
+                    break;
+                case "按年订阅":
+                    time[0]++;
+                    break;
+                case "一次性买断":
+                    time[0] = time[0] + 100;
+                    break;
+                case "":
+                    break;
+            }
+            //Log.e("时间2", String.valueOf(time[0]));
+            if (year == time[0] && month == time[1] && time[0] != 0 && day < time[2]) {
+                Log.e("时间2", String.valueOf(time[0]));
+                Log.e("时间3", String.valueOf(time[1]));
+                Log.e("时间4", String.valueOf(time[2]));
+                //发出通知
+                notification(app.getName(), app.getIconId(), i++, time[2] - day);
+            }
         }
 
+
+        //取一位小数
+        //monthCost = (float) (Integer.parseInt(String.valueOf(monthCost*10))/10.0);
+        tv_itemNum.setText(itemNum + "\n个项目");
+        tv_monthCost.setText(String.format("%.1f", monthCost) + "\n每月花费（元）");
+        tv_totalCost.setText(totalCost + "\n总花费（元）");
+
+    }
+
+    //通知函数
+    private void notification(String appname, int icon, int num, int days) {
+        //1.通知管理器
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        //2.建立一个通知
+        Notification notification = null;
+
+        String id = "mchannel";
+        String name = "通道1";
+        //判断当前安卓版本为8.0后
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel mChannel = new NotificationChannel(id, name, NotificationManager.IMPORTANCE_LOW);
+            Log.i("ooo:", mChannel.toString());
+
+            notificationManager.createNotificationChannel(mChannel);
+
+            notification = new Notification.Builder(this, id)
+                    .setLargeIcon(BitmapFactory.decodeResource(this.getResources(), icon))
+                    .setSmallIcon(R.drawable.add_black)
+                    .setContentTitle(appname + "会员")  //标题
+                    .setContentText("你的会员服务还有" + days + "天到期，请注意！")   //内容
+                    //.setSubText("会员到期提醒")     //内容下面的一小段文字
+                    .setTicker("收到一条会员订阅提醒~~")      //收到信息后状态栏显示的文字信息
+                    .setWhen(System.currentTimeMillis())    //系统显示时间
+                    .setAutoCancel(true)       //设置点击后取消Notificatio
+                    //3.绑定一个通知显示界面
+                    .setContentIntent(PendingIntent.getActivity(this, num, new Intent(this, Settings.class), PendingIntent.FLAG_CANCEL_CURRENT))
+                    .build();
+        }
+        //8.0之前
+        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            Log.e("当前机型版本号", String.valueOf(Build.VERSION.SDK_INT));
+            notification = new Notification.Builder(this)
+                    .setLargeIcon(BitmapFactory.decodeResource(this.getResources(), icon))
+                    .setSmallIcon(R.drawable.add_black)
+                    .setContentTitle(appname + "会员")  //标题
+                    .setContentText("你的会员服务还有" + days + "天到期，请注意！")   //内容
+                    //.setSubText("会员到期提醒")     //内容下面的一小段文字
+                    .setTicker("收到一条会员订阅提醒~~")      //收到信息后状态栏显示的文字信息
+                    .setWhen(System.currentTimeMillis())    //系统显示时间
+                    .setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE)    //设置默认的三色灯与振动器
+                    .setDefaults(Notification.DEFAULT_SOUND)    //设置系统的提示音
+                    //.setOngoing(true)    //设置为系统不能清除通知
+                    .setAutoCancel(true)       //设置点击后取消Notificatio
+                    //3.绑定一个通知显示界面
+                    .setContentIntent(PendingIntent.getActivity(this, num, new Intent(this, Settings.class), PendingIntent.FLAG_CANCEL_CURRENT))
+                    .build();
+        }
+
+        //4.发出通知
+        notificationManager.notify(num, notification);
 
     }
 

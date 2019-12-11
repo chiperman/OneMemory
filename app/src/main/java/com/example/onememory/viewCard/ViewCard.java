@@ -11,7 +11,9 @@ import com.example.onememory.R;
 import com.example.onememory.addSubscribe.Add_Subscribe;
 import com.example.onememory.settings.Settings;
 
-public class viewCard extends Activity {
+import java.io.Serializable;
+
+public class ViewCard extends Activity implements Serializable {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

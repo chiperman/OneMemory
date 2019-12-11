@@ -1,6 +1,26 @@
 <resources>
     <string name="app_name">OneMemory</string>
     <string name="subscribe_title">请选择订阅方式</string>
+    <string name="add_sub">添加订阅</string>
+    <string name="describe_sub">订阅描述</string>
+    <string name="price">价格</string>
+    <string name="sub_time">订阅时间</string>
+    <string name="sub_method">订阅类型</string>
+    <string name="pay_mehtod">支付方式</string>
+    <string name="describe_hint">请输入订阅服务描述</string>
+    <string name="price_hint">¥ 0.00</string>
+    <string name="time_hint">请选择订阅时间</string>
+    <string name="method_hint">请选择订阅类型</string>
+    <string name="pay_hint">请选择支付方式</string>
+    <string name="check_code">去 Github 查看源码</string>
+    <string name="settings">设置</string>
+    <string name="contact_us">联系我们</string>
+    <string name="rate_us">好评鼓励</string>
+    <string name="share_us">推荐我们</string>
+    <string name="about_us">关于作者</string>
+    <string name="privacy">隐私协议</string>
+    <string name="check_update">检查更新</string>
+
 
     <string name="agreement">
         \u3000\u3000本应用尊重并保护所有使用服务用户的个人隐私权。
@@ -12,7 +32,7 @@
         本隐私权政策属于本应用服务使用协议不可分割的一部分。
     </string>
 
-    <string name="about_us">
+    <string name="aboutus_detail">
         OneMemory 是一款管理订阅服务的工具类 App \n
         你可以利用这它查看并记录已订阅的各类服务 \n
         记录详情、订阅时间、金额以及订阅周期等 \n

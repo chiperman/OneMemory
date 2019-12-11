@@ -23,7 +23,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="130dp"
             android:gravity="center_horizontal"
-            android:text="@string/about_us"
+            android:text="@string/aboutus_detail"
             android:textSize="15sp">
 
     </TextView>

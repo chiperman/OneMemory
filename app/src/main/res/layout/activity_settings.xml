@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:paddingLeft="20dp"
-            android:text="设置"
+            android:text="@string/settings"
             android:textColor="@color/mainTextColor"
             android:textSize="30sp"
             android:visibility="visible"
@@ -40,7 +40,7 @@
             android:background="?android:attr/selectableItemBackground"
             android:onClick="feedback"
             app:icon_reference="@drawable/feedback"
-            app:title_text="联系我们" />
+            app:title_text="@string/contact_us" />
 
     <com.example.onememory.settings.userUI
             android:layout_width="match_parent"
@@ -48,7 +48,7 @@
             android:background="?android:attr/selectableItemBackground"
             android:onClick="encouragement"
             app:icon_reference="@drawable/star"
-            app:title_text="好评鼓励" />
+            app:title_text="@string/rate_us" />
 
     <com.example.onememory.settings.userUI
             android:id="@+id/recommend"
@@ -57,7 +57,7 @@
             android:background="?android:attr/selectableItemBackground"
             android:onClick="Recommend"
             app:icon_reference="@drawable/share"
-            app:title_text="推荐给好友" />
+            app:title_text="@string/share_us" />
 
     <com.example.onememory.settings.userUI
             android:id="@+id/aboutAuthor"
@@ -75,7 +75,7 @@
             android:background="?android:attr/selectableItemBackground"
             android:onClick="Agreement"
             app:icon_reference="@drawable/privacy"
-            app:title_text="隐私协议" />
+            app:title_text="@string/privacy" />
 
     <com.example.onememory.settings.userUI
             android:layout_width="match_parent"
@@ -83,6 +83,6 @@
             android:background="?android:attr/selectableItemBackground"
             android:onClick="update"
             app:icon_reference="@drawable/refresh"
-            app:title_text="检查新版本" />
+            app:title_text="@string/check_update" />
 
 </LinearLayout>
