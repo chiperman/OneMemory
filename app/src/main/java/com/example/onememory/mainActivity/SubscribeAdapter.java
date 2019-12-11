@@ -3,8 +3,6 @@ package com.example.onememory.mainActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,8 +46,8 @@ public class SubscribeAdapter extends RecyclerView.Adapter<SubscribeAdapter.Subs
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(holder.appItem.getContext(), ViewCard.class);
-                intent.putExtra("app",apps.get(holder.getAdapterPosition()));
-                intent.putExtra("apps",apps);
+                intent.putExtra("app", apps.get(holder.getAdapterPosition()));
+                intent.putExtra("apps", apps);
                 holder.appItem.getContext().startActivity(intent);
             }
         });
@@ -63,9 +61,6 @@ public class SubscribeAdapter extends RecyclerView.Adapter<SubscribeAdapter.Subs
             holder.appItem.setCost(-1);
             holder.appItem.setIconResID(0);
         }
-
-
-
     }
 
     @Override
@@ -78,9 +73,9 @@ public class SubscribeAdapter extends RecyclerView.Adapter<SubscribeAdapter.Subs
         notifyItemInserted(apps.size() - 1);
     }
 
-    public void deleteApp(int position){
+    public void deleteApp(int position) {
 
-        MainActivity.getDatabase().delete("apps","id=?",new String[]{apps.get(position).getId()+""});
+        MainActivity.getDatabase().delete("apps", "id=?", new String[]{apps.get(position).getId() + ""});
         apps.remove(position);
         notifyItemRemoved(position);
     }
