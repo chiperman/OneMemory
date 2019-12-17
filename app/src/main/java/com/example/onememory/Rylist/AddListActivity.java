@@ -237,7 +237,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#EF6182");
         text_color.add("#FFFFFF");
 
-        name.add("袋鼠");
+        name.add("美团");
         picName.add(R.drawable.daishu);
         white.add(R.drawable.daishu_w);
         background_color.add("#FECE00");
@@ -322,14 +322,20 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
 
         name.add("小睡眠");
-        picName.add(R.drawable.sleep);
-        white.add(R.drawable.sleep_w);
+        picName.add(R.drawable.xiaoshuimian);
+        white.add(R.drawable.xiaoshuimian_w);
         background_color.add("#0f709E");
         text_color.add("#FFFFFF");
 
+        name.add("白描");
+        picName.add(R.drawable.baimiao);
+        white.add(R.drawable.baimiao_w);
+        background_color.add("#448c57");
+        text_color.add("#FFFFFF");
+
         name.add("淘票票");
-        picName.add(R.drawable.taopp);
-        white.add(R.drawable.taopp_w);
+        picName.add(R.drawable.taopiaopiao);
+        white.add(R.drawable.taopiaopiao_w);
         background_color.add("#FF0000");
         text_color.add("#FFFFFF");
 
