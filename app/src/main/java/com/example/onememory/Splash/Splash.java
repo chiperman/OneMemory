@@ -19,7 +19,7 @@ public class Splash extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 //        // 全屏并且隐藏状态栏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//
+
 //        // 隐藏标题栏 Activity
 //        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 //        // 隐藏标题栏 AppCompatActivity
