@@ -19,6 +19,7 @@ public class Settings extends Activity implements View.OnClickListener {
 
     private ImageView iv_back;
     private String name;
+    private String feedback_email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,16 +42,15 @@ public class Settings extends Activity implements View.OnClickListener {
 
         iv_back = findViewById(R.id.st_back);
         iv_back.setOnClickListener(this);
+        feedback_email = getString(R.string.feedback);
     }
 
     //意见反馈
     public void feedback(View view) {
-//        Intent intent = new Intent(this, Feedback.class);
-//        startActivity(intent);
         Intent data = new Intent(Intent.ACTION_SENDTO);
         data.setData(Uri.parse("mailto:chipermanju@gmail.com"));
         data.putExtra(Intent.EXTRA_SUBJECT, "[OneMemory - 意见反馈]");
-        data.putExtra(Intent.EXTRA_TEXT, "Hello OneMemory，");
+        data.putExtra(Intent.EXTRA_TEXT, feedback_email);
         startActivity(data);
     }
 

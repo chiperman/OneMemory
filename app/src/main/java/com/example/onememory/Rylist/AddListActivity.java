@@ -97,6 +97,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         ArrayList<Integer> white = new ArrayList<>();
         ArrayList<String> background_color = new ArrayList<>();
         ArrayList<String> text_color = new ArrayList<>();
+        ArrayList<Integer> price = new ArrayList<>();
 
 
         name.add("App Store");
@@ -105,11 +106,13 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#1f74f9");
         text_color.add("#FFFFFF");
 
+
         name.add("哔哩哔哩");
         picName.add(R.drawable.bilibili_fill);
         white.add(R.drawable.bilibili_fill_w);
         background_color.add("#00a1d6");
         text_color.add("#FFFFFF");
+
 
         name.add("QQ音乐");
         picName.add(R.drawable.qq_music);

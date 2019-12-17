@@ -67,11 +67,16 @@
     <string name="privacy_en">
         \u3000\u3000OneMemory is a native application,
         We do not need any registration and will not collect your personal information.
-        If you have feedback, you are welcome to provide feedback on the settings page.\n
+        If you have feedback, you are welcome to provide feedback on the settings page. \n
         \u3000\u3000 This is an open source project. This project is just a product used by a group of students to practice their hands.
         You can go to Github to view the source code of the entire project.
-        If you encounter problems, you can ask
+        You can raise an Issue when you face a Bug.
         You are also very welcome to submit a PullRequest.
+    </string>
+
+    <string name="feedback">
+        手机型号：\n
+        手机安卓版本：\n
     </string>
 
     <dimen name="width">330dp</dimen>
