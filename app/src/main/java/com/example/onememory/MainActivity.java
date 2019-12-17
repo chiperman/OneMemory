@@ -173,13 +173,12 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
         if (!apps.isEmpty()) {
             return;
         }
-        String[] columns = new String[]{"id", "name", "iconId", "description", "money", "sub_time", "sub_period", "pay_method", "bg_color", "text_color", "added_state"};
+        String[] columns = new String[]{"id", "name", "iconId", "description", "money", "sub_time", "sub_period", "pay_method", "bg_color", "text_color"};
         Cursor cursor = database.query("apps", columns, null, null, null, null, null);
         int i = 0;
         while (cursor.moveToNext()) {
             Log.e(TAG, "从数据库读取");
             App app = new App();
-            app.setAdded_state(cursor.getInt(cursor.getColumnIndex("added_state")));
             app.setName(cursor.getString(cursor.getColumnIndex("name")));
             app.setIconId(cursor.getInt(cursor.getColumnIndex("iconId")));
             app.setMoney(cursor.getFloat(cursor.getColumnIndex("money")));
