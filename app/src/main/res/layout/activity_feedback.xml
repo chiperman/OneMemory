@@ -11,11 +11,11 @@
     <ImageView
             android:id="@+id/fd_back"
             android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_height="24dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:background="?android:attr/selectableItemBackground"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
             android:src="@drawable/back_s_arrow">
 
     </ImageView>
