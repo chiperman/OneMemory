@@ -46,12 +46,17 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
     private ImageView iv_back;
     private ImageView iv_add;
     private ImageView app_icon;
-    private TextView app_describe;
-    private TextView app_price;
+    private TextView sub_describe;
+    private TextView sub_price;
     private TextView sub_time;
     private TextView sub_method;
     private TextView sub_pay;
-    private TextView app_name;
+    private TextView sub_name;
+    private TextView add_describe;
+    private TextView money;
+    private TextView app_date;
+    private TextView select;
+    private TextView method;
     private CardView cv_AppCard;
     private EditText app_money;
     private Intent getIntent;
@@ -59,8 +64,15 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
     private String AppName;
     private String bg_color;
     private String text_color;
-
+    private String text_hintcolor;
     private Intent intent;
+    private View divider1;
+    private View divider2;
+    private View divider3;
+    private View divider4;
+    private View divider5;
+    private View divider6;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,24 +135,57 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         AppName = getIntent.getStringExtra("AppName");
         bg_color = getIntent.getStringExtra("bg_Color");
         text_color = getIntent.getStringExtra("text_Color");
+        text_hintcolor = getIntent.getStringExtra("text_hintcolor");
+
 
         app_icon = findViewById(R.id.AppIconImg);
         app_icon.setImageResource(AppIcon);
-        app_name = findViewById(R.id.AppName);
-        app_name.setText(AppName);
-        app_name.setTextColor(Color.parseColor(text_color));
+        sub_name = findViewById(R.id.AppName);
+        sub_name.setText(AppName);
+        sub_name.setTextColor(Color.parseColor(text_color));
         cv_AppCard = findViewById(R.id.cv_AppCard);
         cv_AppCard.setBackgroundColor(Color.parseColor(bg_color));
-        app_describe = findViewById(R.id.describe);
-        app_describe.setTextColor(Color.parseColor(text_color));
-        app_price = findViewById(R.id.price);
-        app_price.setTextColor(Color.parseColor(text_color));
+        sub_describe = findViewById(R.id.describe);
+        sub_describe.setTextColor(Color.parseColor(text_color));
+        sub_price = findViewById(R.id.price);
+        sub_price.setTextColor(Color.parseColor(text_color));
         sub_time = findViewById(R.id.sub_time);
         sub_time.setTextColor(Color.parseColor(text_color));
         sub_method = findViewById(R.id.sub_method);
         sub_method.setTextColor(Color.parseColor(text_color));
         sub_pay = findViewById(R.id.sub_pay);
         sub_pay.setTextColor(Color.parseColor(text_color));
+
+        //设置选项提示字体颜色
+        add_describe = findViewById(R.id.add_describe);
+        add_describe.setTextColor(Color.parseColor(text_hintcolor));
+        add_describe.setHintTextColor(Color.parseColor(text_hintcolor));
+        money = findViewById(R.id.app_money);
+        money.setTextColor(Color.parseColor(text_hintcolor));
+        money.setHintTextColor(Color.parseColor(text_hintcolor));
+        app_date = findViewById(R.id.tv_date);
+        app_date.setTextColor(Color.parseColor(text_hintcolor));
+        app_date.setHintTextColor(Color.parseColor(text_hintcolor));
+        select = findViewById(R.id.select);
+        select.setTextColor(Color.parseColor(text_hintcolor));
+        select.setHintTextColor(Color.parseColor(text_hintcolor));
+        method = findViewById(R.id.method);
+        method.setTextColor(Color.parseColor(text_hintcolor));
+        method.setHintTextColor(Color.parseColor(text_hintcolor));
+
+        //设置分割线颜色
+        divider1 = findViewById(R.id.divider1);
+        divider2 = findViewById(R.id.divider2);
+        divider3 = findViewById(R.id.divider3);
+        divider4 = findViewById(R.id.divider4);
+        divider5 = findViewById(R.id.divider5);
+        divider6 = findViewById(R.id.divider6);
+        divider1.setBackgroundColor(Color.parseColor(text_hintcolor));
+        divider2.setBackgroundColor(Color.parseColor(text_hintcolor));
+        divider3.setBackgroundColor(Color.parseColor(text_hintcolor));
+        divider4.setBackgroundColor(Color.parseColor(text_hintcolor));
+        divider5.setBackgroundColor(Color.parseColor(text_hintcolor));
+        divider6.setBackgroundColor(Color.parseColor(text_hintcolor));
     }
 
     public void sendMyIntent() {
@@ -150,7 +195,7 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         intent.putExtra("AppName", AppName);
         intent.putExtra("bg_color", bg_color);
         intent.putExtra("text_color", text_color);
-        intent.putExtra("add_describe", app_name.getText().toString());
+        intent.putExtra("add_describe", sub_name.getText().toString());
         intent.putExtra("app_money", app_money.getText().toString().equals("") ? "0" : app_money.getText().toString());
         intent.putExtra("tv_date", tv_date.getText().toString());
         intent.putExtra("show_select", show_select.getText().toString());
@@ -161,7 +206,7 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         appsInfo.put("iconId", AppIcon);
         appsInfo.put("bg_color", bg_color);
         appsInfo.put("text_color", text_color);
-        appsInfo.put("description", app_name.getText().toString());
+        appsInfo.put("description", sub_name.getText().toString());
         appsInfo.put("money", app_money.getText().toString().equals("") ? "0" : app_money.getText().toString());
         appsInfo.put("sub_time", tv_date.getText().toString());
         appsInfo.put("sub_period", show_select.getText().toString());
