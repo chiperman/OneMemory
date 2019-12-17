@@ -21,6 +21,7 @@
     <string name="privacy">隐私协议</string>
     <string name="check_update">检查更新</string>
 
+    <string name="splash_slogn">管理订阅 我更在行</string>
 
     <string name="agreement">
         \u3000\u3000本应用尊重并保护所有使用服务用户的个人隐私权。
@@ -48,6 +49,10 @@
         但是...\n
         希望你能喜欢\
         Time waits for no one.
+    </string>
+
+    <string name="aboutus_heart">
+        Crafted with ♥️ by 549
     </string>
 
     <string name="privacy_cn">
