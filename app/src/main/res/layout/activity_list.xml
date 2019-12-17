@@ -51,7 +51,7 @@
             android:textSize="16sp"
             android:imeOptions="actionSearch"
             android:inputType="text"
-            android:hint="请输入APP关键字"
+            android:hint="请输入 App 关键字"
             app:layout_constraintEnd_toStartOf="@id/list_search"
             app:layout_constraintStart_toEndOf="@id/list_back"
             app:layout_constraintTop_toTopOf="parent" />

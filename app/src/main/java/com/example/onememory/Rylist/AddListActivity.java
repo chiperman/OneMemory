@@ -437,13 +437,17 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         //取消组件
         TextView cancel = findViewById(R.id.cancel);
 
-
         editText.setVisibility(View.VISIBLE);
         imageView2.setVisibility(View.VISIBLE);
         cancel.setVisibility(View.VISIBLE);
         textView.setVisibility(View.INVISIBLE);
         imageView1.setVisibility(View.INVISIBLE);
         imageback.setVisibility(View.INVISIBLE);
+
+        //呼出软键盘,并聚焦输入框
+        editText.requestFocus();
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(this.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(0, InputMethodManager.SHOW_FORCED);
     }
 
     private void cancel() {
