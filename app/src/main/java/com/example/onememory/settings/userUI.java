@@ -93,7 +93,6 @@ public class userUI extends FrameLayout {
         this.onclickId = onclickId;
     }
 
-
     public userUI(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
@@ -108,15 +107,15 @@ public class userUI extends FrameLayout {
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mView = inflater.inflate(R.layout.my_ui, this, true);
         titleTv = (TextView) mView.findViewById(R.id.textView2);
-        //hintTv = (TextView) mView.findViewById(R.id.menu_item_text_hint);
+
         iconImg = (ImageView) mView.findViewById(R.id.img);
-        //redHintImg = (ImageView) mView.findViewById(R.id.menu_item_red_hint);
+
 
         TypedArray a = mContext.obtainStyledAttributes(attrs, R.styleable.MenuItemLayout);
         setTitleText(a.getString(R.styleable.MenuItemLayout_title_text));
-        //setHintText(a.getString(R.styleable.MenuItemLayout_hint_text));
+
         setIconImgId(a.getResourceId(R.styleable.MenuItemLayout_icon_reference, 10000));
-        //setJumpUrl(a.getString(R.styleable.MenuItemLayout_jump_url));
+
     }
 
     public void setViewOnlickListener(OnClickListener onlickListener) {
