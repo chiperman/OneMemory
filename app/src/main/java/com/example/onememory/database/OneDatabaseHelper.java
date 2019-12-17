@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.onememory.addSubscribe.Add_Subscribe;
+
 public class OneDatabaseHelper extends SQLiteOpenHelper {
     public OneDatabaseHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -32,7 +34,9 @@ public class OneDatabaseHelper extends SQLiteOpenHelper {
                 "sub_time varchar(50) ," +
                 "sub_period varchar(50) ," +
                 "pay_method varchar(50), " +
-                "expired int default 0)";
+                "expired int default 0," +
+                "added_state int default 0)";
+
         db.execSQL(sql);
 
     }

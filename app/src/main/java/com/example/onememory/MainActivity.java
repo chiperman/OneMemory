@@ -149,6 +149,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
         tv_date = intent.getStringExtra("tv_date");
         show_select = intent.getStringExtra("show_select");
         method_select = intent.getStringExtra("method_select");
+
         String money = intent.getStringExtra("app_money") != null ? intent.getStringExtra("app_money") : "0";
         app_money = Float.parseFloat(money);
         if (AppName != null) {
@@ -172,12 +173,13 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
         if (!apps.isEmpty()) {
             return;
         }
-        String[] columns = new String[]{"id", "name", "iconId", "description", "money", "sub_time", "sub_period", "pay_method", "bg_color", "text_color"};
+        String[] columns = new String[]{"id", "name", "iconId", "description", "money", "sub_time", "sub_period", "pay_method", "bg_color", "text_color", "added_state"};
         Cursor cursor = database.query("apps", columns, null, null, null, null, null);
         int i = 0;
         while (cursor.moveToNext()) {
             Log.e(TAG, "从数据库读取");
             App app = new App();
+            app.setAdded_state(cursor.getInt(cursor.getColumnIndex("added_state")));
             app.setName(cursor.getString(cursor.getColumnIndex("name")));
             app.setIconId(cursor.getInt(cursor.getColumnIndex("iconId")));
             app.setMoney(cursor.getFloat(cursor.getColumnIndex("money")));
