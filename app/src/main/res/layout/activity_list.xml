@@ -9,6 +9,7 @@
         >
 
     <ImageView
+            android:visibility="visible"
             android:id="@+id/list_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -16,14 +17,61 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:background="?android:attr/selectableItemBackground"
             android:src="@drawable/back_s_arrow"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
     </ImageView>
 
+    <ImageView
+            android:visibility="gone"
+            android:id="@+id/searchIcon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:src="@drawable/search"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+    </ImageView>
+
+    <EditText
+            android:visibility="gone"
+            android:id="@+id/search_et_input"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="10dp"
+            android:drawablePadding="5dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:hint="请输入 App 关键字"
+            app:layout_constraintEnd_toStartOf="@id/list_search"
+            app:layout_constraintStart_toEndOf="@id/list_back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!--输入内容的删除按钮-->
+    <!--    <ImageView-->
+    <!--        android:visibility="gone"-->
+    <!--        android:layout_marginRight="20dp"-->
+    <!--        android:src="@drawable/about_us"-->
+    <!--        android:id="@+id/search_iv_delete"-->
+    <!--        android:layout_gravity="right|center_vertical"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"/>-->
+
+
     <TextView
+            android:visibility="visible"
             android:id="@+id/add"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -40,18 +88,34 @@
     </TextView>
 
     <ImageView
+            android:visibility="visible"
             android:id="@+id/list_search"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="10dp"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:background="?android:attr/selectableItemBackground"
             android:src="@drawable/search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
     </ImageView>
+
+    <TextView
+            android:visibility="invisible"
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="取消"
+            android:textColor="@color/mainTextColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"

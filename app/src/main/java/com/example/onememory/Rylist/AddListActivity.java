@@ -3,9 +3,14 @@ package com.example.onememory.Rylist;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,11 +25,41 @@ public class AddListActivity extends Activity implements View.OnClickListener {
     private List<Fruit> fruitList = new ArrayList<>();
     private ImageView iv_back;
     private ImageView iv_search;
+    private TextView cancel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+
+        //为输入框设置动态监听
+        EditText editText = findViewById(R.id.search_et_input);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //Toast.makeText(getApplication(),s.toString(),Toast.LENGTH_SHORT).show();
+
+                fruitList.clear();
+                initFruits(s.toString());
+                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+                LinearLayoutManager layoutManager = new LinearLayoutManager(AddListActivity.this);
+                recyclerView.setLayoutManager(layoutManager);
+                FruitAdapter adapter = new FruitAdapter(fruitList);
+                recyclerView.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         // 1.顶部沉浸式状态栏
         //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -39,9 +74,9 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
                         View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-
-        initFruits();
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        //页面的初始数据
+        initFruits("");
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         FruitAdapter adapter = new FruitAdapter(fruitList);
@@ -51,10 +86,12 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         iv_back.setOnClickListener(this);
         iv_search = findViewById(R.id.list_search);
         iv_search.setOnClickListener(this);
+        cancel = findViewById(R.id.cancel);
+        cancel.setOnClickListener(this);
     }
 
-
-    private void initFruits() {
+    //菜单数量的设置 SelectName为搜索参数
+    private void initFruits(String SelectName) {
         ArrayList<String> name = new ArrayList<String>();
         ArrayList<Integer> picName = new ArrayList<Integer>();
         ArrayList<Integer> white = new ArrayList<>();
@@ -376,8 +413,66 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
 
         for (int i = 0; i < name.size(); i++) {
-            fruitList.add(new Fruit(name.get(i), picName.get(i), white.get(i), background_color.get(i), text_color.get(i)));
+            //字符串的匹配
+            if (SelectName == "" || name.get(i).trim().toLowerCase().contains(SelectName.toString().trim().toLowerCase()))
+                fruitList.add(new Fruit(name.get(i), picName.get(i), white.get(i), background_color.get(i), text_color.get(i)));
+
         }
+    }
+
+    private void search() {
+        //添加订阅组件
+        TextView textView = findViewById(R.id.add);
+        //搜索图标组件1
+        ImageView imageView1 = findViewById(R.id.list_search);
+        //返回图标组件
+        ImageView imageback = findViewById(R.id.list_back);
+        //搜索图标组件2
+        ImageView imageView2 = findViewById(R.id.searchIcon);
+        //输入框组件
+        EditText editText = findViewById(R.id.search_et_input);
+        //取消组件
+        TextView cancel = findViewById(R.id.cancel);
+
+        editText.setVisibility(View.VISIBLE);
+        imageView2.setVisibility(View.VISIBLE);
+        cancel.setVisibility(View.VISIBLE);
+        textView.setVisibility(View.INVISIBLE);
+        imageView1.setVisibility(View.INVISIBLE);
+        imageback.setVisibility(View.INVISIBLE);
+
+        //呼出软键盘,并聚焦输入框
+        editText.requestFocus();
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(this.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(0, InputMethodManager.SHOW_FORCED);
+    }
+
+    private void cancel() {
+        //添加订阅组件
+        TextView textView = findViewById(R.id.add);
+        //搜索图标组件1
+        ImageView imageView1 = findViewById(R.id.list_search);
+        //返回图标组件
+        ImageView imageback = findViewById(R.id.list_back);
+        //搜索图标组件2
+        ImageView imageView2 = findViewById(R.id.searchIcon);
+        //输入框组件
+        EditText editText = findViewById(R.id.search_et_input);
+        //取消组件
+        TextView cancel = findViewById(R.id.cancel);
+
+        //将输入框内容清空
+        editText.setText("");
+        editText.setVisibility(View.INVISIBLE);
+        imageView2.setVisibility(View.INVISIBLE);
+        cancel.setVisibility(View.INVISIBLE);
+        textView.setVisibility(View.VISIBLE);
+        imageView1.setVisibility(View.VISIBLE);
+        imageback.setVisibility(View.VISIBLE);
+
+        //隐藏软件盘功能
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(this.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
     @Override
@@ -387,6 +482,10 @@ public class AddListActivity extends Activity implements View.OnClickListener {
                 onBackPressed();
                 break;
             case R.id.list_search:
+                search();
+                break;
+            case R.id.cancel:
+                cancel();
                 break;
         }
     }
