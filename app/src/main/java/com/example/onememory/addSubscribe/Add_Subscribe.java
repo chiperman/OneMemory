@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -57,12 +58,14 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
     private TextView app_date;
     private TextView select;
     private TextView method;
+    private TextView purchase_url;
     private CardView cv_AppCard;
     private EditText app_money;
     private Intent getIntent;
     private int AppIcon;
     private String AppName;
     private String bg_color;
+    private String url;
     private String text_color;
     private String text_hintcolor;
     private Intent intent;
@@ -108,8 +111,29 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         iv_add = findViewById(R.id.sub_add);
         iv_add.setOnClickListener(this);
 
-        app_money = findViewById(R.id.app_money);
+        purchase_url = findViewById(R.id.pruchase_url);
+        purchase_url.setOnClickListener(this);
 
+        app_money = findViewById(R.id.app_money);
+        app_icon = findViewById(R.id.AppIconImg);
+        sub_name = findViewById(R.id.AppName);
+        cv_AppCard = findViewById(R.id.cv_AppCard);
+        sub_describe = findViewById(R.id.describe);
+        add_describe = findViewById(R.id.add_describe);
+        sub_pay = findViewById(R.id.sub_pay);
+        sub_method = findViewById(R.id.sub_method);
+        sub_time = findViewById(R.id.sub_time);
+        sub_price = findViewById(R.id.price);
+        app_date = findViewById(R.id.tv_date);
+        money = findViewById(R.id.app_money);
+        select = findViewById(R.id.select);
+        method = findViewById(R.id.method);
+        divider1 = findViewById(R.id.divider1);
+        divider2 = findViewById(R.id.divider2);
+        divider3 = findViewById(R.id.divider3);
+        divider4 = findViewById(R.id.divider4);
+        divider5 = findViewById(R.id.divider5);
+        divider6 = findViewById(R.id.divider6);
 
     }
 
@@ -136,50 +160,40 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         bg_color = getIntent.getStringExtra("bg_Color");
         text_color = getIntent.getStringExtra("text_Color");
         text_hintcolor = getIntent.getStringExtra("text_hintcolor");
+        url = getIntent.getStringExtra("url");
 
-
-        app_icon = findViewById(R.id.AppIconImg);
         app_icon.setImageResource(AppIcon);
-        sub_name = findViewById(R.id.AppName);
         sub_name.setText(AppName);
-        sub_name.setTextColor(Color.parseColor(text_color));
-        cv_AppCard = findViewById(R.id.cv_AppCard);
         cv_AppCard.setBackgroundColor(Color.parseColor(bg_color));
-        sub_describe = findViewById(R.id.describe);
+        sub_name.setTextColor(Color.parseColor(text_color));
         sub_describe.setTextColor(Color.parseColor(text_color));
-        sub_price = findViewById(R.id.price);
         sub_price.setTextColor(Color.parseColor(text_color));
-        sub_time = findViewById(R.id.sub_time);
         sub_time.setTextColor(Color.parseColor(text_color));
-        sub_method = findViewById(R.id.sub_method);
         sub_method.setTextColor(Color.parseColor(text_color));
-        sub_pay = findViewById(R.id.sub_pay);
         sub_pay.setTextColor(Color.parseColor(text_color));
 
+        if (!url.equals("")) {
+            purchase_url.setVisibility(View.VISIBLE);
+            Log.e("url:", url);
+
+        }
+
         //设置选项提示字体颜色
-        add_describe = findViewById(R.id.add_describe);
+
+        purchase_url.setTextColor(Color.parseColor(text_hintcolor));
         add_describe.setTextColor(Color.parseColor(text_hintcolor));
         add_describe.setHintTextColor(Color.parseColor(text_hintcolor));
-        money = findViewById(R.id.app_money);
         money.setTextColor(Color.parseColor(text_hintcolor));
         money.setHintTextColor(Color.parseColor(text_hintcolor));
-        app_date = findViewById(R.id.tv_date);
         app_date.setTextColor(Color.parseColor(text_hintcolor));
         app_date.setHintTextColor(Color.parseColor(text_hintcolor));
-        select = findViewById(R.id.select);
         select.setTextColor(Color.parseColor(text_hintcolor));
         select.setHintTextColor(Color.parseColor(text_hintcolor));
-        method = findViewById(R.id.method);
         method.setTextColor(Color.parseColor(text_hintcolor));
         method.setHintTextColor(Color.parseColor(text_hintcolor));
 
         //设置分割线颜色
-        divider1 = findViewById(R.id.divider1);
-        divider2 = findViewById(R.id.divider2);
-        divider3 = findViewById(R.id.divider3);
-        divider4 = findViewById(R.id.divider4);
-        divider5 = findViewById(R.id.divider5);
-        divider6 = findViewById(R.id.divider6);
+
         divider1.setBackgroundColor(Color.parseColor(text_hintcolor));
         divider2.setBackgroundColor(Color.parseColor(text_hintcolor));
         divider3.setBackgroundColor(Color.parseColor(text_hintcolor));
@@ -417,6 +431,12 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
                 break;
             case R.id.method:
                 showMethodPickerView();
+                break;
+            case R.id.pruchase_url:
+
+                Uri uri = Uri.parse(url);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
                 break;
             default:
                 break;

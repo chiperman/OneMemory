@@ -92,6 +92,7 @@
             </TextView>
 
             <View
+                    android:id="@+id/divider1"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_columnSpan="2"
@@ -133,6 +134,7 @@
             </EditText>
 
             <View
+                    android:id="@+id/divider2"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_columnSpan="2"
@@ -174,6 +176,7 @@
             </EditText>
 
             <View
+                    android:id="@+id/divider3"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_columnSpan="2"
@@ -213,6 +216,8 @@
 
 
             <View
+                    android:id="@+id/divider4"
+
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_columnSpan="2"
@@ -253,6 +258,8 @@
             </TextView>
 
             <View
+                    android:id="@+id/divider5"
+
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_columnSpan="2"
@@ -293,6 +300,7 @@
             </TextView>
 
             <View
+                    android:id="@+id/divider6"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_columnSpan="2"
@@ -302,6 +310,33 @@
                     android:background="@color/divider">
 
             </View>
+
+            <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/pay_mehtod"
+                    android:textColor="@color/mainTextColor"
+                    android:textSize="18sp"
+                    android:visibility="invisible">
+
+            </TextView>
+
+            <TextView
+                    android:id="@+id/pruchase_url"
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="right"
+                    android:text="前往订阅页面"
+                    android:textSize="15sp">
+
+            </TextView>
 
         </GridLayout>
 

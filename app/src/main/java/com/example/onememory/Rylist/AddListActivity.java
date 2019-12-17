@@ -27,7 +27,6 @@ public class AddListActivity extends Activity implements View.OnClickListener {
     private ImageView iv_search;
     private TextView cancel;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +97,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         ArrayList<String> background_color = new ArrayList<>();
         ArrayList<String> text_color = new ArrayList<>();
         ArrayList<String> text_hintcolor = new ArrayList<>();
-        ArrayList<Integer> price = new ArrayList<>();
+        ArrayList<String> url = new ArrayList<>();
 
 
         name.add("App Store");
@@ -107,6 +106,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#1F74F9");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
 
         name.add("哔哩哔哩");
@@ -115,7 +115,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#00a1d6");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
-
+        url.add("https://www.bilibili.com/");
 
         name.add("QQ音乐");
         picName.add(R.drawable.qq_music);
@@ -123,6 +123,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#CCffdc00");
         text_color.add("#000000");
         text_hintcolor.add("#000000");
+        url.add("https://y.qq.com/portal/vipportal/index.html");
 
         name.add("iCloud");
         picName.add(R.drawable.icloud);
@@ -130,6 +131,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#3c78e7");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("https://support.apple.com/zh-cn/HT201318");
 
         name.add("网易云音乐");
         picName.add(R.drawable.netease_cloud_music);
@@ -137,6 +139,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#dd001b");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("https://music.163.com/#/member");
 
         name.add("Netflix");
         picName.add(R.drawable.netflix);
@@ -144,6 +147,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#e50914");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("https://www.netflix.com/");
 
         name.add("Nintendo Switch");
         picName.add(R.drawable.nintendo_switch);
@@ -151,6 +155,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#d81e06");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("坚果云");
         picName.add(R.drawable.nut);
@@ -158,13 +163,16 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#f4ca76");
         text_color.add("#000000");
         text_hintcolor.add("#000000");
+        url.add("https://www.jianguoyun.com/s/pricing");
 
-        name.add("Office");
+        name.add("Office 365");
         picName.add(R.drawable.office365);
         white.add(R.drawable.office365_w);
         background_color.add("#d83b01");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("https://products.office.com/zh-cn/compare-all-microsoft-office-products?&activetab=tab:primaryr1");
+
 
         name.add("Pocket");
         picName.add(R.drawable.pocket);
@@ -172,6 +180,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#ef4056");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("https://getpocket.com/premium?ep=1");
 
         name.add("PS4");
         picName.add(R.drawable.ps4);
@@ -179,6 +188,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#0070d1");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("https://store.playstation.com/zh-hans-hk/grid/STORE-MSF86012-PSPLUSCONTENTS/1?smcid=hk-chs_ps%3Acom_psplus-about");
 
         name.add("500px");
         picName.add(R.drawable.px);
@@ -186,6 +196,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#222222");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("https://web.500px.com/upgrade");
 
         name.add("Slack");
         picName.add(R.drawable.slack);
@@ -193,6 +204,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#008de1");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("https://slack.com/pricing");
 
         name.add("Spotify");
         picName.add(R.drawable.spotify);
@@ -200,6 +212,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#1db954");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("https://www.spotify.com/hk-en/premium/?checkout=false");
 
         name.add("滴滴出行");
         picName.add(R.drawable.didi);
@@ -207,6 +220,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#ff7d41");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("VSCO");
         picName.add(R.drawable.vsco);
@@ -214,6 +228,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#333333");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("WPS");
         picName.add(R.drawable.wps);
@@ -221,6 +236,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#db2900");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("https://www.docer.com/");
 
         name.add("Xbox");
         picName.add(R.drawable.xbox_360);
@@ -228,6 +244,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#107c10");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("https://www.xbox.com/zh-CN/live/");
 
         name.add("Youtube");
         picName.add(R.drawable.youtube);
@@ -235,6 +252,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#CCff0000");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("爱奇艺");
         picName.add(R.drawable.qiy);
@@ -242,6 +260,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#BF00be06");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("百度云");
         picName.add(R.drawable.baidupan);
@@ -249,6 +268,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#06a7ff");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("饿了么");
         picName.add(R.drawable.elm);
@@ -256,6 +276,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#008de1");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("考拉");
         picName.add(R.drawable.kaola);
@@ -263,6 +284,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#CCff224a");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("腾讯QQ");
         picName.add(R.drawable.qq);
@@ -270,6 +292,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#CC12B7F5");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("淘宝");
         picName.add(R.drawable.taobao);
@@ -277,6 +300,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#ff3f00");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("腾讯视频");
         picName.add(R.drawable.tengxunvideo);
@@ -284,6 +308,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#ff9103");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("印象笔记");
         picName.add(R.drawable.yinxiang);
@@ -291,6 +316,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#35bd64");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("亚马逊");
         picName.add(R.drawable.amazon);
@@ -298,6 +324,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#146cb1");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("Apple Music");
         picName.add(R.drawable.applemusic);
@@ -305,6 +332,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#EF6182");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("美团");
         picName.add(R.drawable.meituan);
@@ -312,6 +340,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#CCFECE00");
         text_color.add("#000000");
         text_hintcolor.add("#000000");
+        url.add("");
 
         name.add("当当网");
         picName.add(R.drawable.dangdang);
@@ -319,6 +348,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#E83227");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("滴答清单");
         picName.add(R.drawable.didaqingdan);
@@ -326,6 +356,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#617FDE");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("京东");
         picName.add(R.drawable.jd);
@@ -333,6 +364,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#FD3C13");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("Keep");
         picName.add(R.drawable.keep);
@@ -340,6 +372,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#584F60");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("芒果TV");
         picName.add(R.drawable.mangguotv);
@@ -347,6 +380,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#FA6503");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("得到");
         picName.add(R.drawable.dedao);
@@ -354,6 +388,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#FF6B00");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("墨刀");
         picName.add(R.drawable.modao);
@@ -361,6 +396,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#FF473E");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("Moo 音乐");
         picName.add(R.drawable.moo);
@@ -368,6 +404,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#CCFFE131");
         text_color.add("#000000");
         text_hintcolor.add("#000000");
+        url.add("");
 
         name.add("幕布");
         picName.add(R.drawable.mubu);
@@ -375,6 +412,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#393A3F");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("Notion");
         picName.add(R.drawable.notion);
@@ -382,6 +420,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#000000");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("拼多多");
         picName.add(R.drawable.pdd);
@@ -389,6 +428,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#CCF40009");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("少数派");
         picName.add(R.drawable.shaoshupai);
@@ -396,6 +436,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#D51719");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("石墨");
         picName.add(R.drawable.shimo);
@@ -403,6 +444,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#383D41");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("小睡眠");
         picName.add(R.drawable.xiaoshuimian);
@@ -410,6 +452,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#0f709E");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("白描");
         picName.add(R.drawable.baimiao);
@@ -417,6 +460,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#448c57");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("淘票票");
         picName.add(R.drawable.taopiaopiao);
@@ -424,6 +468,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#BFFF0000");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("网易考拉");
         picName.add(R.drawable.wangyikaola);
@@ -431,6 +476,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#BFFF0509");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("微博");
         picName.add(R.drawable.sinaweibo);
@@ -438,6 +484,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#BFF0131C");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("微信读书");
         picName.add(R.drawable.weixinread);
@@ -445,6 +492,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#30A5FF");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("Xmind");
         picName.add(R.drawable.xmind);
@@ -452,6 +500,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#FE6404");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("每日瑜伽");
         picName.add(R.drawable.yujia);
@@ -459,6 +508,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#8CA5FF");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         name.add("知乎");
         picName.add(R.drawable.zhihu);
@@ -466,11 +516,12 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#0e88EB");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
+        url.add("");
 
         for (int i = 0; i < name.size(); i++) {
             //字符串的匹配
             if (SelectName == "" || name.get(i).trim().toLowerCase().contains(SelectName.toString().trim().toLowerCase()))
-                fruitList.add(new Fruit(name.get(i), picName.get(i), white.get(i), background_color.get(i), text_color.get(i), text_hintcolor.get(i)));
+                fruitList.add(new Fruit(name.get(i), picName.get(i), white.get(i), background_color.get(i), text_color.get(i), text_hintcolor.get(i), url.get(i)));
         }
     }
 

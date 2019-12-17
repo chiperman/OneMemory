@@ -64,6 +64,7 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
                 intent.putExtra("bg_Color", fruit.getBackground_color());
                 intent.putExtra("text_Color", fruit.getText_color());
                 intent.putExtra("text_hintcolor", fruit.getText_hintcolor());
+                intent.putExtra("url", fruit.getUrl());
                 v.getContext().startActivity(intent);
             }
         });
