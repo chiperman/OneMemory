@@ -7,13 +7,17 @@ public class Fruit {
     private int white_imageId;
     private String background_color;
     private String text_color;
+    private String text_hintcolor;
+    private String url;
 
-    public Fruit(String name, int imageId, int white_imageId, String background_color, String text_color) {
+    public Fruit(String name, int imageId, int white_imageId, String background_color, String text_color, String text_hintcolor, String url) {
         this.name = name;
         this.imageId = imageId;
         this.white_imageId = white_imageId;
         this.background_color = background_color;
         this.text_color = text_color;
+        this.text_hintcolor = text_hintcolor;
+        this.url = url;
     }
 
     public String getName() {
@@ -46,5 +50,21 @@ public class Fruit {
 
     public void setText_color(String text_color) {
         this.text_color = text_color;
+    }
+
+    public String getText_hintcolor() {
+        return text_hintcolor;
+    }
+
+    public void setText_hintcolor(String text_hintcolor) {
+        this.text_hintcolor = text_hintcolor;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
