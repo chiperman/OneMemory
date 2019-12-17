@@ -2,7 +2,6 @@ package com.example.onememory.Rylist;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,7 +11,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -99,7 +97,6 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         ArrayList<Integer> white = new ArrayList<>();
         ArrayList<String> background_color = new ArrayList<>();
         ArrayList<String> text_color = new ArrayList<>();
-
 
 
         name.add("App Store");
@@ -464,7 +461,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         //取消组件
         TextView cancel = findViewById(R.id.cancel);
 
-
+        //将输入框内容清空
+        editText.setText("");
         editText.setVisibility(View.INVISIBLE);
         imageView2.setVisibility(View.INVISIBLE);
         cancel.setVisibility(View.INVISIBLE);
