@@ -44,7 +44,7 @@ public class Settings extends Activity implements View.OnClickListener {
     //意见反馈
     public void feedback(View view) {
         Intent data = new Intent(Intent.ACTION_SENDTO);
-        data.setData(Uri.parse("mailto:chipermanju@gmail.com"));
+        data.setData(Uri.parse("mailto:onememory.549app@gmail.com"));
         data.putExtra(Intent.EXTRA_SUBJECT, "[OneMemory - 意见反馈]");
         data.putExtra(Intent.EXTRA_TEXT, feedback_email);
         startActivity(data);

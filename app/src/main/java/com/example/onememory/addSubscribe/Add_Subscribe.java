@@ -53,7 +53,6 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
     private TextView sub_pay;
     private TextView sub_name;
     private TextView add_describe;
-    private TextView money;
     private TextView app_date;
     private TextView select;
     private TextView method;
@@ -123,7 +122,6 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         sub_time = findViewById(R.id.sub_time);
         sub_price = findViewById(R.id.price);
         app_date = findViewById(R.id.tv_date);
-        money = findViewById(R.id.app_money);
         select = findViewById(R.id.select);
         method = findViewById(R.id.method);
         divider1 = findViewById(R.id.divider1);
@@ -156,6 +154,8 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         app_icon.setImageResource(AppIcon);
         sub_name.setText(AppName);
         cv_AppCard.setBackgroundColor(Color.parseColor(bg_color));
+
+        //设置项目字体颜色
         sub_name.setTextColor(Color.parseColor(text_color));
         sub_describe.setTextColor(Color.parseColor(text_color));
         sub_price.setTextColor(Color.parseColor(text_color));
@@ -170,12 +170,11 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         }
 
         //设置选项提示字体颜色
-
         purchase_url.setTextColor(Color.parseColor(text_hintcolor));
         add_describe.setTextColor(Color.parseColor(text_hintcolor));
         add_describe.setHintTextColor(Color.parseColor(text_hintcolor));
-        money.setTextColor(Color.parseColor(text_hintcolor));
-        money.setHintTextColor(Color.parseColor(text_hintcolor));
+        app_money.setTextColor(Color.parseColor(text_hintcolor));
+        app_money.setHintTextColor(Color.parseColor(text_hintcolor));
         app_date.setTextColor(Color.parseColor(text_hintcolor));
         app_date.setHintTextColor(Color.parseColor(text_hintcolor));
         select.setTextColor(Color.parseColor(text_hintcolor));
@@ -270,7 +269,7 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
     // 添加选项
     private List<String> getData() {
         List<String> list = new ArrayList<>();
-        list.add("按周订阅");
+//        list.add("按周订阅");
         list.add("按月订阅");
         list.add("按季订阅");
         list.add("按年订阅");
@@ -424,7 +423,6 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
                 showMethodPickerView();
                 break;
             case R.id.pruchase_url:
-
                 Uri uri = Uri.parse(url);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
