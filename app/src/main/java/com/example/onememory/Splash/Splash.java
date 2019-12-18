@@ -27,7 +27,6 @@ public class Splash extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
-
         // 匿名Handler创建一个延时的调用
         new Handler().postDelayed(new Runnable() {
             public void run() {
