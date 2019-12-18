@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -60,19 +59,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
             }
         });
 
-        // 1.顶部沉浸式状态栏
-        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        // 2.沉浸式下方的三大金刚
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        setPlaceUp();
 
-        // 3.顶部状态栏透明
-        // 注意！！！1 和 3 不能同时使用
-        getWindow().setStatusBarColor(Color.TRANSPARENT);
-
-        // 4.设置状态栏文字为暗色
-        getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
-                        View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         //页面的初始数据
         initFruits("");
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
@@ -87,6 +75,15 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         iv_search.setOnClickListener(this);
         cancel = findViewById(R.id.cancel);
         cancel.setOnClickListener(this);
+    }
+
+    //设置状态栏和导航栏
+    public void setPlaceUp() {
+        // 3.顶部状态栏透明
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
+
+        // 4.设置状态栏文字为暗色
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
     }
 
     //菜单数量的设置 SelectName为搜索参数

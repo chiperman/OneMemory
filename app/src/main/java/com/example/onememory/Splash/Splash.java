@@ -3,6 +3,7 @@ package com.example.onememory.Splash;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,12 +18,11 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-//        // 全屏并且隐藏状态栏
+
+        // 全屏并且隐藏状态栏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-//        // 隐藏标题栏 Activity
-//        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        // 隐藏标题栏 AppCompatActivity
+        // 隐藏标题栏 AppCompatActivity
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
