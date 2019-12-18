@@ -3,6 +3,7 @@ package com.example.onememory.mainActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,11 @@ public class SubscribeAdapter extends RecyclerView.Adapter<SubscribeAdapter.Subs
                 holder.appItem.getContext().startActivity(intent);
             }
         });
+        Log.e(TAG, "positon:" + position);
+        Log.e(TAG, "apps.size():" + apps.size());
+        if (apps.get(position).getState() != null && apps.get(position).getState().equals("1")) {
+            holder.appItem.getState().setVisibility(View.VISIBLE);
+        }
         if (position < apps.size()) {
             holder.appItem.setApp_name(apps.get(position).getName());
             holder.appItem.setCost(apps.get(position).getMoney());

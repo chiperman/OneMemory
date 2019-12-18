@@ -23,6 +23,7 @@ public class AppItem extends LinearLayout {
     private ImageView iv_app_icon;
     private TextView tv_app_name;
     private TextView tv_cost;
+    private TextView state;
     private int iconResID;
     private float cost;
     private String app_name;
@@ -125,6 +126,7 @@ public class AppItem extends LinearLayout {
         tv_app_name = mView.findViewById(R.id.tv_app_name);
         tv_cost = mView.findViewById(R.id.tv_cost);
         iv_app_icon = mView.findViewById(R.id.riv_app_icon);
+        state = mView.findViewById(R.id.state);
 
         TypedArray ta = mContext.obtainStyledAttributes(attrs, R.styleable.AppItem);
 
@@ -135,5 +137,9 @@ public class AppItem extends LinearLayout {
         setBg_tint(ta.getResourceId(R.styleable.AppItem_bg_tint, Color.parseColor("#ffffff")));
     }
 
+
+    public TextView getState() {
+        return state;
+    }
 
 }

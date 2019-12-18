@@ -14,6 +14,7 @@ public class App implements Serializable {
     private String subPeriod;
     private String payMethod;
     private int expired;
+    private String state;
 
 
     public int getId() {
@@ -104,4 +105,11 @@ public class App implements Serializable {
         this.name = name;
     }
 
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
 }

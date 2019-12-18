@@ -38,7 +38,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
     private static SQLiteDatabase database;
     private TextView tv_itemNum, tv_totalCost, tv_monthCost;
     private static final String TAG = "MainActivity";
-
+    private TextView state;
     private RecyclerView recyclerView;
     private ImageView iv_setting;
     private ImageView iv_add;
@@ -59,7 +59,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
     protected void onCreate(Bundle savedInstanceState) {
         Log.e(TAG, "onCreate");
         super.onCreate(savedInstanceState);
-//        smoothSwitchScreen(); 解决页面下移
+
         setContentView(R.layout.activity_main);
         tv_itemNum = findViewById(R.id.itemNumber);
         tv_monthCost = findViewById(R.id.monthCost);
@@ -79,6 +79,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
 
         initAppList();
         tv_itemNum.setText(itemNum + "\n个项目");
+        tv_monthCost.setText(String.format("%.1f", monthCost) + "\n每月花费（元）");
         tv_totalCost.setText(totalCost + "\n总花费（元）");
 
     }
@@ -101,19 +102,6 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
         startActivity(intent);
     }
 
-    // 解决页面下移
-//    private void smoothSwitchScreen() {
-//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-//            ViewGroup rootView = ((ViewGroup) this.findViewById(android.R.id.content));
-//            int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-//            int statusBarHeight = getResources().getDimensionPixelSize(resourceId);
-//            rootView.setPadding(0, statusBarHeight, 0, 0);
-//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
-//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-//        }
-//
-//    }
-
     private void initAppList() {
         SubscribeAdapter adapter = new SubscribeAdapter(this, apps);
         recyclerView = findViewById(R.id.rv_sub_app);
@@ -121,6 +109,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
         linearLayoutManager.setSmoothScrollbarEnabled(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
+        Log.e(TAG, "onCreate()");
 
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setHasFixedSize(true);
@@ -131,19 +120,21 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
     private void initAppInfo() {
         Intent intent = getIntent();
         int AppIcon;
-        String AppName, bg_color, text_color, add_describe, tv_date, show_select, method_select;
+        String AppName, bg_color, text_color, add_describe, tv_date, show_select, method_select, money;
         float app_money;
+        Integer i = 0;
         AppIcon = intent.getIntExtra("AppIcon", 0);
         AppName = intent.getStringExtra("AppName");
         bg_color = intent.getStringExtra("bg_color");
         text_color = intent.getStringExtra("text_color");
         add_describe = intent.getStringExtra("add_describe");
+        money = intent.getStringExtra("app_money") != null ? intent.getStringExtra("app_money") : "0";
         tv_date = intent.getStringExtra("tv_date");
         show_select = intent.getStringExtra("show_select");
         method_select = intent.getStringExtra("method_select");
 
-        String money = intent.getStringExtra("app_money") != null ? intent.getStringExtra("app_money") : "0";
         app_money = Float.parseFloat(money);
+
         if (AppName != null) {
             App app = new App();
             app.setId(intent.getIntExtra("id", -1));
@@ -157,7 +148,24 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
             app.setSubPeriod(show_select);
             app.setPayMethod(method_select);
             totalCost += app_money;
+            switch (app.getSubPeriod()) {
+//                case "按周订阅":
+                case "按月订阅":
+                    monthCost += app.getMoney();
+                    break;
+                case "按季订阅":
+                    monthCost += app.getMoney() / 3;
+                    break;
+                case "按年订阅":
+                    monthCost += app.getMoney() / 12;
+                    break;
+                case "一次性买断":
+                    break;
+                case "":
+                    break;
+            }
             ++itemNum;
+            setAppStateAndNotify(app, i);
             apps.add(app);
         }
 
@@ -167,10 +175,11 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
         }
         String[] columns = new String[]{"id", "name", "iconId", "description", "money", "sub_time", "sub_period", "pay_method", "bg_color", "text_color"};
         Cursor cursor = database.query("apps", columns, null, null, null, null, null);
-        int i = 0;
+
+        App app;
         while (cursor.moveToNext()) {
             Log.e(TAG, "从数据库读取");
-            App app = new App();
+            app = new App();
             app.setName(cursor.getString(cursor.getColumnIndex("name")));
             app.setIconId(cursor.getInt(cursor.getColumnIndex("iconId")));
             app.setMoney(cursor.getFloat(cursor.getColumnIndex("money")));
@@ -181,7 +190,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
             app.setSubPeriod(cursor.getString(cursor.getColumnIndex("sub_period")));
             app.setPayMethod(cursor.getString(cursor.getColumnIndex("pay_method")));
             switch (app.getSubPeriod()) {
-                case "按周订阅":
+//                case "按周订阅":
                 case "按月订阅":
                     monthCost += app.getMoney();
                     break;
@@ -198,72 +207,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
             }
             totalCost += app.getMoney();
             ++itemNum;
+            setAppStateAndNotify(app, i);
+
             apps.add(app);
-            //获取系统的日期
-            Calendar calendar = Calendar.getInstance();
-
-            //年
-            int year = calendar.get(Calendar.YEAR);
-            //月
-            int month = calendar.get(Calendar.MONTH) + 1;
-            //日
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-
-            String[] time0 = app.getSubTime().split("-");
-            Log.e("长度", String.valueOf(time0.length));
-            Integer[] time = new Integer[time0.length];
-            //字符型数组转换为整形数组
-            for (int j = 0; j < time0.length; j++) {
-                if (time0[j] != "")
-                    time[j] = Integer.parseInt(time0[j]);
-                else time[j] = 0;
-            }
-            switch (app.getSubPeriod()) {
-                case "按周订阅":
-                    time[2] = time[2] + 7;
-                    //判断该时间是否为下一个月，暂时按照一个月30天算
-                    if (time[2] > 30) {
-                        time[1]++;
-                        if (time[1] == 13) {
-                            time[1] = 1;
-                            time[0]++;
-                        }
-                    }
-                    break;
-                case "按月订阅":
-                    time[1]++;
-                    //判断该月是否为最后一个月
-                    if (time[1] == 13) {
-                        time[1] = 1;
-                        time[0]++;
-                    }
-                    break;
-                case "按季订阅":
-                    time[1] = time[1] + 3;
-                    //判断该月是否为最后一个月
-                    if (time[1] > 12) {
-                        time[1] = time[1] % 12;
-                        time[0]++;
-                    }
-                    break;
-                case "按年订阅":
-                    time[0]++;
-                    break;
-                case "一次性买断":
-                    time[0] = time[0] + 100;
-                    break;
-                case "":
-                    break;
-            }
-            //Log.e("时间2", String.valueOf(time[0]));
-            if (year == time[0] && month == time[1] && time[0] != 0 && day < time[2]) {
-                Log.e("时间2", String.valueOf(time[0]));
-                Log.e("时间3", String.valueOf(time[1]));
-                Log.e("时间4", String.valueOf(time[2]));
-                //发出通知
-                notification(app.getName(), app.getIconId(), i++, time[2] - day);
-            }
         }
 
 
@@ -273,6 +219,77 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
         tv_monthCost.setText(String.format("%.1f", monthCost) + "\n每月花费（元）");
         tv_totalCost.setText(totalCost + "\n总花费（元）");
 
+    }
+
+    private void setAppStateAndNotify(App app, Integer i) {
+        //获取系统的日期
+        Calendar calendar = Calendar.getInstance();
+
+        //年
+        int year = calendar.get(Calendar.YEAR);
+        //月
+        int month = calendar.get(Calendar.MONTH) + 1;
+        //日
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+
+        String[] time0 = app.getSubTime().split("-");
+        Log.e("长度", String.valueOf(time0.length));
+        Integer[] time = new Integer[time0.length];
+        //字符型数组转换为整形数组
+        for (int j = 0; j < time0.length; j++) {
+            if (time0[j] != "")
+                time[j] = Integer.parseInt(time0[j]);
+            else time[j] = 0;
+        }
+        switch (app.getSubPeriod()) {
+//                case "按周订阅":
+//                    time[2] = time[2] + 7;
+//                    //判断该时间是否为下一个月，暂时按照一个月30天算
+//                    if (time[2] > 30) {
+//                        time[1]++;
+//                        if (time[1] == 13) {
+//                            time[1] = 1;
+//                            time[0]++;
+//                        }
+//                    }
+//                    break;
+            case "按月订阅":
+                time[1]++;
+                //判断该月是否为最后一个月
+                if (time[1] == 13) {
+                    time[1] = 1;
+                    time[0]++;
+                }
+                break;
+            case "按季订阅":
+                time[1] = time[1] + 3;
+                //判断该月是否为最后一个月
+                if (time[1] > 12) {
+                    time[1] = time[1] % 12;
+                    time[0]++;
+                }
+                break;
+            case "按年订阅":
+                time[0]++;
+                break;
+            case "一次性买断":
+                time[0] = time[0] + 100;
+                break;
+            case "":
+                break;
+        }
+        //Log.e("时间2", String.valueOf(time[0]));
+        if (year == time[0] && month == time[1] && time[0] != 0 && day < time[2]) {
+            Log.e("时间2", String.valueOf(time[0]));
+            Log.e("时间3", String.valueOf(time[1]));
+            Log.e("时间4", String.valueOf(time[2]));
+            //发出通知
+            notification(app.getName(), app.getIconId(), i++, time[2] - day);
+        }
+        if (year > time[0] || month > time[1] || time[0] != 0 && day > time[2]) {
+            app.setState("1");
+        }
     }
 
     //通知函数
@@ -331,7 +348,6 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
 
     @Override
     public void onClick(View v) {
-        // 填写
         Intent intent;
         switch (v.getId()) {
             case R.id.iv_setting:
