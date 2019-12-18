@@ -9,7 +9,6 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -26,23 +25,20 @@ public class Settings extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        // 1.顶部沉浸式状态栏
-        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        // 2.沉浸式下方的三大金刚
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-
-        // 3.顶部状态栏透明
-        // 注意！！！1 和 3 不能同时使用
-        getWindow().setStatusBarColor(Color.TRANSPARENT);
-
-        // 4.设置状态栏文字为暗色
-        getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
-                        View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        setPlaceUp();
 
         iv_back = findViewById(R.id.st_back);
         iv_back.setOnClickListener(this);
         feedback_email = getString(R.string.feedback);
+    }
+
+    //设置状态栏和导航栏
+    public void setPlaceUp() {
+        // 3.顶部状态栏透明
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
+
+        // 4.设置状态栏文字为暗色
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
     }
 
     //意见反馈

@@ -14,8 +14,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -76,27 +74,22 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
         iv_add = findViewById(R.id.iv_add);
         iv_add.setOnClickListener(this);
 
-
-        // 1.顶部沉浸式状态栏
-        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        // 2.沉浸式下方的三大金刚
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-
-        // 3.顶部状态栏透明
-        // 注意！！！1 和 3 不能同时使用
-        getWindow().setStatusBarColor(Color.TRANSPARENT);
-
-        // 4.设置状态栏文字为暗色
-        getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
-                        View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-
+        setPlaceUp();
         initAppInfo();
 
         initAppList();
         tv_itemNum.setText(itemNum + "\n个项目");
         tv_totalCost.setText(totalCost + "\n总花费（元）");
 
+    }
+
+    //设置状态栏和导航栏
+    public void setPlaceUp() {
+        // 3.顶部状态栏透明
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
+
+        // 4.设置状态栏文字为暗色
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
     }
 
     // 在主页面按下 Back 按钮后，重新打开 App 直接打开 Mainactivity，不经过 Splash 页面
