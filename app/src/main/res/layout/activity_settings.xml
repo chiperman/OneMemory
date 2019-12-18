@@ -37,7 +37,6 @@
             android:id="@+id/feedback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
             android:onClick="feedback"
             app:icon_reference="@drawable/feedback"
             app:title_text="@string/contact_us" />
@@ -45,7 +44,6 @@
     <com.example.onememory.settings.userUI
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
             android:onClick="encouragement"
             app:icon_reference="@drawable/star"
             app:title_text="@string/rate_us" />
@@ -54,7 +52,6 @@
             android:id="@+id/recommend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
             android:onClick="Recommend"
             app:icon_reference="@drawable/share"
             app:title_text="@string/share_us" />
@@ -63,7 +60,6 @@
             android:id="@+id/aboutAuthor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
             android:onClick="AboutAuthor"
             app:icon_reference="@drawable/about_us"
 
@@ -72,7 +68,6 @@
     <com.example.onememory.settings.userUI
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
             android:onClick="Agreement"
             app:icon_reference="@drawable/privacy"
             app:title_text="@string/privacy" />
@@ -80,7 +75,6 @@
     <com.example.onememory.settings.userUI
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
             android:onClick="update"
             app:icon_reference="@drawable/refresh"
             app:title_text="@string/check_update" />
