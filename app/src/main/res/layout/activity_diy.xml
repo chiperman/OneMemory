@@ -28,25 +28,10 @@
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/My_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginBottom="50dp"
+                android:layout_height="240dp"
                 android:fitsSystemWindows="true"
-                app:layout_constraintBottom_toTopOf="@id/diy_icon"
                 app:layout_constraintTop_toTopOf="parent"
-
-                />
-
-        <ImageView
-                android:id="@+id/diy_icon"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginBottom="10dp"
-                app:layout_constraintBottom_toTopOf="@id/diy_name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/My_recycler">
-
-        </ImageView>
+                tools:layout_editor_absoluteX="0dp" />
 
         <EditText
                 android:id="@+id/diy_name"
@@ -55,11 +40,24 @@
                 android:layout_marginBottom="30dp"
                 android:gravity="center"
                 android:hint="@string/diy_name"
-                app:layout_constraintBottom_toTopOf="@id/confirm"
+                app:layout_constraintBottom_toTopOf="@id/diy_icon"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/My_recycler"
                 app:layout_constraintStart_toStartOf="parent">
 
         </EditText>
+
+        <ImageView
+                android:id="@+id/diy_icon"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toTopOf="@id/confirm"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/diy_name">
+
+        </ImageView>
 
         <Button
                 android:id="@+id/confirm"
@@ -68,6 +66,8 @@
                 android:layout_marginBottom="30dp"
                 android:text="确定"
                 app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_below="@id/diy_icon"
+                android:layout_alignParentBottom="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
 

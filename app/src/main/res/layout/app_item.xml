@@ -15,8 +15,8 @@
 
         <ImageView
                 android:id="@+id/riv_app_icon"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -26,8 +26,9 @@
                 android:id="@+id/tv_app_name"
                 android:layout_width="75dp"
                 android:layout_height="match_parent"
-                android:gravity="center"
+                android:gravity="left|center"
                 android:textColor="@color/mainTextColor"
+                android:layout_marginStart="10dp"
                 app:layout_constraintStart_toEndOf="@id/riv_app_icon" />
 
         <LinearLayout

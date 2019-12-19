@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,6 +30,7 @@ public class DiyActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         setContentView(R.layout.activity_diy);
 
         diy_icon = findViewById(R.id.diy_icon);
@@ -90,7 +92,7 @@ public class DiyActivity extends Activity implements View.OnClickListener {
         ItemList.add(item12);
         DiyItem item13 = new DiyItem(R.drawable.computer);
         ItemList.add(item13);
-        DiyItem item14 = new DiyItem(R.drawable.door);
+        DiyItem item14 = new DiyItem(R.drawable.wallet);
         ItemList.add(item14);
         DiyItem item15 = new DiyItem(R.drawable.earth);
         ItemList.add(item15);
