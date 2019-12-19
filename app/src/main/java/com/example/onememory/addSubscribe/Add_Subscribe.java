@@ -254,30 +254,6 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         MainActivity.getDatabase().insert("apps", null, appsInfo);
     }
 
-//    *****************中间弹框式*****************
-//    public void selectSubMethod() {
-//        show_select.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                final String[] method = new String[]{"按月订阅", "按季订阅", "按年订阅", "一次性买断"};
-//                AlertDialog.Builder builder = new AlertDialog.Builder(Add_Subscribe.this);
-//
-//                builder.setTitle("选择你的订阅方式");
-//                builder.setItems(method, new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int i) {
-//                        Toast.makeText(getApplicationContext(), "你选择了" + method[i], Toast.LENGTH_SHORT).show();
-//                        show_select.setText(method[i]);
-//                    }
-//                });
-//                AlertDialog alert = builder.create();
-//                alert.show();
-//            }
-//        });
-//    }
-//    *****************中间弹框式截止*****************
-
-
     //    *****************底部式*****************
     private void showSelectPickerView() {
         // 要展示的数据
@@ -312,30 +288,6 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         return list;
     }
     //    *****************底部式弹窗截止*****************
-
-
-//    *****************中间弹框式*****************
-//    public void methodSubMethod() {
-//        method_select.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                final String[] method = new String[]{"支付宝", "微信", "信用卡", "他人赠送"};
-//                AlertDialog.Builder builder = new AlertDialog.Builder(Add_Subscribe.this);
-//
-//                builder.setTitle("请选择你的支付方式");
-//                builder.setItems(method, new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int i) {
-//                        Toast.makeText(getApplicationContext(), "你选择了" + method[i], Toast.LENGTH_SHORT).show();
-//                        method_select.setText(method[i]);
-//                    }
-//                });
-//                AlertDialog alert = builder.create();
-//                alert.show();
-//            }
-//        });
-//    }
-//    *****************中间弹框式截止*****************
 
     //    *****************底部式*****************
     public void showMethodPickerView() {
