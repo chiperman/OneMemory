@@ -47,7 +47,7 @@ public class SubscribeAdapter extends RecyclerView.Adapter<SubscribeAdapter.Subs
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(holder.appItem.getContext(), ViewCard.class);
-                intent.putExtra("app", apps.get(holder.getAdapterPosition()));
+                intent.putExtra("app", holder.getAdapterPosition());
                 intent.putExtra("apps", apps);
                 holder.appItem.getContext().startActivity(intent);
             }

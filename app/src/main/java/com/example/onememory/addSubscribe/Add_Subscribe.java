@@ -196,7 +196,7 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         } else {
             app_icon.setImageResource(AppIcon);
             sub_name.setText(AppName);
-            bg_color = "#ffffff";
+            bg_color = "#000000";
 
             //设置项目字体颜色
             sub_name.setTextColor(Color.parseColor(text_color));

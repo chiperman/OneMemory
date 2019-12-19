@@ -58,7 +58,7 @@
             android:layout_height="550dp"
             android:layout_gravity="center"
             android:alpha="0.8"
-            app:cardBackgroundColor="@color/white"
+            app:cardBackgroundColor="@color/mainTextColor"
             app:cardCornerRadius="10dp">
 
         <GridLayout
@@ -109,7 +109,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="18dp"
                     android:text="@string/describe_sub"
-                    android:textColor="@color/mainTextColor"
+                    android:textColor="@color/white"
                     android:textSize="18sp">
 
             </TextView>
@@ -140,7 +140,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="5dp"
-                    android:background="@color/divider">
+                    android:background="@color/white">
 
             </View>
 
@@ -151,7 +151,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="18dp"
                     android:text="@string/price"
-                    android:textColor="@color/mainTextColor"
+                    android:textColor="@color/white"
                     android:textSize="18sp">
 
             </TextView>
@@ -182,7 +182,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="5dp"
-                    android:background="@color/divider">
+                    android:background="@color/white">
 
             </View>
 
@@ -193,7 +193,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="18dp"
                     android:text="@string/sub_time"
-                    android:textColor="@color/mainTextColor"
+                    android:textColor="@color/white"
                     android:textSize="18sp">
 
             </TextView>
@@ -216,14 +216,13 @@
 
             <View
                     android:id="@+id/divider4"
-
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_columnSpan="2"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="5dp"
-                    android:background="@color/divider">
+                    android:background="@color/white">
 
             </View>
 
@@ -234,7 +233,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="18dp"
                     android:text="@string/sub_method"
-                    android:textColor="@color/mainTextColor"
+                    android:textColor="@color/white"
                     android:textSize="18sp">
 
             </TextView>
@@ -258,14 +257,13 @@
 
             <View
                     android:id="@+id/divider5"
-
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_columnSpan="2"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="5dp"
-                    android:background="@color/divider">
+                    android:background="@color/white">
 
             </View>
 
@@ -276,7 +274,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="18dp"
                     android:text="@string/pay_mehtod"
-                    android:textColor="@color/mainTextColor"
+                    android:textColor="@color/white"
                     android:textSize="18sp">
 
             </TextView>
@@ -306,17 +304,15 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="5dp"
-                    android:background="@color/divider">
+                    android:background="@color/white">
 
             </View>
 
             <TextView
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
-                    android:text="@string/pay_mehtod"
                     android:textColor="@color/mainTextColor"
                     android:textSize="18sp"
                     android:visibility="invisible">
@@ -324,6 +320,7 @@
             </TextView>
 
             <TextView
+                    android:textColor="@color/white"
                     android:id="@+id/pruchase_url"
                     android:visibility="invisible"
                     android:layout_width="wrap_content"

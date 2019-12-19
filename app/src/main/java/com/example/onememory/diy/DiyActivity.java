@@ -1,9 +1,5 @@
 package com.example.onememory.diy;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onememory.R;
 import com.example.onememory.addSubscribe.Add_Subscribe;
@@ -63,61 +62,66 @@ public class DiyActivity extends Activity implements View.OnClickListener {
     }
 
     private void intItems() {
-        DiyItem item0 = new DiyItem(R.drawable.bed);
+        DiyItem item0 = new DiyItem(R.drawable.alarm);
         ItemList.add(item0);
-        DiyItem item1 = new DiyItem(R.drawable.bed);
+        DiyItem item1 = new DiyItem(R.drawable.bankcard);
         ItemList.add(item1);
-        DiyItem item2 = new DiyItem(R.drawable.bed);
+        DiyItem item2 = new DiyItem(R.drawable.beer);
         ItemList.add(item2);
-        DiyItem item3 = new DiyItem(R.drawable.bed);
+        DiyItem item3 = new DiyItem(R.drawable.book);
         ItemList.add(item3);
-        DiyItem item4 = new DiyItem(R.drawable.bed);
+        DiyItem item4 = new DiyItem(R.drawable.bowl);
         ItemList.add(item4);
-        DiyItem item5 = new DiyItem(R.drawable.bed);
+        DiyItem item5 = new DiyItem(R.drawable.brush);
         ItemList.add(item5);
-        DiyItem item6 = new DiyItem(R.drawable.bed);
+        DiyItem item6 = new DiyItem(R.drawable.calculator);
         ItemList.add(item6);
-        DiyItem item7 = new DiyItem(R.drawable.bed);
+        DiyItem item7 = new DiyItem(R.drawable.camera);
         ItemList.add(item7);
-        DiyItem item8 = new DiyItem(R.drawable.bed);
+        DiyItem item8 = new DiyItem(R.drawable.cart);
         ItemList.add(item8);
-        DiyItem item9 = new DiyItem(R.drawable.bed);
+        DiyItem item9 = new DiyItem(R.drawable.chat);
         ItemList.add(item9);
-        DiyItem item10 = new DiyItem(R.drawable.bed);
+        DiyItem item10 = new DiyItem(R.drawable.clothes);
         ItemList.add(item10);
-        DiyItem item11 = new DiyItem(R.drawable.bed);
+        DiyItem item11 = new DiyItem(R.drawable.cloud);
         ItemList.add(item11);
-        DiyItem item12 = new DiyItem(R.drawable.bed);
+        DiyItem item12 = new DiyItem(R.drawable.mail);
         ItemList.add(item12);
-        DiyItem item13 = new DiyItem(R.drawable.bed);
+        DiyItem item13 = new DiyItem(R.drawable.computer);
         ItemList.add(item13);
-        DiyItem item14 = new DiyItem(R.drawable.bed);
+        DiyItem item14 = new DiyItem(R.drawable.door);
         ItemList.add(item14);
-        DiyItem item15 = new DiyItem(R.drawable.bed);
+        DiyItem item15 = new DiyItem(R.drawable.earth);
         ItemList.add(item15);
-        DiyItem item16 = new DiyItem(R.drawable.bed);
+        DiyItem item16 = new DiyItem(R.drawable.file);
         ItemList.add(item16);
-        DiyItem item17 = new DiyItem(R.drawable.bed);
+        DiyItem item17 = new DiyItem(R.drawable.flower);
         ItemList.add(item17);
-        DiyItem item18 = new DiyItem(R.drawable.bed);
+        DiyItem item18 = new DiyItem(R.drawable.fork);
         ItemList.add(item18);
-        DiyItem item19 = new DiyItem(R.drawable.bed);
+        DiyItem item19 = new DiyItem(R.drawable.game);
         ItemList.add(item19);
-        DiyItem item20 = new DiyItem(R.drawable.bed);
+        DiyItem item20 = new DiyItem(R.drawable.lock);
         ItemList.add(item20);
-        DiyItem item21 = new DiyItem(R.drawable.bed);
+        DiyItem item21 = new DiyItem(R.drawable.phone);
         ItemList.add(item21);
-        DiyItem item22 = new DiyItem(R.drawable.bed);
+        DiyItem item22 = new DiyItem(R.drawable.picture);
         ItemList.add(item22);
-        DiyItem item23 = new DiyItem(R.drawable.bed);
+        DiyItem item23 = new DiyItem(R.drawable.purchase);
         ItemList.add(item23);
-        DiyItem item24 = new DiyItem(R.drawable.bed);
+        DiyItem item24 = new DiyItem(R.drawable.radio);
         ItemList.add(item24);
-        DiyItem item25 = new DiyItem(R.drawable.bed);
+        DiyItem item25 = new DiyItem(R.drawable.router);
         ItemList.add(item25);
-        DiyItem item26 = new DiyItem(R.drawable.bed);
+        DiyItem item26 = new DiyItem(R.drawable.shop);
         ItemList.add(item26);
-
+        DiyItem item27 = new DiyItem(R.drawable.switcher);
+        ItemList.add(item27);
+        DiyItem item28 = new DiyItem(R.drawable.umbrella);
+        ItemList.add(item28);
+        DiyItem item29 = new DiyItem(R.drawable.vedio);
+        ItemList.add(item29);
     }
 
     @Override
@@ -130,7 +134,7 @@ public class DiyActivity extends Activity implements View.OnClickListener {
                 Intent intent = new Intent(this, Add_Subscribe.class);
                 intent.putExtra("iconID", iconID);
                 intent.putExtra("diyName", diy_name.getText().toString());
-                intent.putExtra("fontColor", "#000000");
+                intent.putExtra("fontColor", "#FFFFFF");
 
                 startActivity(intent);
         }
