@@ -187,7 +187,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
                     break;
             }
             ++itemNum;
-            setAppStateAndNotify(app, i);
+            setAppStateAndNotify(app, i++);
+
+            Log.e(TAG, app.getState() + "  1");
             apps.add(app);
             total.setVisibility(View.VISIBLE);
             illustrations.setVisibility(View.GONE);
@@ -231,7 +233,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
             }
             totalCost += app.getMoney();
             ++itemNum;
-            setAppStateAndNotify(app, i);
+            setAppStateAndNotify(app, i++);
+            Log.e(TAG, app.getState() + "  2");
             apps.add(app);
             total.setVisibility(View.VISIBLE);
             illustrations.setVisibility(View.GONE);
@@ -332,7 +335,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
             app.setState(dtime);
             //七天之内过期，在通知栏内通知
             if (dtime < 7)
-            notification(app.getName(), app.getIconId(), i++, time[2] - day);
+                notification(app.getName(), app.getIconId(), i, time[2] - day);
                 //多余七天过期，执行操作。。。。
             else {
                 //.............
