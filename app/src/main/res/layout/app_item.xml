@@ -47,8 +47,7 @@
                     android:gravity="center"
                     android:text="@string/overdue"
                     android:textColor="@color/white"
-                    android:textSize="10sp"
-                    android:visibility="gone">
+                    android:textSize="10sp">
 
             </TextView>
 
