@@ -408,7 +408,6 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
             case R.id.iv_add:
                 intent = new Intent(MainActivity.this, AddListActivity.class);
                 startActivity(intent);
-//                finish();
                 break;
             default:
                 break;

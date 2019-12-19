@@ -23,6 +23,7 @@
     <string name="goto_subscribe">前往订阅页面>></string>
     <string name="overdue">🌟已结束订阅</string>
     <string name="diy">🛠 添加自定义订阅</string>
+    <string name="diy_name">请输入订阅名称</string>
 
     <string name="splash_slogn">管理订阅 我更在行</string>
     <string name="nothing">

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -144,62 +145,96 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
 
     public void getMyIntent() {
         getIntent = getIntent();
-        AppIcon = getIntent.getIntExtra("AppIcon", 0);
-        AppName = getIntent.getStringExtra("AppName");
-        bg_color = getIntent.getStringExtra("bg_Color");
-        text_color = getIntent.getStringExtra("text_Color");
-        text_hintcolor = getIntent.getStringExtra("text_hintcolor");
-        url = getIntent.getStringExtra("url");
+        AppIcon = getIntent.getIntExtra("iconID", 0);
+        AppName = getIntent.getStringExtra("diyName");
+        text_color = getIntent.getStringExtra("fontColor");
 
-        app_icon.setImageResource(AppIcon);
-        sub_name.setText(AppName);
-        cv_AppCard.setBackgroundColor(Color.parseColor(bg_color));
 
-        //设置项目字体颜色
-        sub_name.setTextColor(Color.parseColor(text_color));
-        sub_describe.setTextColor(Color.parseColor(text_color));
-        sub_price.setTextColor(Color.parseColor(text_color));
-        sub_time.setTextColor(Color.parseColor(text_color));
-        sub_method.setTextColor(Color.parseColor(text_color));
-        sub_pay.setTextColor(Color.parseColor(text_color));
+        if (AppIcon == 0) {
+            AppIcon = getIntent.getIntExtra("AppIcon", 0);
+            AppName = getIntent.getStringExtra("AppName");
+            bg_color = getIntent.getStringExtra("bg_Color");
+            text_color = getIntent.getStringExtra("text_Color");
+            text_hintcolor = getIntent.getStringExtra("text_hintcolor");
+            url = getIntent.getStringExtra("url");
+            app_icon.setImageResource(AppIcon);
+            sub_name.setText(AppName);
+            cv_AppCard.setBackgroundColor(Color.parseColor(bg_color));
+            //设置项目字体颜色
+            sub_name.setTextColor(Color.parseColor(text_color));
+            sub_describe.setTextColor(Color.parseColor(text_color));
+            sub_price.setTextColor(Color.parseColor(text_color));
+            sub_time.setTextColor(Color.parseColor(text_color));
+            sub_method.setTextColor(Color.parseColor(text_color));
+            sub_pay.setTextColor(Color.parseColor(text_color));
+            if (!url.equals("")) {
+                purchase_url.setVisibility(View.VISIBLE);
+                Log.e("url:", url);
 
-        if (!url.equals("")) {
-            purchase_url.setVisibility(View.VISIBLE);
-            Log.e("url:", url);
+            }
 
+            //设置选项提示字体颜色
+            purchase_url.setTextColor(Color.parseColor(text_hintcolor));
+            add_describe.setTextColor(Color.parseColor(text_hintcolor));
+            add_describe.setHintTextColor(Color.parseColor(text_hintcolor));
+            app_money.setTextColor(Color.parseColor(text_hintcolor));
+            app_money.setHintTextColor(Color.parseColor(text_hintcolor));
+            app_date.setTextColor(Color.parseColor(text_hintcolor));
+            app_date.setHintTextColor(Color.parseColor(text_hintcolor));
+            select.setTextColor(Color.parseColor(text_hintcolor));
+            select.setHintTextColor(Color.parseColor(text_hintcolor));
+            method.setTextColor(Color.parseColor(text_hintcolor));
+            method.setHintTextColor(Color.parseColor(text_hintcolor));
+
+            //设置分割线颜色
+            divider1.setBackgroundColor(Color.parseColor(text_hintcolor));
+            divider2.setBackgroundColor(Color.parseColor(text_hintcolor));
+            divider3.setBackgroundColor(Color.parseColor(text_hintcolor));
+            divider4.setBackgroundColor(Color.parseColor(text_hintcolor));
+            divider5.setBackgroundColor(Color.parseColor(text_hintcolor));
+            divider6.setBackgroundColor(Color.parseColor(text_hintcolor));
+        } else {
+            app_icon.setImageResource(AppIcon);
+            sub_name.setText(AppName);
+            bg_color = "#ffffff";
+
+            //设置项目字体颜色
+            sub_name.setTextColor(Color.parseColor(text_color));
+            sub_describe.setTextColor(Color.parseColor(text_color));
+            sub_price.setTextColor(Color.parseColor(text_color));
+            sub_time.setTextColor(Color.parseColor(text_color));
+            sub_method.setTextColor(Color.parseColor(text_color));
+            sub_pay.setTextColor(Color.parseColor(text_color));
+            //设置分割线颜色
+            divider1.setBackgroundColor(Color.parseColor(text_color));
+            divider2.setBackgroundColor(Color.parseColor(text_color));
+            divider3.setBackgroundColor(Color.parseColor(text_color));
+            divider4.setBackgroundColor(Color.parseColor(text_color));
+            divider5.setBackgroundColor(Color.parseColor(text_color));
+            divider6.setBackgroundColor(Color.parseColor(text_color));
         }
-
-        //设置选项提示字体颜色
-        purchase_url.setTextColor(Color.parseColor(text_hintcolor));
-        add_describe.setTextColor(Color.parseColor(text_hintcolor));
-        add_describe.setHintTextColor(Color.parseColor(text_hintcolor));
-        app_money.setTextColor(Color.parseColor(text_hintcolor));
-        app_money.setHintTextColor(Color.parseColor(text_hintcolor));
-        app_date.setTextColor(Color.parseColor(text_hintcolor));
-        app_date.setHintTextColor(Color.parseColor(text_hintcolor));
-        select.setTextColor(Color.parseColor(text_hintcolor));
-        select.setHintTextColor(Color.parseColor(text_hintcolor));
-        method.setTextColor(Color.parseColor(text_hintcolor));
-        method.setHintTextColor(Color.parseColor(text_hintcolor));
-
-        //设置分割线颜色
-
-        divider1.setBackgroundColor(Color.parseColor(text_hintcolor));
-        divider2.setBackgroundColor(Color.parseColor(text_hintcolor));
-        divider3.setBackgroundColor(Color.parseColor(text_hintcolor));
-        divider4.setBackgroundColor(Color.parseColor(text_hintcolor));
-        divider5.setBackgroundColor(Color.parseColor(text_hintcolor));
-        divider6.setBackgroundColor(Color.parseColor(text_hintcolor));
     }
 
     public void sendMyIntent() {
         // 传递给下个页面并且保存到数据库
         intent = new Intent(this, MainActivity.class);
+        Log.e("AppIcon", AppIcon + "");
+        Log.e("AppName", AppName);
+        Log.e("bg_color", bg_color);
+        Log.e("text_color", text_color);
+        Log.e("add_describe", add_describe.getText().toString());
+        Log.e("app_money", app_money.getText().toString().equals("") ? "0" : app_money.getText().toString());
+        Log.e("tv_date", tv_date.getText().toString());
+        Log.e("show_select", show_select.getText().toString());
+        Log.e("method_select", method_select.getText().toString());
+
+
         intent.putExtra("AppIcon", AppIcon);
         intent.putExtra("AppName", AppName);
         intent.putExtra("bg_color", bg_color);
+
         intent.putExtra("text_color", text_color);
-        intent.putExtra("add_describe", sub_name.getText().toString());
+        intent.putExtra("add_describe", add_describe.getText().toString());
         intent.putExtra("app_money", app_money.getText().toString().equals("") ? "0" : app_money.getText().toString());
         intent.putExtra("tv_date", tv_date.getText().toString());
         intent.putExtra("show_select", show_select.getText().toString());
@@ -210,7 +245,7 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         appsInfo.put("iconId", AppIcon);
         appsInfo.put("bg_color", bg_color);
         appsInfo.put("text_color", text_color);
-        appsInfo.put("description", sub_name.getText().toString());
+        appsInfo.put("description", add_describe.getText().toString());
         appsInfo.put("money", app_money.getText().toString().equals("") ? "0" : app_money.getText().toString());
         appsInfo.put("sub_time", tv_date.getText().toString());
         appsInfo.put("sub_period", show_select.getText().toString());
