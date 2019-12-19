@@ -67,7 +67,8 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/radius_item"
-                    android:backgroundTint="@color/infoBackground">
+                    android:backgroundTint="@color/infoBackground"
+                    android:visibility="gone">
 
                 <TextView
                         android:id="@+id/itemNumber"
@@ -100,6 +101,30 @@
                         android:text="0\n总花费（元）"
                         android:textColor="@color/white" />
             </LinearLayout>
+
+            <FrameLayout
+                    android:id="@+id/home_picture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                <ImageView
+                        android:id="@+id/illustrations_pic"
+                        android:layout_width="match_parent"
+                        android:layout_height="542dp"
+                        android:src="@drawable/vip">
+
+                </ImageView>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="160dp"
+                        android:gravity="center"
+                        android:text="@string/nothing">
+
+                </TextView>
+            </FrameLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_sub_app"

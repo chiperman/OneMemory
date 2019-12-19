@@ -24,6 +24,10 @@
     <string name="overdue">🌟已结束订阅</string>
 
     <string name="splash_slogn">管理订阅 我更在行</string>
+    <string name="nothing">
+        Nothing Here...\n
+        点击右上角+按钮开始添加订阅
+    </string>
 
     <string name="agreement">
         \u3000\u3000本应用尊重并保护所有使用服务用户的个人隐私权。
