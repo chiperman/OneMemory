@@ -24,6 +24,7 @@
     <string name="overdue">🌟已结束订阅</string>
     <string name="diy">🛠 添加自定义订阅</string>
     <string name="diy_name">请输入订阅名称</string>
+    <string name="christmas">Merry Christmas</string>
 
     <string name="splash_slogn">管理订阅 我更在行</string>
     <string name="nothing">
@@ -82,10 +83,7 @@
         You are also very welcome to submit a PullRequest.
     </string>
 
-    <string name="feedback">
-        手机型号：\n
-        手机安卓版本：\n
-    </string>
+    <string name="feedback">Hello,</string>
 
     <dimen name="width">330dp</dimen>
     <dimen name="height">80dp</dimen>

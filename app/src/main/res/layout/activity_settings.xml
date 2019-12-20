@@ -79,4 +79,14 @@
             app:icon_reference="@drawable/refresh"
             app:title_text="@string/check_update" />
 
+    <ImageView
+            android:id="@+id/setting_img"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/christmas1">
+
+    </ImageView>
+
 </LinearLayout>

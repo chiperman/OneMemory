@@ -82,11 +82,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
         illustrations = (FrameLayout) findViewById(R.id.home_picture);
         illustrations_pic = findViewById(R.id.illustrations_pic);
 
-        //获取系统的日期
+        // 获取系统的日期
         Calendar calendar = Calendar.getInstance();
-
-
-        // 回去当前系统日期
+        // 获取当前系统日期
         int month = calendar.get(Calendar.MONTH) + 1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         Log.e(TAG, "month:" + month);
