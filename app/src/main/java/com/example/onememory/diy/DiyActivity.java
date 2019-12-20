@@ -1,6 +1,8 @@
 package com.example.onememory.diy;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -26,6 +28,7 @@ public class DiyActivity extends Activity implements View.OnClickListener {
     public static ImageView diy_icon;
     public static int iconID;
     private EditText diy_name;
+    private Button btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +36,10 @@ public class DiyActivity extends Activity implements View.OnClickListener {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         setContentView(R.layout.activity_diy);
 
+        btn = findViewById(R.id.confirm);
         diy_icon = findViewById(R.id.diy_icon);
         diy_name = findViewById(R.id.diy_name);
+
         // 初始化RecyclerView和Item
         intItems();
         RecyclerView rv = findViewById(R.id.My_recycler);
@@ -137,8 +142,22 @@ public class DiyActivity extends Activity implements View.OnClickListener {
                 intent.putExtra("iconID", iconID);
                 intent.putExtra("diyName", diy_name.getText().toString());
                 intent.putExtra("fontColor", "#FFFFFF");
-
-                startActivity(intent);
+                if (diy_name.getText().toString().equals("")) {
+                    AlertDialog dialog = new AlertDialog.Builder(this)
+                            .setTitle("填写信息")//简单易懂的设置title
+                            .setMessage("请选择图标或填写名称后可确认")
+                            // 确定按钮
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            })
+                            .create();
+                    dialog.show();
+                } else {
+                    startActivity(intent);
+                }
         }
     }
 }

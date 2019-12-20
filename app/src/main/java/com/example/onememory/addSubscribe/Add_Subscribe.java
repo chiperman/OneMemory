@@ -2,8 +2,10 @@ package com.example.onememory.addSubscribe;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -15,7 +17,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -149,7 +150,6 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         AppName = getIntent.getStringExtra("diyName");
         text_color = getIntent.getStringExtra("fontColor");
 
-
         if (AppIcon == 0) {
             AppIcon = getIntent.getIntExtra("AppIcon", 0);
             AppName = getIntent.getStringExtra("AppName");
@@ -280,7 +280,6 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
     // 添加选项
     private List<String> getData() {
         List<String> list = new ArrayList<>();
-//        list.add("按周订阅");
         list.add("按月订阅");
         list.add("按季订阅");
         list.add("按年订阅");
@@ -397,11 +396,26 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
                 // 传递下个页面的值
                 sendMyIntent();
                 intent.setFlags(Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY);
-                startActivity(intent);
-                finish();
+                if (tv_date.getText().toString().equals("")) {
+                    AlertDialog idialog = new AlertDialog.Builder(this)
+                            .setTitle("填写信息")//简单易懂的设置title
+                            .setMessage("请填写订阅时间后方可保存")
+                            // 确定按钮
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            })
+                            .create();
+                    idialog.show();
+                } else {
+                    startActivity(intent);
+                    finish();
+                }
                 break;
             case R.id.tv_date:
-                pvTime.show(v);
+                pvTime.show();
                 break;
             case R.id.select:
                 showSelectPickerView();
