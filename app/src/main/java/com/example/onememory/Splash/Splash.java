@@ -33,8 +33,11 @@ public class Splash extends AppCompatActivity {
         // 如果日期是12.25号，切换首页图片为圣诞节彩蛋
         if (month == 12 && day == 24 || day == 25 || day == 26) {
             splash_slogon.setText(R.string.christmas);
-
-            Typeface type = Typeface.createFromAsset(getAssets(), "res/font/dancingscript.ttf");
+            Typeface type = Typeface.createFromAsset(getAssets(), "fonts/dancingscript.ttf");
+            splash_slogon.setTypeface(type);
+        } else if (month == 1 && day == 1) {
+            splash_slogon.setText(R.string.newyear);
+            Typeface type = Typeface.createFromAsset(getAssets(), "fonts/dancingscript.ttf");
             splash_slogon.setTypeface(type);
         }
 

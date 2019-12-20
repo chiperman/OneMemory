@@ -205,6 +205,19 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
             sub_time.setTextColor(Color.parseColor(text_color));
             sub_method.setTextColor(Color.parseColor(text_color));
             sub_pay.setTextColor(Color.parseColor(text_color));
+
+            //设置选项提示字体颜色
+            purchase_url.setTextColor(Color.parseColor(text_color));
+            add_describe.setTextColor(Color.parseColor(text_color));
+            add_describe.setHintTextColor(Color.parseColor(text_color));
+            app_money.setTextColor(Color.parseColor(text_color));
+            app_money.setHintTextColor(Color.parseColor(text_color));
+            app_date.setTextColor(Color.parseColor(text_color));
+            app_date.setHintTextColor(Color.parseColor(text_color));
+            select.setTextColor(Color.parseColor(text_color));
+            select.setHintTextColor(Color.parseColor(text_color));
+            method.setTextColor(Color.parseColor(text_color));
+            method.setHintTextColor(Color.parseColor(text_color));
             //设置分割线颜色
             divider1.setBackgroundColor(Color.parseColor(text_color));
             divider2.setBackgroundColor(Color.parseColor(text_color));

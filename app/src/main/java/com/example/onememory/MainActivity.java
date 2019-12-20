@@ -92,6 +92,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
         // 如果日期是12.25号，切换首页图片为圣诞节彩蛋
         if (month == 12 && day == 24 || day == 25 || day == 26) {
             illustrations_pic.setImageResource(R.drawable.christmas);
+        } else if (month == 1 && day == 1) {
+            illustrations_pic.setVisibility(View.VISIBLE);
+            illustrations_pic.setImageResource(R.drawable.happy);
         }
 
         setPlaceUp();

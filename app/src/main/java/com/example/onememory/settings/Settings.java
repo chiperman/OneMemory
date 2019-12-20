@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,6 +46,9 @@ public class Settings extends Activity implements View.OnClickListener {
         if (month == 12 && day == 24 || day == 25 || day == 26) {
             setting_img.setVisibility(View.VISIBLE);
             setting_img.setImageResource(R.drawable.christmas1);
+        } else if (month == 1 && day == 1) {
+            setting_img.setVisibility(View.VISIBLE);
+            setting_img.setImageResource(R.drawable.happy);
         }
     }
 
