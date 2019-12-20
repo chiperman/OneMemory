@@ -14,7 +14,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -42,6 +44,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
     private RecyclerView recyclerView;
     private ImageView iv_setting;
     private ImageView iv_add;
+    private ImageView illustrations_pic;
+    private LinearLayout total;
+    private FrameLayout illustrations;
 
     public static SQLiteDatabase getDatabase() {
         return database;
@@ -73,6 +78,21 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
         iv_setting.setOnClickListener(this);
         iv_add = findViewById(R.id.iv_add);
         iv_add.setOnClickListener(this);
+        total = (LinearLayout) findViewById(R.id.total);
+        illustrations = (FrameLayout) findViewById(R.id.home_picture);
+        illustrations_pic = findViewById(R.id.illustrations_pic);
+
+        // 获取系统的日期
+        Calendar calendar = Calendar.getInstance();
+        // 获取当前系统日期
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        Log.e(TAG, "month:" + month);
+        Log.e(TAG, "day:" + day);
+        // 如果日期是12.25号，切换首页图片为圣诞节彩蛋
+        if (month == 12 && day == 24 || day == 25 || day == 26) {
+            illustrations_pic.setImageResource(R.drawable.christmas);
+        }
 
         setPlaceUp();
         initAppInfo();
@@ -165,8 +185,12 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
                     break;
             }
             ++itemNum;
-            setAppStateAndNotify(app, i);
+            setAppStateAndNotify(app, i++);
+
+            Log.e(TAG, app.getState() + "  1");
             apps.add(app);
+            total.setVisibility(View.VISIBLE);
+            illustrations.setVisibility(View.GONE);
         }
 
         // 从数据库读取
@@ -207,9 +231,11 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
             }
             totalCost += app.getMoney();
             ++itemNum;
-            setAppStateAndNotify(app, i);
-
+            setAppStateAndNotify(app, i++);
+            Log.e(TAG, app.getState() + "  2");
             apps.add(app);
+            total.setVisibility(View.VISIBLE);
+            illustrations.setVisibility(View.GONE);
         }
 
 
@@ -236,6 +262,11 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
         String[] time0 = app.getSubTime().split("-");
         Log.e("长度", String.valueOf(time0.length));
         Integer[] time = new Integer[time0.length];
+        Log.e("长度1", String.valueOf(time0.length));
+        //若无订阅日期，返回
+        if (time0.length == 1) {
+            return;
+        }
         //字符型数组转换为整形数组
         for (int j = 0; j < time0.length; j++) {
             if (time0[j] != "")
@@ -279,16 +310,34 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
             case "":
                 break;
         }
-        //Log.e("时间2", String.valueOf(time[0]));
-        if (year == time[0] && month == time[1] && time[0] != 0 && day < time[2]) {
-            Log.e("时间2", String.valueOf(time[0]));
-            Log.e("时间3", String.valueOf(time[1]));
-            Log.e("时间4", String.valueOf(time[2]));
-            //发出通知
-            notification(app.getName(), app.getIconId(), i++, time[2] - day);
+//        //Log.e("时间2", String.valueOf(time[0]));
+//        if (year == time[0] && month == time[1] && time[0] != 0 && day < time[2]) {
+//            Log.e("时间2", String.valueOf(time[0]));
+//            Log.e("时间3", String.valueOf(time[1]));
+//            Log.e("时间4", String.valueOf(time[2]));
+//            //发出通知
+//            notification(app.getName(), app.getIconId(), i++, time[2] - day);
+//        }
+//        if (year > time[0] || month > time[1] || time[0] != 0 && day > time[2]) {
+//            app.setState("1");
+//        }
+        //如果没填日期
+        int dtime = (int) ((time[0] - year) * 365 + (time[1] - month) * 30.4 + (time[2] - day));
+        Log.e("dtime", String.valueOf(dtime));
+        //会员过期了
+        if (dtime <= 0) {
+            app.setState(dtime);
         }
-        if (year > time[0] || month > time[1] || time[0] != 0 && day > time[2]) {
-            app.setState("1");
+        //未过期
+        else if (dtime > 0) {
+            app.setState(dtime);
+            //七天之内过期，在通知栏内通知
+            if (dtime < 7)
+                notification(app.getName(), app.getIconId(), i, time[2] - day);
+                //多余七天过期，执行操作。。。。
+            else {
+                //.............
+            }
         }
     }
 
@@ -309,8 +358,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
             notificationManager.createNotificationChannel(mChannel);
 
             notification = new Notification.Builder(this, id)
-                    .setLargeIcon(BitmapFactory.decodeResource(this.getResources(), icon))
-                    .setSmallIcon(R.drawable.add_black)
+                    .setLargeIcon(BitmapFactory.decodeResource(this.getResources(), R.mipmap.ic_launcher))
+                    .setSmallIcon(icon)
                     .setContentTitle(appname + "会员")  //标题
                     .setContentText("你的会员服务还有" + days + "天到期，请注意！")   //内容
                     //.setSubText("会员到期提醒")     //内容下面的一小段文字
@@ -357,7 +406,6 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
             case R.id.iv_add:
                 intent = new Intent(MainActivity.this, AddListActivity.class);
                 startActivity(intent);
-//                finish();
                 break;
             default:
                 break;

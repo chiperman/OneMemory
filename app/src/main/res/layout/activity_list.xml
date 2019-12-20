@@ -9,7 +9,6 @@
         >
 
     <ImageView
-            android:visibility="visible"
             android:id="@+id/list_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -19,13 +18,13 @@
             android:layout_marginBottom="10dp"
             android:background="?android:attr/selectableItemBackground"
             android:src="@drawable/back_s_arrow"
+            android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
     </ImageView>
 
     <ImageView
-            android:visibility="gone"
             android:id="@+id/searchIcon"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -35,23 +34,24 @@
             android:layout_marginBottom="10dp"
             android:background="?android:attr/selectableItemBackground"
             android:src="@drawable/search"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
     </ImageView>
 
     <EditText
-            android:visibility="gone"
             android:id="@+id/search_et_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_margin="10dp"
             android:drawablePadding="5dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:hint="请输入 App 关键字"
             android:imeOptions="actionSearch"
             android:inputType="text"
-            android:hint="请输入 App 关键字"
+            android:textSize="16sp"
+            android:visibility="gone"
             app:layout_constraintEnd_toStartOf="@id/list_search"
             app:layout_constraintStart_toEndOf="@id/list_back"
             app:layout_constraintTop_toTopOf="parent" />
@@ -71,7 +71,6 @@
 
 
     <TextView
-            android:visibility="visible"
             android:id="@+id/add"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -81,6 +80,7 @@
             android:text="@string/add_sub"
             android:textColor="@color/mainTextColor"
             android:textSize="@dimen/titlesize"
+            android:visibility="visible"
             app:layout_constraintEnd_toStartOf="@id/list_search"
             app:layout_constraintStart_toEndOf="@id/list_back"
             app:layout_constraintTop_toTopOf="parent">
@@ -88,7 +88,6 @@
     </TextView>
 
     <ImageView
-            android:visibility="visible"
             android:id="@+id/list_search"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -97,13 +96,13 @@
             android:layout_marginBottom="10dp"
             android:background="?android:attr/selectableItemBackground"
             android:src="@drawable/search"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
     </ImageView>
 
     <TextView
-            android:visibility="invisible"
             android:id="@+id/cancel"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
@@ -112,6 +111,7 @@
             android:layout_marginBottom="10dp"
             android:text="取消"
             android:textColor="@color/mainTextColor"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -123,9 +123,21 @@
             android:layout_height="0dp"
             android:layout_below="@+id/add"
             android:layout_marginTop="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/diy"
             app:layout_constraintTop_toBottomOf="@id/add">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+            android:id="@+id/diy"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/diy"
+            android:gravity="center"
+            android:text="@string/diy"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"></TextView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

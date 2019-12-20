@@ -1,6 +1,7 @@
 package com.example.onememory.Rylist;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onememory.R;
+import com.example.onememory.diy.DiyActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
     private ImageView iv_back;
     private ImageView iv_search;
     private TextView cancel;
+    private TextView diy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +78,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         iv_search.setOnClickListener(this);
         cancel = findViewById(R.id.cancel);
         cancel.setOnClickListener(this);
+        diy = findViewById(R.id.diy);
+        diy.setOnClickListener(this);
     }
 
     //设置状态栏和导航栏
@@ -579,6 +584,7 @@ public class AddListActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        Intent intent;
         switch (v.getId()) {
             case R.id.list_back:
                 onBackPressed();
@@ -588,6 +594,10 @@ public class AddListActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.cancel:
                 cancel();
+                break;
+            case R.id.diy:
+                intent = new Intent(AddListActivity.this, DiyActivity.class);
+                startActivity(intent);
                 break;
         }
     }

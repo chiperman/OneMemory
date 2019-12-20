@@ -8,17 +8,21 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.onememory.R;
 
+import java.util.Calendar;
+
 public class Settings extends Activity implements View.OnClickListener {
 
     private ImageView iv_back;
     private String name;
     private String feedback_email;
+    private ImageView setting_img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,18 @@ public class Settings extends Activity implements View.OnClickListener {
         iv_back = findViewById(R.id.st_back);
         iv_back.setOnClickListener(this);
         feedback_email = getString(R.string.feedback);
+        setting_img = findViewById(R.id.setting_img);
+
+        // 获取系统的日期
+        Calendar calendar = Calendar.getInstance();
+        // 获取当前系统日期
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        // 如果日期是12.25号，切换首页图片为圣诞节彩蛋
+        if (month == 12 && day == 24 || day == 25 || day == 26) {
+            setting_img.setVisibility(View.VISIBLE);
+            setting_img.setImageResource(R.drawable.christmas1);
+        }
     }
 
     //设置状态栏和导航栏

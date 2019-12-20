@@ -3,6 +3,7 @@
         package="com.example.onememory">
 
     <application
+
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -16,6 +17,7 @@
         <activity android:name=".Rylist.AddListActivity"></activity>
         <activity android:name=".settings.Aboutus"></activity>
         <activity android:name=".settings.Privacy"></activity>
+        <activity android:name=".diy.DiyActivity"></activity>
         <activity android:name=".Splash.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

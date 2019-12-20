@@ -7,7 +7,7 @@
     <string name="sub_time">订阅时间</string>
     <string name="sub_method">订阅周期</string>
     <string name="pay_mehtod">支付方式</string>
-    <string name="describe_hint">请输入订阅服务描述</string>
+    <string name="describe_hint">请输入订阅描述</string>
     <string name="price_hint">¥ 0.00</string>
     <string name="time_hint">请选择订阅时间</string>
     <string name="method_hint">请选择订阅周期</string>
@@ -22,8 +22,15 @@
     <string name="check_update">检查更新</string>
     <string name="goto_subscribe">前往订阅页面>></string>
     <string name="overdue">🌟已结束订阅</string>
+    <string name="diy">🛠 添加自定义订阅</string>
+    <string name="diy_name">请输入订阅名称</string>
+    <string name="christmas">Merry Christmas</string>
 
     <string name="splash_slogn">管理订阅 我更在行</string>
+    <string name="nothing">
+        Nothing Here...\n
+        点击右上角+按钮开始添加订阅
+    </string>
 
     <string name="agreement">
         \u3000\u3000本应用尊重并保护所有使用服务用户的个人隐私权。
@@ -76,10 +83,7 @@
         You are also very welcome to submit a PullRequest.
     </string>
 
-    <string name="feedback">
-        手机型号：\n
-        手机安卓版本：\n
-    </string>
+    <string name="feedback">Hello,</string>
 
     <dimen name="width">330dp</dimen>
     <dimen name="height">80dp</dimen>
