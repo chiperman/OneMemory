@@ -7,7 +7,7 @@
     <string name="sub_time">订阅时间</string>
     <string name="sub_method">订阅周期</string>
     <string name="pay_mehtod">支付方式</string>
-    <string name="describe_hint">请输入订阅服务描述</string>
+    <string name="describe_hint">请输入订阅描述</string>
     <string name="price_hint">¥ 0.00</string>
     <string name="time_hint">请选择订阅时间</string>
     <string name="method_hint">请选择订阅周期</string>

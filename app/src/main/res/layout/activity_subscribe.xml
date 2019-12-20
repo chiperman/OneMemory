@@ -103,48 +103,6 @@
             </View>
 
             <TextView
-                    android:id="@+id/describe"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="18dp"
-                    android:text="@string/describe_sub"
-                    android:textColor="@color/white"
-                    android:textSize="18sp">
-
-            </TextView>
-
-
-            <EditText
-                    android:id="@+id/add_describe"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@null"
-                    android:gravity="right"
-                    android:hint="@string/describe_hint"
-                    android:imeOptions="actionNext"
-                    android:textColor="@color/mainTextColor"
-                    android:textColorHint="@color/hintTextColor"
-                    android:textSize="15sp">
-
-            </EditText>
-
-            <View
-                    android:id="@+id/divider2"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_columnSpan="2"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="5dp"
-                    android:background="@color/white">
-
-            </View>
-
-            <TextView
                     android:id="@+id/price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -176,6 +134,48 @@
 
             <View
                     android:id="@+id/divider3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_columnSpan="2"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/white">
+
+            </View>
+
+            <TextView
+                    android:id="@+id/describe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="18dp"
+                    android:text="@string/describe_sub"
+                    android:textColor="@color/white"
+                    android:textSize="18sp">
+
+            </TextView>
+
+
+            <EditText
+                    android:id="@+id/add_describe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@null"
+                    android:gravity="right"
+                    android:hint="@string/describe_hint"
+                    android:imeOptions="actionNext"
+                    android:textColor="@color/mainTextColor"
+                    android:textColorHint="@color/hintTextColor"
+                    android:textSize="15sp">
+
+            </EditText>
+
+            <View
+                    android:id="@+id/divider2"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_columnSpan="2"
