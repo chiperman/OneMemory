@@ -24,21 +24,25 @@ import java.util.List;
 public class DiyActivity extends Activity implements View.OnClickListener {
     private List<DiyItem> ItemList = new ArrayList<>();
     private ImageView diy_back;
+    private ImageView color1;
+    private ImageView color2;
+    private ImageView color3;
+    private ImageView color4;
+    private ImageView color5;
+    private ImageView color6;
+    private ImageView color7;
+
     private Button confirm;
     public static ImageView diy_icon;
     public static int iconID;
     private EditText diy_name;
-    private Button btn;
+    private String backgroundcolor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         setContentView(R.layout.activity_diy);
-
-        btn = findViewById(R.id.confirm);
-        diy_icon = findViewById(R.id.diy_icon);
-        diy_name = findViewById(R.id.diy_name);
 
         // 初始化RecyclerView和Item
         intItems();
@@ -53,7 +57,23 @@ public class DiyActivity extends Activity implements View.OnClickListener {
         rv.setAdapter(adapter);
 
         diy_back = findViewById(R.id.diy_back);
+        diy_icon = findViewById(R.id.diy_icon);
+        diy_name = findViewById(R.id.diy_name);
         confirm = findViewById(R.id.confirm);
+        color1 = findViewById(R.id.color1);
+        color2 = findViewById(R.id.color2);
+        color3 = findViewById(R.id.color3);
+        color4 = findViewById(R.id.color4);
+        color5 = findViewById(R.id.color5);
+        color6 = findViewById(R.id.color6);
+        color7 = findViewById(R.id.color7);
+        color1.setOnClickListener(this);
+        color2.setOnClickListener(this);
+        color3.setOnClickListener(this);
+        color4.setOnClickListener(this);
+        color5.setOnClickListener(this);
+        color6.setOnClickListener(this);
+        color7.setOnClickListener(this);
         confirm.setOnClickListener(this);
         diy_back.setOnClickListener(this);
         setPlaceUp();
@@ -142,6 +162,7 @@ public class DiyActivity extends Activity implements View.OnClickListener {
                 intent.putExtra("iconID", iconID);
                 intent.putExtra("diyName", diy_name.getText().toString());
                 intent.putExtra("fontColor", "#FFFFFF");
+                intent.putExtra("background", backgroundcolor);
                 if (diy_name.getText().toString().equals("")) {
                     AlertDialog dialog = new AlertDialog.Builder(this)
                             .setTitle("填写信息")//简单易懂的设置title
@@ -158,6 +179,35 @@ public class DiyActivity extends Activity implements View.OnClickListener {
                 } else {
                     startActivity(intent);
                 }
+                break;
+            case R.id.color1:
+                backgroundcolor = "#000000";
+                diy_icon.setBackgroundColor(Color.parseColor(backgroundcolor));
+                break;
+            case R.id.color2:
+                backgroundcolor = "#343434";
+                diy_icon.setBackgroundColor(Color.parseColor(backgroundcolor));
+                break;
+            case R.id.color3:
+                backgroundcolor = "#383a48";
+                diy_icon.setBackgroundColor(Color.parseColor(backgroundcolor));
+                break;
+            case R.id.color4:
+                backgroundcolor = "#373541";
+                diy_icon.setBackgroundColor(Color.parseColor(backgroundcolor));
+                break;
+            case R.id.color5:
+                backgroundcolor = "#373f42";
+                diy_icon.setBackgroundColor(Color.parseColor(backgroundcolor));
+            case R.id.color6:
+                backgroundcolor = "#28373c";
+                diy_icon.setBackgroundColor(Color.parseColor(backgroundcolor));
+                break;
+            case R.id.color7:
+                backgroundcolor = "#423747";
+                diy_icon.setBackgroundColor(Color.parseColor(backgroundcolor));
+                break;
+
         }
     }
 }

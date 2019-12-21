@@ -116,6 +116,12 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
     }
 
+    // 删除订阅
+    public static void deleteApp(int index) {
+        App app = apps.remove(index);
+        database.delete("apps", "id=?", new String[]{app.getId() + ""});
+    }
+
     // 在主页面按下 Back 按钮后，重新打开 App 直接打开 Mainactivity，不经过 Splash 页面
     public void onBackPressed() {
         // Do NOT call super.onBackPressed() 不要调用父类的方法
@@ -207,6 +213,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
         while (cursor.moveToNext()) {
             Log.e(TAG, "从数据库读取");
             app = new App();
+            app.setId(cursor.getInt(cursor.getColumnIndex("id")));
             app.setName(cursor.getString(cursor.getColumnIndex("name")));
             app.setIconId(cursor.getInt(cursor.getColumnIndex("iconId")));
             app.setMoney(cursor.getFloat(cursor.getColumnIndex("money")));
