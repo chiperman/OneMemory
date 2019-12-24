@@ -14,7 +14,9 @@
         <activity android:name=".settings.Settings"></activity>
         <activity android:name=".viewCard.ViewCard"></activity>
         <activity android:name=".MainActivity"></activity>
-        <activity android:name=".Rylist.AddListActivity"></activity>
+        <activity
+                android:name=".Rylist.AddListActivity"
+                android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".settings.Aboutus"></activity>
         <activity android:name=".settings.Privacy"></activity>
         <activity android:name=".diy.DiyActivity"></activity>

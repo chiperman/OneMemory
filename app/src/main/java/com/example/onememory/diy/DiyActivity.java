@@ -31,12 +31,18 @@ public class DiyActivity extends Activity implements View.OnClickListener {
     private ImageView color5;
     private ImageView color6;
     private ImageView color7;
+    private ImageView color8;
+    private ImageView color9;
+    private ImageView color10;
+    private ImageView color11;
+    private ImageView color12;
 
     private Button confirm;
     public static ImageView diy_icon;
     public static int iconID;
     private EditText diy_name;
     private String backgroundcolor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +62,11 @@ public class DiyActivity extends Activity implements View.OnClickListener {
         DiyItemAdapter adapter = new DiyItemAdapter(ItemList);
         rv.setAdapter(adapter);
 
+        init();
+        setPlaceUp();
+    }
+
+    public void init() {
         diy_back = findViewById(R.id.diy_back);
         diy_icon = findViewById(R.id.diy_icon);
         diy_name = findViewById(R.id.diy_name);
@@ -67,6 +78,12 @@ public class DiyActivity extends Activity implements View.OnClickListener {
         color5 = findViewById(R.id.color5);
         color6 = findViewById(R.id.color6);
         color7 = findViewById(R.id.color7);
+        color8 = findViewById(R.id.color8);
+        color9 = findViewById(R.id.color9);
+        color10 = findViewById(R.id.color10);
+        color11 = findViewById(R.id.color11);
+        color12 = findViewById(R.id.color12);
+
         color1.setOnClickListener(this);
         color2.setOnClickListener(this);
         color3.setOnClickListener(this);
@@ -74,9 +91,13 @@ public class DiyActivity extends Activity implements View.OnClickListener {
         color5.setOnClickListener(this);
         color6.setOnClickListener(this);
         color7.setOnClickListener(this);
+        color8.setOnClickListener(this);
+        color9.setOnClickListener(this);
+        color10.setOnClickListener(this);
+        color11.setOnClickListener(this);
+        color12.setOnClickListener(this);
         confirm.setOnClickListener(this);
         diy_back.setOnClickListener(this);
-        setPlaceUp();
     }
 
     //设置状态栏和导航栏
@@ -166,7 +187,20 @@ public class DiyActivity extends Activity implements View.OnClickListener {
                 if (diy_name.getText().toString().equals("")) {
                     AlertDialog dialog = new AlertDialog.Builder(this)
                             .setTitle("填写信息")//简单易懂的设置title
-                            .setMessage("请选择图标或填写名称后可确认")
+                            .setMessage("请填写订阅名称后可确认")
+                            // 确定按钮
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            })
+                            .create();
+                    dialog.show();
+                } else if (DiyItemAdapter.flag == false) {
+                    AlertDialog dialog = new AlertDialog.Builder(this)
+                            .setTitle("填写信息")//简单易懂的设置title
+                            .setMessage("请选择订阅图标后可确认")
                             // 确定按钮
                             .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                                 @Override
@@ -207,7 +241,26 @@ public class DiyActivity extends Activity implements View.OnClickListener {
                 backgroundcolor = "#423747";
                 diy_icon.setBackgroundColor(Color.parseColor(backgroundcolor));
                 break;
-
+            case R.id.color8:
+                backgroundcolor = "#0f4c81";
+                diy_icon.setBackgroundColor(Color.parseColor(backgroundcolor));
+                break;
+            case R.id.color9:
+                backgroundcolor = "#586cff";
+                diy_icon.setBackgroundColor(Color.parseColor(backgroundcolor));
+                break;
+            case R.id.color10:
+                backgroundcolor = "#fb518b";
+                diy_icon.setBackgroundColor(Color.parseColor(backgroundcolor));
+                break;
+            case R.id.color11:
+                backgroundcolor = "#f1908c";
+                diy_icon.setBackgroundColor(Color.parseColor(backgroundcolor));
+                break;
+            case R.id.color12:
+                backgroundcolor = "#fea41d";
+                diy_icon.setBackgroundColor(Color.parseColor(backgroundcolor));
+                break;
         }
     }
 }

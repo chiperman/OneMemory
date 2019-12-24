@@ -9,17 +9,48 @@
         android:orientation="vertical"
         tools:context=".diy.DiyActivity">
 
-    <ImageView
-            android:id="@+id/diy_back"
-            android:layout_width="24dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/back_s_arrow">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    </ImageView>
+        <ImageView
+                android:id="@+id/diy_back"
+                android:layout_width="24dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/back_s_arrow">
+
+        </ImageView>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:text="@string/chose_icon"
+                android:textColor="@color/mainTextColor"
+                android:textSize="@dimen/titlesize">
+
+        </TextView>
+
+        <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/check"
+                android:visibility="invisible">
+
+        </ImageView>
+    </LinearLayout>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -52,6 +83,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="10dp"
+                android:src="@drawable/default_icon"
                 app:layout_constraintBottom_toTopOf="@id/diy_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -136,6 +168,50 @@
 
                 </ImageView>
 
+                <ImageView
+                        android:id="@+id/color8"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="#0f4c81">
+
+                </ImageView>
+
+                <ImageView
+                        android:id="@+id/color9"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="#586cff">
+
+                </ImageView>
+
+                <ImageView
+                        android:id="@+id/color10"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="#fb518b">
+
+                </ImageView>
+
+                <ImageView
+                        android:id="@+id/color11"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="#f1908c">
+
+                </ImageView>
+
+                <ImageView
+                        android:id="@+id/color12"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="#fea41d">
+
+                </ImageView>
 
             </LinearLayout>
         </HorizontalScrollView>

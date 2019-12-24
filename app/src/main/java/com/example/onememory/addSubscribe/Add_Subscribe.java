@@ -148,7 +148,6 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         getIntent = getIntent();
         AppIcon = getIntent.getIntExtra("iconID", 0);
 
-
         if (AppIcon == 0) {
             AppIcon = getIntent.getIntExtra("AppIcon", 0);
             AppName = getIntent.getStringExtra("AppName");
@@ -196,8 +195,10 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
             AppName = getIntent.getStringExtra("diyName");
             text_color = getIntent.getStringExtra("fontColor");
             bg_color = getIntent.getStringExtra("background");
+            if ("".equals(bg_color) || bg_color == null) {
+                bg_color = "#000000";
+            }
             cv_AppCard.setBackgroundColor(Color.parseColor(bg_color));
-
             app_icon.setImageResource(AppIcon);
             sub_name.setText(AppName);
 
@@ -416,7 +417,20 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
                 onBackPressed();
                 break;
             case R.id.sub_add:
-                if (tv_date.getText().toString().equals("")) {
+                if (app_money.getText().toString().equals("")) {
+                    AlertDialog idialog2 = new AlertDialog.Builder(this)
+                            .setTitle("填写信息")
+                            .setMessage("请填写订阅金额后方可保存")
+                            // 确定按钮
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            })
+                            .create();
+                    idialog2.show();
+                } else if (tv_date.getText().toString().equals("")) {
                     AlertDialog idialog = new AlertDialog.Builder(this)
                             .setTitle("填写信息")
                             .setMessage("请填写订阅时间后方可保存")
