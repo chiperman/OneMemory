@@ -15,7 +15,7 @@ import java.util.List;
 
 public class DiyItemAdapter extends RecyclerView.Adapter<DiyItemAdapter.ViewHolder> {
     private List<DiyItem> ItemList;
-
+    public static boolean flag = false;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView itemImage;
@@ -41,8 +41,7 @@ public class DiyItemAdapter extends RecyclerView.Adapter<DiyItemAdapter.ViewHold
                 DiyItem item = ItemList.get(position);
                 DiyActivity.diy_icon.setImageResource(item.getIconID());
                 DiyActivity.iconID = item.getIconID();
-                // 显示点击信息
-//                Toast.makeText(view.getContext(),"你点击了"+item.getIconName(),Toast.LENGTH_SHORT).show();
+                flag = true;
             }
         });
         return holder;

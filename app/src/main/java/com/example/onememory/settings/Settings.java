@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.onememory.R;
+import com.example.onememory.exportOrImport.ExportOrImport;
 
 import java.util.Calendar;
 
@@ -45,6 +47,9 @@ public class Settings extends Activity implements View.OnClickListener {
         if (month == 12 && day == 24 || day == 25 || day == 26) {
             setting_img.setVisibility(View.VISIBLE);
             setting_img.setImageResource(R.drawable.christmas1);
+        } else if (month == 1 && day == 1) {
+            setting_img.setVisibility(View.VISIBLE);
+            setting_img.setImageResource(R.drawable.happy);
         }
     }
 
@@ -66,6 +71,10 @@ public class Settings extends Activity implements View.OnClickListener {
         startActivity(data);
     }
 
+    public void exportOrImport(View view) {
+        Intent data = new Intent(this, ExportOrImport.class);
+        startActivity(data);
+    }
     //好评鼓励
     public void encouragement(View view) {
         try {

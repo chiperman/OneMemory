@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -132,7 +133,6 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         divider4 = findViewById(R.id.divider4);
         divider5 = findViewById(R.id.divider5);
         divider6 = findViewById(R.id.divider6);
-
     }
 
     //设置状态栏和导航栏
@@ -147,8 +147,6 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
     public void getMyIntent() {
         getIntent = getIntent();
         AppIcon = getIntent.getIntExtra("iconID", 0);
-        AppName = getIntent.getStringExtra("diyName");
-        text_color = getIntent.getStringExtra("fontColor");
 
         if (AppIcon == 0) {
             AppIcon = getIntent.getIntExtra("AppIcon", 0);
@@ -194,9 +192,15 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
             divider5.setBackgroundColor(Color.parseColor(text_hintcolor));
             divider6.setBackgroundColor(Color.parseColor(text_hintcolor));
         } else {
+            AppName = getIntent.getStringExtra("diyName");
+            text_color = getIntent.getStringExtra("fontColor");
+            bg_color = getIntent.getStringExtra("background");
+            if ("".equals(bg_color) || bg_color == null) {
+                bg_color = "#000000";
+            }
+            cv_AppCard.setBackgroundColor(Color.parseColor(bg_color));
             app_icon.setImageResource(AppIcon);
             sub_name.setText(AppName);
-            bg_color = "#000000";
 
             //设置项目字体颜色
             sub_name.setTextColor(Color.parseColor(text_color));
@@ -205,6 +209,19 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
             sub_time.setTextColor(Color.parseColor(text_color));
             sub_method.setTextColor(Color.parseColor(text_color));
             sub_pay.setTextColor(Color.parseColor(text_color));
+
+            //设置选项提示字体颜色
+            purchase_url.setTextColor(Color.parseColor(text_color));
+            add_describe.setTextColor(Color.parseColor(text_color));
+            add_describe.setHintTextColor(Color.parseColor(text_color));
+            app_money.setTextColor(Color.parseColor(text_color));
+            app_money.setHintTextColor(Color.parseColor(text_color));
+            app_date.setTextColor(Color.parseColor(text_color));
+            app_date.setHintTextColor(Color.parseColor(text_color));
+            select.setTextColor(Color.parseColor(text_color));
+            select.setHintTextColor(Color.parseColor(text_color));
+            method.setTextColor(Color.parseColor(text_color));
+            method.setHintTextColor(Color.parseColor(text_color));
             //设置分割线颜色
             divider1.setBackgroundColor(Color.parseColor(text_color));
             divider2.setBackgroundColor(Color.parseColor(text_color));
@@ -252,6 +269,13 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
         appsInfo.put("pay_method", method_select.getText().toString());
         Log.e("Add", "正在插入数据库");
         MainActivity.getDatabase().insert("apps", null, appsInfo);
+
+        Cursor cursor = MainActivity.getDatabase().query("apps", new String[]{"id"}, null, null, null, null, "id desc");
+        cursor.moveToNext();
+        int id = cursor.getInt(cursor.getColumnIndex("id"));
+        Log.e("insert ID", id + "");
+        intent.putExtra("id", id);
+
     }
 
     //    *****************底部式*****************
@@ -393,12 +417,22 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
                 onBackPressed();
                 break;
             case R.id.sub_add:
-                // 传递下个页面的值
-                sendMyIntent();
-                intent.setFlags(Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY);
-                if (tv_date.getText().toString().equals("")) {
+                if (app_money.getText().toString().equals("")) {
+                    AlertDialog idialog2 = new AlertDialog.Builder(this)
+                            .setTitle("填写信息")
+                            .setMessage("请填写订阅金额后方可保存")
+                            // 确定按钮
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            })
+                            .create();
+                    idialog2.show();
+                } else if (tv_date.getText().toString().equals("")) {
                     AlertDialog idialog = new AlertDialog.Builder(this)
-                            .setTitle("填写信息")//简单易懂的设置title
+                            .setTitle("填写信息")
                             .setMessage("请填写订阅时间后方可保存")
                             // 确定按钮
                             .setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -410,7 +444,10 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
                             .create();
                     idialog.show();
                 } else {
+                    // 传递下个页面的值
+                    sendMyIntent();
                     startActivity(intent);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY);
                     finish();
                 }
                 break;

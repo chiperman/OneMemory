@@ -9,17 +9,48 @@
         android:orientation="vertical"
         tools:context=".diy.DiyActivity">
 
-    <ImageView
-            android:id="@+id/diy_back"
-            android:layout_width="24dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/back_s_arrow">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    </ImageView>
+        <ImageView
+                android:id="@+id/diy_back"
+                android:layout_width="24dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/back_s_arrow">
+
+        </ImageView>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:text="@string/chose_icon"
+                android:textColor="@color/mainTextColor"
+                android:textSize="@dimen/titlesize">
+
+        </TextView>
+
+        <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/check"
+                android:visibility="invisible">
+
+        </ImageView>
+    </LinearLayout>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -42,8 +73,8 @@
                 android:hint="@string/diy_name"
                 app:layout_constraintBottom_toTopOf="@id/diy_icon"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/My_recycler"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/My_recycler">
 
         </EditText>
 
@@ -52,26 +83,150 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="10dp"
-                app:layout_constraintBottom_toTopOf="@id/confirm"
+                android:src="@drawable/default_icon"
+                app:layout_constraintBottom_toTopOf="@id/diy_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/diy_name">
 
         </ImageView>
 
+        <HorizontalScrollView
+                android:id="@+id/diy_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/confirm"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/diy_icon">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <ImageView
+                        android:id="@+id/color1"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="30dp"
+                        android:background="#000000">
+
+                </ImageView>
+
+                <ImageView
+                        android:id="@+id/color2"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="#343434">
+
+                </ImageView>
+
+                <ImageView
+                        android:id="@+id/color3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="#383a48">
+
+                </ImageView>
+
+                <ImageView
+                        android:id="@+id/color4"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="#373541">
+
+                </ImageView>
+
+                <ImageView
+                        android:id="@+id/color5"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="#373f42">
+
+                </ImageView>
+
+                <ImageView
+                        android:id="@+id/color6"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="#28373c">
+
+                </ImageView>
+
+                <ImageView
+                        android:id="@+id/color7"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="#423747">
+
+                </ImageView>
+
+                <ImageView
+                        android:id="@+id/color8"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="#0f4c81">
+
+                </ImageView>
+
+                <ImageView
+                        android:id="@+id/color9"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="#586cff">
+
+                </ImageView>
+
+                <ImageView
+                        android:id="@+id/color10"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="#fb518b">
+
+                </ImageView>
+
+                <ImageView
+                        android:id="@+id/color11"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="#f1908c">
+
+                </ImageView>
+
+                <ImageView
+                        android:id="@+id/color12"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="#fea41d">
+
+                </ImageView>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
         <Button
                 android:id="@+id/confirm"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/diy_icon"
+                android:layout_alignParentBottom="true"
                 android:layout_marginBottom="30dp"
                 android:text="确定"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_below="@id/diy_icon"
-                android:layout_alignParentBottom="true"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-
-                >
+                app:layout_constraintStart_toStartOf="parent">
 
         </Button>
     </androidx.constraintlayout.widget.ConstraintLayout>

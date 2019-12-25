@@ -44,6 +44,12 @@
     <com.example.onememory.settings.userUI
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="exportOrImport"
+            app:icon_reference="@drawable/export"
+            app:title_text="@string/export" />
+    <com.example.onememory.settings.userUI
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="encouragement"
             app:icon_reference="@drawable/star"
             app:title_text="@string/rate_us" />

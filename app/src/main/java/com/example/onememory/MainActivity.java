@@ -47,6 +47,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
     private ImageView illustrations_pic;
     private LinearLayout total;
     private FrameLayout illustrations;
+    private static SubscribeAdapter adapter;
+
 
     public static SQLiteDatabase getDatabase() {
         return database;
@@ -56,8 +58,19 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
     protected void onResume() {
         Log.e(TAG, "onResume");
         super.onResume();
-//        initAppList();
-//        initAppInfo();
+        adapter.notifyDataSetChanged();
+        if (apps.size() != 0) {
+            illustrations.setVisibility(View.GONE);
+            total.setVisibility(View.VISIBLE);
+
+        } else {
+            illustrations.setVisibility(View.VISIBLE);
+            total.setVisibility(View.GONE);
+        }
+        ;
+        tv_itemNum.setText(itemNum + "\n个项目");
+        tv_monthCost.setText(String.format("%.1f", monthCost) + "\n每月花费（元）");
+        tv_totalCost.setText(totalCost + "\n总花费（元）");
     }
 
     @Override
@@ -92,6 +105,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
         // 如果日期是12.25号，切换首页图片为圣诞节彩蛋
         if (month == 12 && day == 24 || day == 25 || day == 26) {
             illustrations_pic.setImageResource(R.drawable.christmas);
+        } else if (month == 1 && day == 1) {
+            illustrations_pic.setVisibility(View.VISIBLE);
+            illustrations_pic.setImageResource(R.drawable.happy);
         }
 
         setPlaceUp();
@@ -113,6 +129,32 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
     }
 
+    public static void addApp(App app) {
+        adapter.addApp(app);
+    }
+
+    public static void deleteApp(int index) {
+        itemNum -= 1;
+        totalCost -= apps.get(index).getMoney();
+        switch (apps.get(index).getSubPeriod()) {
+            case "按周订阅":
+            case "按月订阅":
+                monthCost -= apps.get(index).getMoney();
+                break;
+            case "按季订阅":
+                monthCost -= apps.get(index).getMoney() / 3;
+                break;
+            case "按年订阅":
+                monthCost -= apps.get(index).getMoney() / 12;
+                break;
+            case "一次性买断":
+                break;
+            case "":
+                break;
+        }
+        adapter.deleteApp(index);
+    }
+
     // 在主页面按下 Back 按钮后，重新打开 App 直接打开 Mainactivity，不经过 Splash 页面
     public void onBackPressed() {
         // Do NOT call super.onBackPressed() 不要调用父类的方法
@@ -123,7 +165,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
     }
 
     private void initAppList() {
-        SubscribeAdapter adapter = new SubscribeAdapter(this, apps);
+        adapter = new SubscribeAdapter(this, apps);
         recyclerView = findViewById(R.id.rv_sub_app);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setSmoothScrollbarEnabled(true);
@@ -204,6 +246,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
         while (cursor.moveToNext()) {
             Log.e(TAG, "从数据库读取");
             app = new App();
+            app.setId(cursor.getInt(cursor.getColumnIndex("id")));
             app.setName(cursor.getString(cursor.getColumnIndex("name")));
             app.setIconId(cursor.getInt(cursor.getColumnIndex("iconId")));
             app.setMoney(cursor.getFloat(cursor.getColumnIndex("money")));
