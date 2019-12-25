@@ -1,5 +1,6 @@
 package com.example.onememory.mainActivity;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -79,8 +80,20 @@ public class SubscribeAdapter extends RecyclerView.Adapter<SubscribeAdapter.Subs
     }
 
     public void addApp(App app) {
-        apps.add(app);
-        notifyItemInserted(apps.size() - 1);
+        ContentValues appsInfo = new ContentValues();
+        appsInfo.put("name", app.getName());
+        appsInfo.put("iconId", app.getIconId());
+        appsInfo.put("bg_color", app.getBgColor());
+        appsInfo.put("text_color", app.getTextColor());
+        appsInfo.put("description", app.getDescription());
+        appsInfo.put("money", app.getMoney());
+        appsInfo.put("sub_time", app.getSubTime());
+        appsInfo.put("sub_period", app.getSubPeriod());
+        appsInfo.put("pay_method", app.getPayMethod());
+        Log.e("Add", "正在插入数据库");
+        MainActivity.getDatabase().insert("apps", null, appsInfo);
+        Log.e(TAG, "apps.size()" + MainActivity.apps.size() + "  " + apps.size());
+        notifyItemInserted(MainActivity.apps.size() - 1);
     }
 
     public void deleteApp(int position) {

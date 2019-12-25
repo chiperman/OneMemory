@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.onememory.R;
+import com.example.onememory.exportOrImport.ExportOrImport;
 
 import java.util.Calendar;
 
@@ -70,6 +71,10 @@ public class Settings extends Activity implements View.OnClickListener {
         startActivity(data);
     }
 
+    public void exportOrImport(View view) {
+        Intent data = new Intent(this, ExportOrImport.class);
+        startActivity(data);
+    }
     //好评鼓励
     public void encouragement(View view) {
         try {
