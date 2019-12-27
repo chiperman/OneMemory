@@ -8,7 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +26,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ExportOrImport extends Activity {
+public class ExportOrImport extends Activity implements View.OnClickListener {
 
     byte[] buffer = null; //定义保存数据的数组
     ArrayList<String> list = new ArrayList<>();
@@ -35,6 +35,8 @@ public class ExportOrImport extends Activity {
     // 获取文件的真实路径
     boolean dialogFlag = false;
     FileInputStream fis = null;//文件输入流对象
+    private ImageView back;
+    private TextView course;
 
     @Override
     protected void onActivityResult(final int requestCode, final int resultCode, @Nullable final Intent data) {
@@ -167,6 +169,11 @@ public class ExportOrImport extends Activity {
 
         TextView btn_export = findViewById(R.id.btn_export);
         TextView btn_import = findViewById(R.id.btn_import);
+        back = findViewById(R.id.import_back);
+        back.setOnClickListener(this);
+        course = findViewById(R.id.course);
+        course.setOnClickListener(this);
+
         file = new File(Environment.getExternalStorageDirectory(), "OneMemory.txt");
         btn_export.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -247,5 +254,19 @@ public class ExportOrImport extends Activity {
 
         // 4.设置状态栏文字为暗色
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        switch (v.getId()) {
+            case R.id.import_back:
+                onBackPressed();
+                break;
+            case R.id.course:
+                intent = new Intent(this, CourseActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }
