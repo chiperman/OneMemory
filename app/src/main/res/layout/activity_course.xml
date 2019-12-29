@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+    <ImageView
+            android:id="@+id/course_back"
+            android:layout_width="24dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/back_s_arrow">
+
+    </ImageView>
+
+    <TextView
+            android:id="@+id/firstStep"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/firstStep"
+            android:textColor="@color/mainTextColor"
+            android:textSize="20sp">
+
+    </TextView>
+
+    <TextView
+            android:id="@+id/firstStepItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/firstStepItem"
+            android:textColor="@color/mainTextColor">
+
+    </TextView>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/hintTextColor">
+
+    </View>
+
+    <TextView
+            android:id="@+id/secondStep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/secondStep"
+            android:textColor="@color/mainTextColor"
+            android:textSize="20sp">
+
+    </TextView>
+
+    <TextView
+            android:id="@+id/secondStepItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/secondStepItem"
+            android:textColor="@color/mainTextColor">
+
+    </TextView>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/hintTextColor">
+
+    </View>
+
+    <TextView
+            android:id="@+id/thirdStep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/thirdStep"
+            android:textColor="@color/mainTextColor"
+            android:textSize="20sp">
+
+    </TextView>
+
+    <TextView
+            android:id="@+id/thirdStepItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/thirdStepItem"
+            android:textColor="@color/mainTextColor">
+
+    </TextView>
+
+    <TextView
+            android:id="@+id/hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/hint"
+            android:textColor="@color/hintTextColor">
+
+    </TextView>
+
+    <TextView
+            android:id="@+id/exportWarning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/exportWarning"
+            android:textColor="@color/hintTextColor">
+
+    </TextView>
+</LinearLayout>

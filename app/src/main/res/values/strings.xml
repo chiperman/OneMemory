@@ -2,7 +2,6 @@
     <string name="app_name">OneMemory</string>
     <string name="subscribe_title">请选择订阅方式</string>
     <string name="add_sub">添加订阅</string>
-    <string name="backup">备份</string>
     <string name="chose_icon">选择 Icon</string>
     <string name="describe_sub">订阅描述</string>
     <string name="price">价格</string>
@@ -35,7 +34,22 @@
         Nothing Here...\n
         点击右上角+按钮开始添加订阅
     </string>
-
+    <string name="firstStep">
+        第一步：
+    </string>
+    <string name="firstStepItem">1.点击“备份数据”按钮，此时内容将被导出到手机根目录，导出文件名为：“OneMemory.txt”</string>
+    <string name="secondStep">
+        第二步：
+    </string>
+    <string name="secondStepItem">2.将“OneMemory.txt”文件发送到新的设备上</string>
+    <string name="thirdStep">
+        第三步：
+    </string>
+    <string name="thirdStepItem">3.在新设备点击“导入数据”按钮，选择发送过来的“OneMemory.txt”文件，点击弹窗确定即可</string>
+    <string name="hint"> 🌟提示：OneMemory 采用的同步方式为增量同步,
+        新导入的数据不会覆盖本机上数据。</string>
+    <string name="exportWarning">
+        🌟警告：此功能在Android 10版本存在不兼容性</string>
     <string name="agreement">
         \u3000\u3000本应用尊重并保护所有使用服务用户的个人隐私权。
         为了给您提供更准确、更有个性化的服务，本应用会按照本隐私权政策的规定使用和披露您的个人信息。
