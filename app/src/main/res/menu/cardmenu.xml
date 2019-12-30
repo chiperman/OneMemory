@@ -11,9 +11,6 @@
     <item
             android:id="@+id/resume_card"
             android:orderInCategory="100"
+            android:visible="false"
             android:title="恢复订阅" />
-    <item
-            android:id="@+id/stop_card"
-            android:orderInCategory="100"
-            android:title="结束订阅" />
 </menu>
