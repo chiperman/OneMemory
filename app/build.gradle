@@ -40,4 +40,5 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     // wheelview
     implementation 'com.contrarywind:wheelview:4.1.0'
+	implementation 'com.github.GrenderG:Toasty:1.4.2'
 }

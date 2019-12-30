@@ -26,6 +26,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import es.dmoral.toasty.Toasty;
+
 public class ExportOrImport extends Activity implements View.OnClickListener {
 
     byte[] buffer = null; //定义保存数据的数组
@@ -77,7 +79,8 @@ public class ExportOrImport extends Activity implements View.OnClickListener {
                             }
                         }
                         if (buffer == null) {
-                            Toast.makeText(ExportOrImport.this, "暂无数据", Toast.LENGTH_LONG).show();
+//                          Toast.makeText(ExportOrImport.this, "暂无数据", Toast.LENGTH_LONG).show();
+                            Toasty.error(ExportOrImport.this, "暂无数据!", Toast.LENGTH_SHORT, true).show();
                             return;
                         }
                         String s = "";
@@ -141,7 +144,8 @@ public class ExportOrImport extends Activity implements View.OnClickListener {
 
                         }
                         if (path != "")
-                            Toast.makeText(ExportOrImport.this, "已成功导入数据", Toast.LENGTH_LONG).show();
+//                            Toast.makeText(ExportOrImport.this, "已成功导入数据", Toast.LENGTH_LONG).show();
+                            Toasty.success(ExportOrImport.this, "已成功导入数据!", Toast.LENGTH_SHORT, true).show();
                     }
                 })
                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -208,12 +212,14 @@ public class ExportOrImport extends Activity implements View.OnClickListener {
                     if (fos != null) {
                         try {
                             fos.close();//关闭输出流
-                            Toast.makeText(ExportOrImport.this, "保存成功", Toast.LENGTH_LONG).show();
+//                            Toast.makeText(ExportOrImport.this, "保存成功", Toast.LENGTH_LONG).show();
+                            Toasty.success(ExportOrImport.this, "保存成功!", Toast.LENGTH_SHORT, true).show();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                     } else {
-                        Toast.makeText(ExportOrImport.this, "null", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(ExportOrImport.this, "null", Toast.LENGTH_LONG).show();\
+                        Toasty.warning(ExportOrImport.this, "暂无数据!", Toast.LENGTH_SHORT, true).show();
                     }
 
                 }

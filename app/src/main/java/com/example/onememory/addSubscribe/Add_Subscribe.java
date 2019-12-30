@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 
@@ -38,6 +39,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import es.dmoral.toasty.Toasty;
 
 
 public class Add_Subscribe extends Activity implements View.OnClickListener {
@@ -449,6 +452,7 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
                     startActivity(intent);
                     intent.setFlags(Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY);
                     finish();
+                    Toasty.success(v.getContext(), "添加成功!", Toast.LENGTH_SHORT, true).show();
                 }
                 break;
             case R.id.tv_date:
