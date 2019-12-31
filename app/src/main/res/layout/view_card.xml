@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background"
+        android:fillViewport="true"
         android:fitsSystemWindows="true"
         android:orientation="vertical"
-        tools:context=".MainActivity"
-        android:fillViewport="true">
+        tools:context=".MainActivity">
 
-    <RelativeLayout
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/background"
             android:orientation="horizontal">
 
         <ImageView
@@ -22,19 +20,34 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:onClick="toSettings"
-                android:src="@drawable/settings3" />
+                android:src="@drawable/back_s_arrow" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:text="@string/detail"
+                android:textColor="@color/mainTextColor"
+                android:textSize="@dimen/titlesize">
+
+        </TextView>
 
         <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_alignParentRight="true"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/add_black"
-                android:onClick="toAdd" />
-    </RelativeLayout>
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/check"
+                android:visibility="invisible">
+
+        </ImageView>
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/my_RecyclerView"

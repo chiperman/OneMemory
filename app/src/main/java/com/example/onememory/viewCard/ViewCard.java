@@ -11,9 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onememory.R;
-import com.example.onememory.Rylist.AddListActivity;
 import com.example.onememory.apps.App;
-import com.example.onememory.settings.Settings;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -59,12 +57,7 @@ public class ViewCard extends Activity implements Serializable {
     }
 
     public void toSettings(View view) {
-        Intent intent = new Intent(this, Settings.class);
-        startActivity(intent);
+        onBackPressed();
     }
 
-    public void toAdd(View view) {
-        Intent intent = new Intent(this, AddListActivity.class);
-        startActivity(intent);
-    }
 }

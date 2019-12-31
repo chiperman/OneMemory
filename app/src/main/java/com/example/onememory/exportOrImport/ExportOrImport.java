@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.example.onememory.MainActivity;
 import com.example.onememory.R;
 import com.example.onememory.apps.App;
+import com.example.onememory.settings.Settings;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,6 +35,9 @@ import java.util.ArrayList;
 import es.dmoral.toasty.Toasty;
 
 public class ExportOrImport extends Activity {
+
+    private ImageView import_back;
+    private TextView course;
 
     byte[] buffer = null; //定义保存数据的数组
     ArrayList<String> list = new ArrayList<>();
@@ -198,6 +203,22 @@ public class ExportOrImport extends Activity {
             }
         }
 
+        import_back = findViewById(R.id.import_back);
+        import_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        course = findViewById(R.id.course);
+        course.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ExportOrImport.this, CourseActivity.class);
+                startActivity(intent);
+            }
+        });
 
         TextView btn_export = findViewById(R.id.btn_export);
         TextView btn_import = findViewById(R.id.btn_import);

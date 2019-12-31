@@ -2,6 +2,7 @@
     <string name="app_name">OneMemory</string>
     <string name="subscribe_title">请选择订阅方式</string>
     <string name="add_sub">添加订阅</string>
+    <string name="detail">详细信息</string>
     <string name="chose_icon">选择 Icon</string>
     <string name="describe_sub">订阅描述</string>
     <string name="price">价格</string>
