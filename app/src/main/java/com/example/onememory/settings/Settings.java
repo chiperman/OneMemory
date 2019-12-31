@@ -19,6 +19,8 @@ import com.example.onememory.exportOrImport.ExportOrImport;
 
 import java.util.Calendar;
 
+import es.dmoral.toasty.Toasty;
+
 public class Settings extends Activity implements View.OnClickListener {
 
     private ImageView iv_back;
@@ -123,7 +125,8 @@ public class Settings extends Activity implements View.OnClickListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Toast.makeText(Settings.this, "已经是最新版本：" + name, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(Settings.this, "已经是最新版本：" + name, Toast.LENGTH_SHORT).show();
+        Toasty.info(Settings.this, "已经是最新版本" + name, Toast.LENGTH_SHORT, true).show();
     }
 
     @Override

@@ -1,14 +1,18 @@
 package com.example.onememory.exportOrImport;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,17 +30,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ExportOrImport extends Activity implements View.OnClickListener {
+import es.dmoral.toasty.Toasty;
+
+public class ExportOrImport extends Activity {
 
     byte[] buffer = null; //定义保存数据的数组
     ArrayList<String> list = new ArrayList<>();
+    Context context = this;
     File file;
     String path;
+    Uri uri;
     // 获取文件的真实路径
     boolean dialogFlag = false;
     FileInputStream fis = null;//文件输入流对象
-    private ImageView back;
-    private TextView course;
+//    final String DirPath =Environment.getExternalStorageDirectory().toString()  + "OneMemory";
 
     @Override
     protected void onActivityResult(final int requestCode, final int resultCode, @Nullable final Intent data) {
@@ -45,7 +52,15 @@ public class ExportOrImport extends Activity implements View.OnClickListener {
             // 用户未选择任何文件，直接返回
             return;
         }
-        Uri uri = data.getData(); // 获取用户选择文件的URI
+
+//        if (Build.VERSION.SDK_INT >= 24) {
+//            File uri = this.getFilesDir();
+//            path = uri.getPath();
+//        } else {
+//            Uri uri = data.getData(); // 获取用户选择文件的URI
+//            path = uri.getPath();
+//        }
+        uri = data.getData(); // 获取用户选择文件的URI
         path = uri.getPath();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -54,13 +69,16 @@ public class ExportOrImport extends Activity implements View.OnClickListener {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if (path != null) {
-                            file = new File(path, "");
+                            file = new File(path, "OneMemory.txt");
+                            Log.e("path", path);
+
                         } else {
                             Toast.makeText(ExportOrImport.this, "请先获取文件", Toast.LENGTH_LONG).show();
                             return;
                         }
                         try {
-                            fis = new FileInputStream(file);//获取文件输入流对象
+                            fis = (FileInputStream) context.getContentResolver().openInputStream(uri);//获取文件输入流对象
+
                             buffer = new byte[fis.available()]; //实例化字节数组
                             fis.read(buffer);//从输入流中读取数据
                         } catch (FileNotFoundException e) {
@@ -77,7 +95,7 @@ public class ExportOrImport extends Activity implements View.OnClickListener {
                             }
                         }
                         if (buffer == null) {
-                            Toast.makeText(ExportOrImport.this, "暂无数据", Toast.LENGTH_LONG).show();
+                            Toasty.error(ExportOrImport.this, "暂无数据!", Toast.LENGTH_SHORT, true).show();
                             return;
                         }
                         String s = "";
@@ -141,7 +159,8 @@ public class ExportOrImport extends Activity implements View.OnClickListener {
 
                         }
                         if (path != "")
-                            Toast.makeText(ExportOrImport.this, "已成功导入数据", Toast.LENGTH_LONG).show();
+                            Toasty.success(ExportOrImport.this, "已成功导入数据!", Toast.LENGTH_SHORT, true).show();
+
                     }
                 })
                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -155,26 +174,34 @@ public class ExportOrImport extends Activity implements View.OnClickListener {
         if (dialogFlag) return;
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_export_or_import);
+        //创建文件夹
+//        File destDir = new File(DirPath);
+//        if (!destDir.exists()) {
+//            destDir.mkdirs();
+//        }
 
         setPlaceUp();
+        if (Build.VERSION.SDK_INT >= 23) {
+            int REQUEST_CODE_CONTACT = 101;
+            String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            //验证是否许可权限
+            for (String str : permissions) {
+                if (this.checkSelfPermission(str) != PackageManager.PERMISSION_GRANTED) {
+                    //申请权限
+                    this.requestPermissions(permissions, REQUEST_CODE_CONTACT);
+                }
+            }
+        }
+
 
         TextView btn_export = findViewById(R.id.btn_export);
         TextView btn_import = findViewById(R.id.btn_import);
-        back = findViewById(R.id.import_back);
-        back.setOnClickListener(this);
-        course = findViewById(R.id.course);
-        course.setOnClickListener(this);
-
-        file = new File(Environment.getExternalStorageDirectory(), "OneMemory.txt");
+        file = new File(Environment.getExternalStorageDirectory().getPath(), "OneMemory.txt");
         btn_export.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -208,12 +235,12 @@ public class ExportOrImport extends Activity implements View.OnClickListener {
                     if (fos != null) {
                         try {
                             fos.close();//关闭输出流
-                            Toast.makeText(ExportOrImport.this, "保存成功", Toast.LENGTH_LONG).show();
+                            Toasty.success(ExportOrImport.this, "保存成功!", Toast.LENGTH_SHORT, true).show();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                     } else {
-                        Toast.makeText(ExportOrImport.this, "null", Toast.LENGTH_LONG).show();
+                        Toasty.warning(ExportOrImport.this, "暂无数据!", Toast.LENGTH_SHORT, true).show();
                     }
 
                 }
@@ -224,7 +251,6 @@ public class ExportOrImport extends Activity implements View.OnClickListener {
         btn_import.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 //intent.setType(“image/*”);//选择图片
                 //intent.setType(“audio/*”); //选择音频
@@ -254,19 +280,5 @@ public class ExportOrImport extends Activity implements View.OnClickListener {
 
         // 4.设置状态栏文字为暗色
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-    }
-
-    @Override
-    public void onClick(View v) {
-        Intent intent;
-        switch (v.getId()) {
-            case R.id.import_back:
-                onBackPressed();
-                break;
-            case R.id.course:
-                intent = new Intent(this, CourseActivity.class);
-                startActivity(intent);
-                break;
-        }
     }
 }
