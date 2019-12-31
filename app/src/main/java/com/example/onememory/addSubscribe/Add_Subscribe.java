@@ -446,6 +446,19 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
                             })
                             .create();
                     idialog.show();
+                } else if (select.getText().toString().equals("")) {
+                    AlertDialog idialog = new AlertDialog.Builder(this)
+                            .setTitle("填写信息")
+                            .setMessage("请填写订阅周期后方可保存")
+                            // 确定按钮
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            })
+                            .create();
+                    idialog.show();
                 } else {
                     // 传递下个页面的值
                     sendMyIntent();
