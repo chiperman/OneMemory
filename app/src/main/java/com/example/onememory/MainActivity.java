@@ -237,7 +237,10 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
 
         // 从数据库读取
         if (!apps.isEmpty()) {
-            return;
+            apps.clear();
+            itemNum = 0;
+            totalCost = 0;
+            monthCost = 0;
         }
         String[] columns = new String[]{"id", "name", "iconId", "description", "money", "sub_time", "sub_period", "pay_method", "bg_color", "text_color"};
         Cursor cursor = database.query("apps", columns, null, null, null, null, null);
