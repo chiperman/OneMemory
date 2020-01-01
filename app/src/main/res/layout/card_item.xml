@@ -122,13 +122,13 @@
                                 android:id="@+id/text_money"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
+                                android:layout_marginTop="8dp"
                                 android:background="@null"
                                 android:gravity="center"
-                                android:inputType="number"
                                 android:text="$59.99"
                                 android:textSize="15sp"
-                                app:layout_constraintEnd_toStartOf="@id/line2"
+                                android:digits="0123456789."
+                                app:layout_constraintEnd_toEndOf="@id/line2"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/icon_money" />
 

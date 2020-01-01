@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Color;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -130,6 +131,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter {
 //                    price.setCursorVisible(true);
                     price.setFocusable(true);
                     price.setFocusableInTouchMode(true);
+//                    price.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 //                    price.requestFocus();
 
                     orderTime.setClickable(true);
@@ -179,11 +181,13 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, final int position) {
+        ((myholder) holder).position = position;
         ((myholder) holder).card_main_linearLayout.setBackgroundColor(Color.parseColor(apps.get(position).getBgColor()));
         // 背景颜色透明度
         ((myholder) holder).card_main_linearLayout.getBackground().setAlpha(215);
         ((myholder) holder).card_linearLayout.setBackgroundColor(Color.parseColor(apps.get(position).getBgColor()));
         ((myholder) holder).icon.setImageResource(apps.get(position).getIconId());
+        ((myholder) holder).outTime.setTextColor(Color.parseColor(apps.get(position).getTextColor()));
 
         // 不可点击状态
 //        ((myholder) holder).description.setCursorVisible(false);
@@ -193,6 +197,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter {
 //        ((myholder) holder).price.setCursorVisible(false);
         ((myholder) holder).price.setFocusable(false);
         ((myholder) holder).price.setFocusableInTouchMode(false);
+
 //        ((myholder) holder).price.setFocusable(false);
 //        ((myholder) holder).orderTime.setEnabled(false);
 //        ((myholder) holder).orderPeriod.setEnabled(false);
@@ -293,8 +298,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter {
 
         if (is_outTime) ((myholder) holder).outTime.setText(R.string.overdue);
         else ((myholder) holder).outTime.setText(outTime_description);
-
-        ((myholder) holder).position = position;
 
     }
 
@@ -403,7 +406,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter {
                 })
                 .setItemVisibleCount(5) // 选项可见数目，若设置偶数，实际值会加1（比如设置6，则最大可见条目为7）
                 .setLineSpacingMultiplier(3.0f) // 每个选项行间距
-                .isCyclic(true) //是否循环滚动
+                .isCyclic(false) //是否循环滚动
                 .setDate(selectedDate)
                 .setRangDate(startDate, selectedDate)
                 .build();

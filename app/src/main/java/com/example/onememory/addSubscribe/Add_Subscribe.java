@@ -70,6 +70,8 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
     private String AppName;
     private String bg_color;
     private String url;
+    private String price;
+    private String period;
     private String text_color;
     private String text_hintcolor;
     private Intent intent;
@@ -158,6 +160,8 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
             text_color = getIntent.getStringExtra("text_Color");
             text_hintcolor = getIntent.getStringExtra("text_hintcolor");
             url = getIntent.getStringExtra("url");
+            price = getIntent.getStringExtra("price");
+            period = getIntent.getStringExtra("period");
             app_icon.setImageResource(AppIcon);
             sub_name.setText(AppName);
             cv_AppCard.setBackgroundColor(Color.parseColor(bg_color));
@@ -173,7 +177,8 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
                 Log.e("url:", url);
 
             }
-
+            app_money.setText(price);
+            select.setText(period);
             //设置选项提示字体颜色
             purchase_url.setTextColor(Color.parseColor(text_hintcolor));
             add_describe.setTextColor(Color.parseColor(text_hintcolor));
@@ -381,7 +386,7 @@ public class Add_Subscribe extends Activity implements View.OnClickListener {
                 })
                 .setItemVisibleCount(5) // 选项可见数目，若设置偶数，实际值会加1（比如设置6，则最大可见条目为7）
                 .setLineSpacingMultiplier(3.0f) // 每个选项行间距
-                .isCyclic(true) //是否循环滚动
+                .isCyclic(false) //是否循环滚动
                 .setDate(selectedDate)
                 .setRangDate(startDate, selectedDate)
                 .build();
