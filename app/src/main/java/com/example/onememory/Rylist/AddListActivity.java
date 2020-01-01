@@ -28,7 +28,6 @@ public class AddListActivity extends Activity implements View.OnClickListener {
     private ImageView iv_search;
     private TextView cancel;
     private TextView diy;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,16 +99,18 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         ArrayList<String> text_color = new ArrayList<>();
         ArrayList<String> text_hintcolor = new ArrayList<>();
         ArrayList<String> url = new ArrayList<>();
+        ArrayList<String> price = new ArrayList<>();
+        ArrayList<String> period = new ArrayList<>();
 
-
-        name.add("App Store");
+        name.add("Apple Developer");
         picName.add(R.drawable.app_store_ios);
         white.add(R.drawable.app_store_ios_w);
         background_color.add("#1F74F9");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
-
+        price.add("689");
+        period.add("按年订阅");
 
         name.add("哔哩哔哩");
         picName.add(R.drawable.bilibili_fill);
@@ -118,6 +119,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("https://www.bilibili.com/");
+        price.add("15");
+        period.add("按月订阅");
 
         name.add("QQ音乐");
         picName.add(R.drawable.qq_music);
@@ -126,6 +129,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#000000");
         text_hintcolor.add("#000000");
         url.add("https://y.qq.com/portal/vipportal/index.html");
+        price.add("15");
+        period.add("按月订阅");
 
         name.add("iCloud");
         picName.add(R.drawable.icloud);
@@ -134,6 +139,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("https://support.apple.com/zh-cn/HT201318");
+        price.add("6");
+        period.add("按月订阅");
 
         name.add("网易云音乐");
         picName.add(R.drawable.netease_cloud_music);
@@ -142,6 +149,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("https://music.163.com/#/member");
+        price.add("15");
+        period.add("按月订阅");
 
         name.add("Netflix");
         picName.add(R.drawable.netflix);
@@ -150,6 +159,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("https://www.netflix.com/");
+        price.add("");
+        period.add("");
 
         name.add("Nintendo Switch");
         picName.add(R.drawable.nintendo_switch);
@@ -158,6 +169,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("18");
+        period.add("按月订阅");
 
         name.add("坚果云");
         picName.add(R.drawable.nut);
@@ -166,6 +179,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#000000");
         text_hintcolor.add("#000000");
         url.add("https://www.jianguoyun.com/s/pricing");
+        price.add("30");
+        period.add("按月订阅");
 
         name.add("Office 365");
         picName.add(R.drawable.office365);
@@ -173,8 +188,9 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#d83b01");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
-        url.add("https://products.office.com/zh-cn/compare-all-microsoft-office-products?&activetab=tab:primaryr1");
-
+        url.add("https://products.office    .com/zh-cn/compare-all-microsoft-office-products?&activetab=tab:primaryr1");
+        price.add("398");
+        period.add("按年订阅");
 
         name.add("Pocket");
         picName.add(R.drawable.pocket);
@@ -183,6 +199,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("https://getpocket.com/premium?ep=1");
+        price.add("30");
+        period.add("按月订阅");
 
         name.add("PS4");
         picName.add(R.drawable.ps4);
@@ -191,6 +209,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("https://store.playstation.com/zh-hans-hk/grid/STORE-MSF86012-PSPLUSCONTENTS/1?smcid=hk-chs_ps%3Acom_psplus-about");
+        price.add("43");
+        period.add("按月订阅");
 
         name.add("500px");
         picName.add(R.drawable.px);
@@ -199,6 +219,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("https://web.500px.com/upgrade");
+        price.add("");
+        period.add("");
 
         name.add("Slack");
         picName.add(R.drawable.slack);
@@ -207,6 +229,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("https://slack.com/pricing");
+        price.add("");
+        period.add("");
 
         name.add("Spotify");
         picName.add(R.drawable.spotify);
@@ -215,6 +239,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("https://www.spotify.com/hk-en/premium/?checkout=false");
+        price.add("51");
+        period.add("按月订阅");
 
         name.add("滴滴出行");
         picName.add(R.drawable.didi);
@@ -223,6 +249,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("");
+        period.add("");
 
         name.add("VSCO");
         picName.add(R.drawable.vsco);
@@ -231,6 +259,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("");
+        period.add("");
 
         name.add("WPS");
         picName.add(R.drawable.wps);
@@ -238,7 +268,9 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#db2900");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
-        url.add("https://www.docer.com/");
+        url.add("http://vip.wps.cn/home");
+        price.add("15");
+        period.add("按月订阅");
 
         name.add("Xbox");
         picName.add(R.drawable.xbox_360);
@@ -247,6 +279,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("https://www.xbox.com/zh-CN/live/");
+        price.add("169");
+        period.add("按季订阅");
 
         name.add("Youtube");
         picName.add(R.drawable.youtube);
@@ -255,6 +289,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("");
+        period.add("");
 
         name.add("爱奇艺");
         picName.add(R.drawable.qiy);
@@ -263,6 +299,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("15");
+        period.add("按月订阅");
 
         name.add("百度云");
         picName.add(R.drawable.baidupan);
@@ -271,6 +309,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("10");
+        period.add("按月订阅");
 
         name.add("饿了么");
         picName.add(R.drawable.elm);
@@ -279,14 +319,18 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("10");
+        period.add("按月订阅");
 
-        name.add("考拉");
-        picName.add(R.drawable.kaola);
-        white.add(R.drawable.kaola_w);
-        background_color.add("#CCff224a");
-        text_color.add("#FFFFFF");
-        text_hintcolor.add("#FFFFFF");
-        url.add("");
+//        name.add("网易考拉");
+//        picName.add(R.drawable.kaola);
+//        white.add(R.drawable.kaola_w);
+//        background_color.add("#CCff224a");
+//        text_color.add("#FFFFFF");
+//        text_hintcolor.add("#FFFFFF");
+//        url.add("");
+//        price.add("26");
+//        period.add("");
 
         name.add("腾讯QQ");
         picName.add(R.drawable.qq);
@@ -294,7 +338,9 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#CC12B7F5");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
-        url.add("");
+        url.add("https://vip.qq.com/");
+        price.add("10");
+        period.add("按月订阅");
 
         name.add("淘宝");
         picName.add(R.drawable.taobao);
@@ -303,6 +349,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("888");
+        period.add("按年订阅");
 
         name.add("腾讯视频");
         picName.add(R.drawable.tengxunvideo);
@@ -310,7 +358,9 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#ff9103");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
-        url.add("");
+        url.add("https://film.qq.com/");
+        price.add("15");
+        period.add("按月订阅");
 
         name.add("印象笔记");
         picName.add(R.drawable.yinxiang);
@@ -319,6 +369,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("8.17");
+        period.add("按月订阅");
 
         name.add("亚马逊");
         picName.add(R.drawable.amazon);
@@ -326,7 +378,9 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#146cb1");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
-        url.add("");
+        url.add("https://www.amazon.cn/amazonprime/461-3146981-6148758?_encoding=UTF8&%2AVersion%2A=1&%2Aentries%2A=0");
+        price.add("79");
+        period.add("按季订阅");
 
         name.add("Apple Music");
         picName.add(R.drawable.applemusic);
@@ -334,15 +388,19 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#EF6182");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
-        url.add("");
+        url.add("https://www.apple.com/music/");
+        price.add("10");
+        period.add("按月订阅");
 
-        name.add("美团");
+        name.add("美团外卖");
         picName.add(R.drawable.meituan);
         white.add(R.drawable.meituan_w);
         background_color.add("#CCFECE00");
         text_color.add("#000000");
         text_hintcolor.add("#000000");
         url.add("");
+        price.add("15");
+        period.add("按月订阅");
 
         name.add("当当网");
         picName.add(R.drawable.dangdang);
@@ -351,6 +409,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("");
+        period.add("");
 
         name.add("滴答清单");
         picName.add(R.drawable.didaqingdan);
@@ -359,6 +419,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("");
+        period.add("");
 
         name.add("京东");
         picName.add(R.drawable.jd);
@@ -367,6 +429,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("");
+        period.add("");
 
         name.add("Keep");
         picName.add(R.drawable.keep);
@@ -375,6 +439,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("");
+        period.add("");
 
         name.add("芒果TV");
         picName.add(R.drawable.mangguotv);
@@ -383,6 +449,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("");
+        period.add("");
 
         name.add("得到");
         picName.add(R.drawable.dedao);
@@ -391,6 +459,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("");
+        period.add("");
 
         name.add("墨刀");
         picName.add(R.drawable.modao);
@@ -398,7 +468,9 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#FF473E");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
-        url.add("");
+        url.add("https://modao.cc/pricing");
+        price.add("17");
+        period.add("按月订阅");
 
         name.add("Moo 音乐");
         picName.add(R.drawable.moo);
@@ -407,6 +479,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#000000");
         text_hintcolor.add("#000000");
         url.add("");
+        price.add("18");
+        period.add("按月订阅");
 
         name.add("幕布");
         picName.add(R.drawable.mubu);
@@ -414,7 +488,9 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#393A3F");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
-        url.add("");
+        url.add("https://mubu.com/about/pro");
+        price.add("9");
+        period.add("按月订阅");
 
         name.add("Notion");
         picName.add(R.drawable.notion);
@@ -422,7 +498,9 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#000000");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
-        url.add("");
+        url.add("https://www.notion.so/pricing");
+        price.add("27");
+        period.add("按月订阅");
 
         name.add("拼多多");
         picName.add(R.drawable.pdd);
@@ -431,6 +509,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("8.9");
+        period.add("按月订阅");
 
         name.add("少数派");
         picName.add(R.drawable.shaoshupai);
@@ -439,6 +519,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("");
+        period.add("");
 
         name.add("石墨");
         picName.add(R.drawable.shimo);
@@ -447,6 +529,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("");
+        period.add("");
 
         name.add("小睡眠");
         picName.add(R.drawable.xiaoshuimian);
@@ -455,6 +539,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("");
+        period.add("");
 
         name.add("白描");
         picName.add(R.drawable.baimiao);
@@ -463,6 +549,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("12");
+        period.add("一次性买断");
 
         name.add("淘票票");
         picName.add(R.drawable.taopiaopiao);
@@ -471,14 +559,18 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("");
+        period.add("");
 
-        name.add("网易考拉");
+        name.add("考拉海淘黑卡");
         picName.add(R.drawable.wangyikaola);
         white.add(R.drawable.wangyikaola_w);
         background_color.add("#BFFF0509");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("79.9");
+        period.add("按季订阅");
 
         name.add("微博");
         picName.add(R.drawable.sinaweibo);
@@ -487,6 +579,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("15");
+        period.add("按月订阅");
 
         name.add("微信读书");
         picName.add(R.drawable.weixinread);
@@ -495,14 +589,18 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("19");
+        period.add("按月订阅");
 
-        name.add("Xmind");
+        name.add("Xmind Zen");
         picName.add(R.drawable.xmind);
         white.add(R.drawable.xmind_w);
         background_color.add("#FE6404");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
-        url.add("");
+        url.add("388");
+        price.add("https://www.xmind.cn/pricing/");
+        period.add("按年订阅");
 
         name.add("每日瑜伽");
         picName.add(R.drawable.yujia);
@@ -511,6 +609,8 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
         url.add("");
+        price.add("");
+        period.add("");
 
         name.add("知乎");
         picName.add(R.drawable.zhihu);
@@ -518,12 +618,14 @@ public class AddListActivity extends Activity implements View.OnClickListener {
         background_color.add("#0e88EB");
         text_color.add("#FFFFFF");
         text_hintcolor.add("#FFFFFF");
-        url.add("");
+        url.add("https://www.zhihu.com/market/feeds/vip");
+        price.add("19");
+        period.add("按月订阅");
 
         for (int i = 0; i < name.size(); i++) {
             //字符串的匹配
             if (SelectName == "" || name.get(i).trim().toLowerCase().contains(SelectName.toString().trim().toLowerCase()))
-                fruitList.add(new Fruit(name.get(i), picName.get(i), white.get(i), background_color.get(i), text_color.get(i), text_hintcolor.get(i), url.get(i)));
+                fruitList.add(new Fruit(name.get(i), picName.get(i), white.get(i), background_color.get(i), text_color.get(i), text_hintcolor.get(i), url.get(i), price.get(i), period.get(i)));
         }
     }
 

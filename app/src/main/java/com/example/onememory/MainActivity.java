@@ -379,7 +379,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
             app.setState(dtime);
             //七天之内过期，在通知栏内通知
             if (dtime < 7)
-                notification(app.getName(), app.getIconId(), i, time[2] - day);
+                notification(app.getName(), app.getIconId(), i, dtime);
                 //多余七天过期，执行操作。。。。
             else {
                 //.............
@@ -413,7 +413,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
                     .setWhen(System.currentTimeMillis())    //系统显示时间
                     .setAutoCancel(true)       //设置点击后取消Notificatio
                     //3.绑定一个通知显示界面
-                    .setContentIntent(PendingIntent.getActivity(this, num, new Intent(this, Settings.class), PendingIntent.FLAG_CANCEL_CURRENT))
+                    .setContentIntent(PendingIntent.getActivity(this, num, new Intent(this, AddListActivity.class), PendingIntent.FLAG_CANCEL_CURRENT))
                     .build();
         }
         //8.0之前
@@ -432,7 +432,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
                     //.setOngoing(true)    //设置为系统不能清除通知
                     .setAutoCancel(true)       //设置点击后取消Notificatio
                     //3.绑定一个通知显示界面
-                    .setContentIntent(PendingIntent.getActivity(this, num, new Intent(this, Settings.class), PendingIntent.FLAG_CANCEL_CURRENT))
+                    .setContentIntent(PendingIntent.getActivity(this, num, new Intent(this, AddListActivity.class), PendingIntent.FLAG_CANCEL_CURRENT))
                     .build();
         }
 

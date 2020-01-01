@@ -55,7 +55,9 @@ public class SubscribeAdapter extends RecyclerView.Adapter<SubscribeAdapter.Subs
         });
         Log.e(TAG, "positon:" + position);
         Log.e(TAG, "apps.size():" + apps.size());
+
         if (apps.get(position).getState() < 0) {
+
             holder.appItem.getState().setText(R.string.overdue);
         } else if (apps.get(position).getState() >= 0 && apps.get(position).getState() <= 30000) {
             holder.appItem.getState().setText("还剩" + apps.get(position).getState() + "天过期");
@@ -63,6 +65,7 @@ public class SubscribeAdapter extends RecyclerView.Adapter<SubscribeAdapter.Subs
             holder.appItem.getState().setText("一次性买断");
         }
         if (position < apps.size()) {
+            holder.appItem.getState().setTextColor(Color.parseColor(apps.get(position).getTextColor()));
             holder.appItem.setApp_name(apps.get(position).getName());
             holder.appItem.setCost(apps.get(position).getMoney());
             holder.appItem.setIconResID(apps.get(position).getIconId());
