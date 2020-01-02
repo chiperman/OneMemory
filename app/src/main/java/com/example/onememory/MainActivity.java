@@ -27,6 +27,7 @@ import com.example.onememory.apps.App;
 import com.example.onememory.database.OneDatabaseHelper;
 import com.example.onememory.mainActivity.SubscribeAdapter;
 import com.example.onememory.settings.Settings;
+import com.example.onememory.viewCard.ViewCard;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -227,10 +228,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
                     break;
             }
             ++itemNum;
-            setAppStateAndNotify(app, i++);
-
-            Log.e(TAG, app.getState() + "  1");
             apps.add(app);
+            setAppStateAndNotify(app, i++, apps.size());
+            Log.e(TAG, app.getState() + "  1");
             total.setVisibility(View.VISIBLE);
             illustrations.setVisibility(View.GONE);
         }
@@ -277,11 +277,11 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
             }
             totalCost += app.getMoney();
             ++itemNum;
-            setAppStateAndNotify(app, i++);
             Log.e(TAG, app.getState() + "  2");
             apps.add(app);
             total.setVisibility(View.VISIBLE);
             illustrations.setVisibility(View.GONE);
+            setAppStateAndNotify(app, i++, apps.size() - 1);
         }
 
 
@@ -293,7 +293,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
 
     }
 
-    private void setAppStateAndNotify(App app, Integer i) {
+    private void setAppStateAndNotify(App app, Integer i, int position) {
         //获取系统的日期
         Calendar calendar = Calendar.getInstance();
 
@@ -379,7 +379,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
             app.setState(dtime);
             //七天之内过期，在通知栏内通知
             if (dtime < 7)
-                notification(app.getName(), app.getIconId(), i, dtime);
+                notification(app.getName(), app.getIconId(), i, dtime, position);
                 //多余七天过期，执行操作。。。。
             else {
                 //.............
@@ -388,7 +388,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
     }
 
     //通知函数
-    private void notification(String appname, int icon, int num, int days) {
+    private void notification(String appname, int icon, int num, int days, int position) {
         //1.通知管理器
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         //2.建立一个通知
@@ -403,6 +403,10 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
 
             notificationManager.createNotificationChannel(mChannel);
 
+            Intent intent = new Intent(this, ViewCard.class);
+            intent.putExtra("apps", apps);
+            intent.putExtra("app", position);
+            Log.e("position", String.valueOf(position));
             notification = new Notification.Builder(this, id)
                     .setLargeIcon(BitmapFactory.decodeResource(this.getResources(), R.mipmap.ic_launcher))
                     .setSmallIcon(icon)
@@ -413,12 +417,16 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
                     .setWhen(System.currentTimeMillis())    //系统显示时间
                     .setAutoCancel(true)       //设置点击后取消Notificatio
                     //3.绑定一个通知显示界面
-                    .setContentIntent(PendingIntent.getActivity(this, num, new Intent(this, AddListActivity.class), PendingIntent.FLAG_CANCEL_CURRENT))
+                    .setContentIntent(PendingIntent.getActivity(this, num, intent, PendingIntent.FLAG_CANCEL_CURRENT))
                     .build();
         }
         //8.0之前
         else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             Log.e("当前机型版本号", String.valueOf(Build.VERSION.SDK_INT));
+            Intent intent = new Intent(this, ViewCard.class);
+            intent.putExtra("apps", apps);
+            intent.putExtra("app", position);
+            Log.e("position", String.valueOf(position));
             notification = new Notification.Builder(this)
                     .setLargeIcon(BitmapFactory.decodeResource(this.getResources(), icon))
                     .setSmallIcon(R.drawable.add_black)
@@ -432,7 +440,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Seri
                     //.setOngoing(true)    //设置为系统不能清除通知
                     .setAutoCancel(true)       //设置点击后取消Notificatio
                     //3.绑定一个通知显示界面
-                    .setContentIntent(PendingIntent.getActivity(this, num, new Intent(this, AddListActivity.class), PendingIntent.FLAG_CANCEL_CURRENT))
+                    .setContentIntent(PendingIntent.getActivity(this, num, intent, PendingIntent.FLAG_CANCEL_CURRENT))
                     .build();
         }
 
