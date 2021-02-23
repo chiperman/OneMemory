@@ -8,32 +8,32 @@
 
 # 项目截图
 
-<img src="screenshots\mainPage.jpg" alt="mainPage" style="zoom: 31%;" />
+<img src="screenshots\mainPage.jpg" alt="mainPage" />
 
-<img src="screenshots\addPage.jpg" alt="addPage" style="zoom:31%;" />
+<img src="screenshots\addPage.jpg" alt="addPage" />
 
-<img src=" screenshots\search.jpg" alt="search" style="zoom:25%;" />
+<img src=" screenshots\search.jpg" alt="search" />
 
-<img src="screenshots\addSub.jpg" alt="addSub" style="zoom:25%;" />
+<img src="screenshots\addSub.jpg" alt="addSub" />
 
-<img src="screenshots\ChoseDate.jpg" alt="ChoseDate" style="zoom:25%;" />
+<img src="screenshots\ChoseDate.jpg" alt="ChoseDate" />
 
-<img src="screenshots\choseIcon.jpg" alt="choseIcon" style="zoom:25%;" />
+<img src="screenshots\choseIcon.jpg" alt="choseIcon"/>
 
-<img src="screenshots\detialPage.jpg" alt="detialPage" style="zoom: 60%;" />
+<img src="screenshots\detialPage.jpg" alt="detialPage" />
 
-<img src="screenshots\HomePage.jpg" alt="HomePage" style="zoom:87%;" />
+<img src="screenshots\HomePage.jpg" alt="HomePage" />
 
-<img src="screenshots\settingPage.jpg" alt="settingPage" style="zoom:60%;" />
+<img src="screenshots\settingPage.jpg" alt="settingPage" />
 
-<img src="screenshots\reminder.jpg" alt="reminder" style="zoom:25%;" />
+<img src="screenshots\reminder.jpg" alt="reminder" />
 
-<img src="screenshots\settingToast.jpg" alt="settingToast" style="zoom: 25%;" />
+<img src="screenshots\settingToast.jpg" alt="settingToast"  />
 
-<img src="screenshots\export&import.jpg" alt="export&import" style="zoom:60%;" />
+<img src="screenshots\export&import.jpg" alt="export&import" />
 
-<img src="screenshots\StarUs.jpg" alt="StarUs" style="zoom:25%;" />
+<img src="screenshots\StarUs.jpg" alt="StarUs"  />
 
-<img src="screenshots\aboutUS.jpg" alt="aboutUS" style="zoom:25%;" />
+<img src="screenshots\aboutUS.jpg" alt="aboutUS"  />
 
-<img src="screenshots\delToast.jpg" alt="delToast" style="zoom:88%;" />
+<img src="screenshots\delToast.jpg" alt="delToast" />
