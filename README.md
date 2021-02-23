@@ -12,7 +12,7 @@
 
 <img src="screenshots\addPage.jpg" alt="addPage" />
 
-<img src=" screenshots\search.jpg" alt="search" />
+<img src="screenshots\search.jpg" alt="search" />
 
 <img src="screenshots\addSub.jpg" alt="addSub" />
 
